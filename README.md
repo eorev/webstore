@@ -2,7 +2,7 @@
 
 ## Team Members
 
--   [Ethan](https://github.com/eorev)[Charles](https://github.com/cwgiii)
+-   [Ethan](https://github.com/eorev), [Charles](https://github.com/cwgiii)
 
 ## Project Description
 
