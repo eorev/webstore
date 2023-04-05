@@ -15,3 +15,26 @@
 ## How to Test
 
     npm run test:cov
+
+## Personas
+
+    -   Phil(User)
+    Phil is a college student
+
+    Phil is attempting to purchase a product on the site
+
+    Phil's main barrier is that he is not sure if the product is the right one for him
+
+    -   Ryan (User)
+    Ryan is a father
+
+    Ryan is attempting to purchase a product for his daughter
+
+    Ryan is unaware of the current trends and would like suggestions on products
+    
+    -  Bob(Admin)
+    Bob is a store owner
+
+    Bob is attempting to add a product to the site
+
+    Bob's main barrier is that he is unsure of how to add a product to the site
