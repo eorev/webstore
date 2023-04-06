@@ -17,3 +17,10 @@
     npm run test:cov
 
 ## Personas
+
+    -   Phil(User)
+    Phil is a college student
+
+    Phil is attempting to purchase a product on the site
+
+    Phil's main barrier is that he is not sure if the product is the right one for him
