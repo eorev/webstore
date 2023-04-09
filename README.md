@@ -2,7 +2,7 @@
 
 ## Team Members
 
--   [eorev](https://github.com/eorev), [Irvin](https://github.com/IrvinFavors)
+-   [eorev](https://github.com/eorev), [Irvin](https://github.com/IrvinFavors), [Farhan](https://github.com/FarhanOhe03)
 
 ## Project Description
 
