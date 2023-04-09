@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (33 ms)
+  ✕ renders learn react link (34 ms)
 
   ● renders learn react link
 
@@ -52,9 +52,14 @@ All files       |     100 |      100 |     100 |     100 |
   App.tsx       |     100 |      100 |     100 |     100 |                   
  src/components |     100 |      100 |     100 |     100 |                   
   Navbar.tsx    |     100 |      100 |     100 |     100 |                   
+ src/interfaces |       0 |        0 |       0 |       0 |                   
+  cart.ts       |       0 |        0 |       0 |       0 |                   
+  order.ts      |       0 |        0 |       0 |       0 |                   
+  product.ts    |       0 |        0 |       0 |       0 |                   
+  user.ts       |       0 |        0 |       0 |       0 |                   
 ----------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.565 s
+Time:        1.752 s
 Ran all test suites.
