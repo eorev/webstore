@@ -3,7 +3,7 @@ export interface product {
     description: string;
     id: number;
     image: string;
-    rating: number; //rating from 1 to 5 
+    rating: number; //rating from 1 to 5
     category: string;
     admin_id: number; //id belonging to the admin who created the product
     price: number;

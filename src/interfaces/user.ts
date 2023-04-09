@@ -1,5 +1,5 @@
-import {cart} from "./cart";
-import {order} from "./order";
+import { cart } from "./cart";
+import { order } from "./order";
 export type accountType = "admin" | "customer";
 
 export interface admin {
