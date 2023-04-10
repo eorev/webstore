@@ -3,7 +3,7 @@
 ## Team Members
 
 -   [eorev](https://github.com/eorev), [Irvin](https://github.com/IrvinFavors), [Ameer](https://github.com/mirnas1)
-
+[Farhan](https://github.com/FarhanOhe03)
 ## Project Description
 
     This is a webstore that sells a variety of items.
