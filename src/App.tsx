@@ -7,6 +7,7 @@ function App() {
     return (
         <div className="App">
             <Navbar></Navbar>
+            <span>{catalog.PRODUCTS[0].name}</span>
         </div>
     );
 }
