@@ -22,6 +22,9 @@ FAIL src/App.test.tsx
               [0mStore[0m
             [36m</div>[39m
           [36m</nav>[39m
+          [36m<span>[39m
+            [0mEXAMPLE_1[0m
+          [36m</span>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -61,5 +64,5 @@ All files       |     100 |      100 |     100 |     100 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.706 s
+Time:        1.573 s
 Ran all test suites.
