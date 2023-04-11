@@ -1,13 +1,22 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import catalog from "./data/products.json";
+import inventory from "./data/products.json";
+import Catalog from "./components/Catalog";
+import "./components/Catalog.css";
+import product from "./interfaces/product";
 
 function App() {
     return (
         <div className="App">
             <Navbar></Navbar>
-            <span>{catalog.PRODUCTS[0].name}</span>
+            <div className="catalog-container">
+                {inventory.PRODUCTS.map((item: product) => (
+                    <div key={item.name} className="catalog-item">
+                        <Catalog product={item} />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
