@@ -57,15 +57,18 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .catalog-item {
-    background-color: rgb(199, 199, 199);
-    width: 20%;
+    background-color: rgb(199, 199, 199, 0.75);
+    width: 200px;
     margin: 0.5rem;
     padding: 1rem;
-    border: #c51f1f;
     border-radius: 5px;
+    border: 1px solid #891d0e;
+    padding: 10px;
 }
 
 .catalog-addToCart {
