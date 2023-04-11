@@ -2,7 +2,7 @@
     "PRODUCTS": [
         {
             "name": "EXAMPLE_1",
-            "description": "NULL",
+            "description": "Sample description for example 1",
             "id": 1,
             "image": "/images/ud.png",
             "rating": 1,
