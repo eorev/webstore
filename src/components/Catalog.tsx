@@ -15,7 +15,7 @@ const Catalog: React.FC<CatalogProps> = ({ product }) => {
                 src={process.env.PUBLIC_URL + product.image}
                 alt={product.name}
             />
-            <p>{product.description}</p>
+            <p className="img-description">`${}`</p>
             <p>In Stock: {product.units_instock}</p>
             <Button className="catalog-addToCart">Add to Cart</Button>
             <p>${product.price}</p>
