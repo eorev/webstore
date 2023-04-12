@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (34 ms)
+  ✕ renders learn react link (68 ms)
 
   ● renders learn react link
 
@@ -22,9 +22,290 @@ FAIL src/App.test.tsx
               [0mStore[0m
             [36m</div>[39m
           [36m</nav>[39m
-          [36m<span>[39m
-            [0mEXAMPLE_1[0m
-          [36m</span>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"catalog-container"[39m
+            [33mid[39m=[32m"container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_1[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_1"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mSample description for example 1[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m1[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_2[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_2"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mNULL[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m6[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_3[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_3"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mNULL[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m1[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_4[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_4"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mNULL[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m1[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_5[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_5"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mNULL[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m1[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"catalog-item"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"catalog-view"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"name"[39m
+                [36m>[39m
+                  [0mEXAMPLE_6[0m
+                [36m</h1>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"image-container"[39m
+                [36m>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"EXAMPLE_6"[39m
+                    [33msrc[39m=[32m"/images/square-white.png"[39m
+                  [36m/>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-overlay"[39m
+                  [36m>[39m
+                    [0mNULL[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"catalog-view"[39m
+                [36m>[39m
+                  [0m [0m
+                  [36m<p>[39m
+                    [0mIn Stock: [0m
+                    [0m1[0m
+                  [36m</p>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"catalog-addToCart btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd to Cart[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m$[0m
+                    [0m1[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"catalog-add-product-button btn btn-primary"[39m
+                [33mid[39m=[32m"AddProduct"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mAdd Product[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -47,22 +328,25 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-----------------|---------|----------|---------|---------|-------------------
-File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------|---------|----------|---------|---------|-------------------
-All files       |     100 |      100 |     100 |     100 |                   
- src            |     100 |      100 |     100 |     100 |                   
-  App.tsx       |     100 |      100 |     100 |     100 |                   
- src/components |     100 |      100 |     100 |     100 |                   
-  Navbar.tsx    |     100 |      100 |     100 |     100 |                   
- src/interfaces |       0 |        0 |       0 |       0 |                   
-  cart.ts       |       0 |        0 |       0 |       0 |                   
-  order.ts      |       0 |        0 |       0 |       0 |                   
-  product.ts    |       0 |        0 |       0 |       0 |                   
-  user.ts       |       0 |        0 |       0 |       0 |                   
-----------------|---------|----------|---------|---------|-------------------
+----------------|---------|----------|---------|---------|-------------------------
+File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+----------------|---------|----------|---------|---------|-------------------------
+All files       |      70 |     37.5 |      60 |      70 |                         
+ src            |     100 |      100 |     100 |     100 |                         
+  App.tsx       |     100 |      100 |     100 |     100 |                         
+ src/components |   67.85 |     37.5 |   55.55 |   67.85 |                         
+  Catalog.tsx   |   66.66 |     37.5 |      50 |   66.66 | 16-18,68,77-78,82,86-87 
+  Navbar.tsx    |     100 |      100 |     100 |     100 |                         
+ src/data       |     100 |      100 |     100 |     100 |                         
+  products.tsx  |     100 |      100 |     100 |     100 |                         
+ src/interfaces |       0 |        0 |       0 |       0 |                         
+  cart.ts       |       0 |        0 |       0 |       0 |                         
+  order.ts      |       0 |        0 |       0 |       0 |                         
+  product.ts    |       0 |        0 |       0 |       0 |                         
+  user.ts       |       0 |        0 |       0 |       0 |                         
+----------------|---------|----------|---------|---------|-------------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.616 s
+Time:        2.011 s
 Ran all test suites.
