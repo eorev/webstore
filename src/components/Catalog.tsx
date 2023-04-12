@@ -3,6 +3,11 @@ import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
 import "./Catalog.css";
 import inventoryData from "../data/products";
+import * as database from "../index";
+import * as firebase from "firebase/app";
+import "firebase/database"; // Import the Realtime Database module
+
+firebase.initializeApp(database.firebaseConfig);
 
 interface CatalogProps {
     product: ProductData;
