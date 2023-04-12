@@ -87,6 +87,11 @@
     appearance: none;
     width: 125px;
 }
+
+.catalog-addToCart[disabled] {
+    display: none;
+}
+
 .catalog-addToCart:hover {
     background-color: #5a1309;
 }
