@@ -9,3 +9,5 @@ export interface product {
     price: number;
     units_instock: number;
 }
+
+export default product;
