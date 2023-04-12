@@ -12,8 +12,8 @@ const View: React.FC<CatalogProps> = ({ product }) => {
     const [productUnits, setProductUnits] = useState(0);
 
     const handleAddToCart = () => {
+        /*need to add functionality to modify json file data, so that the units in stock does not reset when the site is reloaded*/
         if (product.units_instock > 0) {
-            // Decrease the units in stock by 1 and increase the units in cart by 1
             product.units_instock--;
             setProductUnits(productUnits + 1);
         }
