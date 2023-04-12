@@ -5,7 +5,7 @@ const products: product[] = [
         name: "EXAMPLE_1",
         description: "Sample description for example 1",
         id: 1,
-        image: "/images/ud.png",
+        image: "/images/sqaure-white.png",
         rating: 1,
         category: "NULL",
         admin_id: 1,
