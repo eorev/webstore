@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
 import "./Catalog.css";
-import inventoryData from "../data/products";
-import * as database from "../index";
-import * as firebase from "firebase/app";
-import "firebase/database"; // Import the Realtime Database module
-
-firebase.initializeApp(database.firebaseConfig);
+import db from "../firebase";
+import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 
 interface CatalogProps {
     product: ProductData;
@@ -54,7 +50,7 @@ const View: React.FC<CatalogProps> = ({ product }) => {
 };
 
 export default function Catalog() {
-    const [inventory, setInventory] = useState<ProductData[]>([]);
+    const [products, setProducts] = useState<ProductData[]>();
     const [showForm, setShowForm] = useState(false);
     const [newProduct, setNewProduct] = useState<ProductData>({
         name: "",
@@ -67,38 +63,43 @@ export default function Catalog() {
         price: 0,
         units_instock: 0
     });
-    useEffect(() => {
-        const inventoryJSON = sessionStorage.getItem("inventory");
-        if (inventoryJSON) {
-            setInventory(JSON.parse(inventoryJSON));
-        } else {
-            const inventoryDataJSON = JSON.stringify(inventoryData);
-            sessionStorage.setItem("inventory", inventoryDataJSON);
-            setInventory(inventoryData);
-        }
-    }, []);
-
-    const addProduct = () => {
-        setInventory([...inventory, newProduct]);
-        setShowForm(false);
-    };
 
     const toggleForm = () => {
         setShowForm(!showForm);
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
         const { name, value } = event.target;
         setNewProduct({ ...newProduct, [name]: value });
     };
 
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "products"), (snapshot) =>
+                console.log(snapshot.docs.map((doc) => doc.data()))
+            ),
+        []
+    );
+
+    const handleNewProduct = async () => {
+        const docRef = doc(db, "products", newProduct.name);
+        const payload = {
+            name: newProduct.name,
+            description: newProduct.description,
+            id: newProduct.id,
+            image: newProduct.image,
+            rating: newProduct.rating, //rating from 1 to 5
+            category: newProduct.category,
+            admin_id: newProduct.admin_id, //id belonging to the admin who created the product
+            price: newProduct.price,
+            units_instock: newProduct.units_instock
+        };
+        await setDoc(docRef, payload);
+    };
+
     return (
         <div className="catalog-container" id="container">
-            {inventory.map((item: ProductData) => (
-                <div key={item.name} className="catalog-item">
-                    <View product={item} />
-                </div>
-            ))}
             <div>
                 <Button
                     onClick={toggleForm}
@@ -107,11 +108,12 @@ export default function Catalog() {
                 >
                     Add Product
                 </Button>
+                <Button onClick={handleNewProduct}>new</Button>
             </div>
             {showForm && (
                 <div className="catalog-add-product-container">
                     {
-                        <form onSubmit={addProduct}>
+                        <form>
                             <input
                                 type="text"
                                 name="name"
@@ -171,6 +173,7 @@ export default function Catalog() {
                                 onChange={handleInputChange}
                             />
                             <Button
+                                onClick={handleNewProduct}
                                 type="submit"
                                 className="catalog-button"
                                 style={{
