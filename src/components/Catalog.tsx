@@ -1,8 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
 import "./Catalog.css";
-import inventoryData from "../data/products";
+import db from "../firebase";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    onSnapshot,
+    setDoc
+} from "firebase/firestore";
 
 interface CatalogProps {
     product: ProductData;
@@ -49,8 +57,9 @@ const View: React.FC<CatalogProps> = ({ product }) => {
 };
 
 export default function Catalog() {
-    const [inventory, setInventory] = useState<ProductData[]>([]);
-    const [showForm, setShowForm] = useState(false);
+    const [products, setProducts] = useState<ProductData[]>([]);
+    const [showAddForm, setShowAddForm] = useState(false);
+    const [showRemoveForm, setShowRemoveForm] = useState(false);
     const [newProduct, setNewProduct] = useState<ProductData>({
         name: "",
         description: "",
@@ -62,110 +71,164 @@ export default function Catalog() {
         price: 0,
         units_instock: 0
     });
-    useEffect(() => {
-        const inventoryJSON = sessionStorage.getItem("inventory");
-        if (inventoryJSON) {
-            setInventory(JSON.parse(inventoryJSON));
-        } else {
-            const inventoryDataJSON = JSON.stringify(inventoryData);
-            sessionStorage.setItem("inventory", inventoryDataJSON);
-            setInventory(inventoryData);
+    const [removeProduct, setRemoveProduct] = useState<string>("");
+    const toggleForm = (name: string) => {
+        if (name === "add") {
+            setShowAddForm(!showAddForm);
+            setShowRemoveForm(false);
         }
-    }, []);
-
-    const addProduct = () => {
-        setInventory([...inventory, newProduct]);
-        setShowForm(false);
+        if (name === "remove") {
+            setShowRemoveForm(!showRemoveForm);
+            setShowAddForm(false);
+        }
     };
 
-    const toggleForm = () => {
-        setShowForm(!showForm);
-    };
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAddInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        event.preventDefault();
         const { name, value } = event.target;
         setNewProduct({ ...newProduct, [name]: value });
     };
 
+    const handleRemoveInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setRemoveProduct(value);
+    };
+
+    console.log(products);
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "products"), (snapshot) =>
+                setProducts(
+                    snapshot.docs.map((doc) => doc.data() as ProductData)
+                )
+            ),
+        []
+    );
+
+    const handleNewProduct = async () => {
+        const form = document.querySelector("form");
+        form?.addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent default form submission behavior
+            // your form submission logic here
+        });
+        const docRef = doc(db, "products", newProduct.name);
+        const payload = {
+            name: newProduct.name,
+            description: newProduct.description,
+            id: newProduct.id,
+            image: newProduct.image,
+            rating: newProduct.rating, //rating from 1 to 5
+            category: newProduct.category,
+            admin_id: newProduct.admin_id, //id belonging to the admin who created the product
+            price: newProduct.price,
+            units_instock: newProduct.units_instock
+        };
+        await setDoc(docRef, payload);
+    };
+    const handleRemoveProduct = async () => {
+        const form = document.querySelector("form");
+        form?.addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent default form submission behavior
+            // your form submission logic here
+        });
+        const docRef = doc(db, "products", removeProduct);
+        await deleteDoc(docRef);
+    };
+
     return (
         <div className="catalog-container" id="container">
-            {inventory.map((item: ProductData) => (
+            {products.map((item: ProductData) => (
                 <div key={item.name} className="catalog-item">
                     <View product={item} />
                 </div>
             ))}
             <div>
                 <Button
-                    onClick={toggleForm}
+                    onClick={() => toggleForm("add")}
                     className="catalog-add-product-button"
                     id="AddProduct"
                 >
                     Add Product
                 </Button>
             </div>
-            {showForm && (
-                <div className="catalog-add-product-container">
+            <div>
+                <Button
+                    onClick={() => toggleForm("remove")}
+                    className="catalog-remove-product-button"
+                    id="AddProduct"
+                >
+                    Remove Product
+                </Button>
+            </div>
+            {showAddForm && (
+                <div className="catalog-add-remove-product-container">
                     {
-                        <form onSubmit={addProduct}>
+                        <form onSubmit={() => toggleForm("add")}>
                             <input
                                 type="text"
                                 name="name"
                                 placeholder="Product Name"
                                 value={newProduct.name}
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="text"
                                 name="description"
                                 placeholder="Product Description"
                                 value={newProduct.description}
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="number"
                                 name="id"
                                 placeholder="Product ID"
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="text"
                                 name="image"
                                 placeholder="Product Image URL"
                                 value={newProduct.image}
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="number"
                                 name="rating"
                                 placeholder="Product Rating"
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="text"
                                 name="category"
                                 placeholder="Product Category"
                                 value={newProduct.category}
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="number"
                                 name="admin_id"
                                 placeholder="Admin ID"
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="number"
                                 name="price"
                                 placeholder="Product Price"
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <input
                                 type="number"
                                 name="units_instock"
                                 placeholder="Units in Stock"
-                                onChange={handleInputChange}
+                                onChange={handleAddInputChange}
                             />
                             <Button
+                                onClick={handleNewProduct}
                                 type="submit"
                                 className="catalog-button"
                                 style={{
@@ -175,6 +238,33 @@ export default function Catalog() {
                                 }}
                             >
                                 Add
+                            </Button>
+                        </form>
+                    }
+                </div>
+            )}
+            {showRemoveForm && (
+                <div className="catalog-add-remove-product-container">
+                    {
+                        <form onSubmit={() => toggleForm("remove")}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Product Name"
+                                value={removeProduct}
+                                onChange={handleRemoveInputChange}
+                            />
+                            <Button
+                                onClick={handleRemoveProduct}
+                                type="submit"
+                                className="catalog-button"
+                                style={{
+                                    backgroundColor: "black",
+                                    position: "absolute",
+                                    bottom: -12
+                                }}
+                            >
+                                Remove
                             </Button>
                         </form>
                     }
