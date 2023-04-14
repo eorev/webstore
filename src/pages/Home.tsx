@@ -10,8 +10,11 @@ interface AuthContextType {
     user: User;
 }
 
+const adminIDs: string[] = ["6gzUl2K6U5bgRUIAB4qbBNq54E43"];
+
 const Home = () => {
     const { user, logout } = UserAuth() as AuthContextType;
+    const isAdmin: boolean = adminIDs.includes(user?.uid);
     return (
         <div className="App">
             <Navbar></Navbar>
@@ -21,9 +24,11 @@ const Home = () => {
                     <Link to="/account">
                         <button>Account</button>
                     </Link>
-                    <Link to="/admin">
-                        <button>Admin</button>
-                    </Link>
+                    {isAdmin ? (
+                        <Link to="/admin">
+                            <button>Admin</button>
+                        </Link>
+                    ) : null}
                 </div>
             ) : (
                 <div>
