@@ -22,7 +22,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 export function signup(email: string, password: string) {
     return createUserWithEmailAndPassword(auth, email, password);
 }
