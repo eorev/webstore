@@ -27,7 +27,14 @@ function App() {
                             </Protected>
                         }
                     />
-                    <Route path="/admin" element={<Admin />} />
+                    <Route
+                        path="/admin"
+                        element={
+                            <Protected>
+                                <Admin />
+                            </Protected>
+                        }
+                    />
                 </Routes>
             </div>
         </AuthContextProvider>
