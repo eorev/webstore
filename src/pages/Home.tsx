@@ -16,7 +16,15 @@ const Home = () => {
         <div className="App">
             <Navbar></Navbar>
             {user ? (
-                <button onClick={logout}>Logout</button>
+                <div>
+                    <button onClick={logout}>Logout</button>
+                    <Link to="/account">
+                        <button>Account</button>
+                    </Link>
+                    <Link to="/admin">
+                        <button>Admin</button>
+                    </Link>
+                </div>
             ) : (
                 <div>
                     <Link to="/signin">

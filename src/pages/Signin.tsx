@@ -13,7 +13,6 @@ interface AuthContextType {
 const Signin = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
-    const displayNameRef = useRef<HTMLInputElement>(null);
     const [loading, setLoading] = useState(false);
     const { googleSignIn, user } = UserAuth() as AuthContextType;
     const navigate = useNavigate();

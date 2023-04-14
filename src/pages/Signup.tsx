@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ const Signup = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const displayNameRef = useRef<HTMLInputElement>(null);
-    const [loading, setLoading] = useState(false);
     const { googleSignIn, user } = UserAuth() as AuthContextType;
     const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ const Signup = () => {
             alert("Password must be at least 6 character!");
             return;
         }
-        setLoading(true);
         try {
             if (emailRef.current && passwordRef.current) {
                 const { user } = await signup(
@@ -38,7 +36,6 @@ const Signup = () => {
         } catch {
             alert("Error with signup!");
         }
-        setLoading(false);
     }
 
     const handleGoogleSignIn = async () => {
