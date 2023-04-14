@@ -1,7 +1,5 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Catalog from "./components/Catalog";
 import "./components/Catalog.css";
 import { Route, Routes } from "react-router-dom";
 import Sigin from "./pages/Signin";
