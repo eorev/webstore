@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Catalog from "../components/Catalog";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
+import db from "../firebase";
+import { collection, doc, onSnapshot } from "firebase/firestore";
 
 interface AuthContextType {
     logout: () => void;
     user: User;
 }
 
-const adminIDs: string[] = ["6gzUl2K6U5bgRUIAB4qbBNq54E43"];
-
 const Home = () => {
     const { user, logout } = UserAuth() as AuthContextType;
+    const [adminIDs, setAdminIDs] = useState<string[]>([]);
+    useEffect(() => {
+        const unsub = onSnapshot(doc(db, "ids", "adminIDs"), (doc) => {
+            if (doc.exists()) {
+                const adminData = doc.data();
+                const fullArray = adminData.full as string[];
+                setAdminIDs(fullArray);
+            }
+        });
+
+        return () => unsub();
+    }, []);
     const isAdmin: boolean = adminIDs.includes(user?.uid);
+
     return (
         <div className="App">
             <Navbar></Navbar>
