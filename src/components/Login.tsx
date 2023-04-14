@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { signup, login, logout, useAuth } from "../firebase";
 import "./Login.css";
-import { User, updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 export default function Login() {
     const emailRef = useRef<HTMLInputElement>(null);
