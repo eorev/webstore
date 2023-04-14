@@ -8,7 +8,7 @@
       at Catalog (src/components/Catalog.tsx:102:13)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (95 ms)
+  ✕ renders learn react link (79 ms)
 
   ● renders learn react link
 
@@ -93,5 +93,5 @@ All files       |   33.92 |    16.66 |      20 |   33.92 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.012 s
+Time:        2.435 s
 Ran all test suites.
