@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
 import db from "../firebase";
-import { collection, doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 interface AuthContextType {
     logout: () => void;
