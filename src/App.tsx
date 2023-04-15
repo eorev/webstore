@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import "./components/Catalog.css";
 import { Route, Routes } from "react-router-dom";
-import Sigin from "./pages/Signin";
+import Signin from "./pages/Signin";
 import Home from "./pages/Home";
 import { AuthContextProvider } from "./context/AuthContext";
 import Signup from "./pages/Signup";
@@ -27,10 +27,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/webstore" element={<Home />} />
-                    <Route path="/signin" element={<Sigin />} />
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/webstore/signin" element={<Signin />} />
+                    <Route path="/webstore/signup" element={<Signup />} />
                     <Route
-                        path="/account"
+                        path="/webstore/account"
                         element={
                             <Protected>
                                 <Account />
@@ -38,7 +38,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/admin"
+                        path="/webstore/admin"
                         element={
                             <Protected>
                                 <Admin />
