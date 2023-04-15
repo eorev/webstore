@@ -3,6 +3,267 @@
 > react-scripts test --coverage
 
   console.error
+    Error: Uncaught [TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.]
+        at reportException (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+        at innerInvokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
+        at invokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+        at HTMLUnknownElementImpl._dispatch (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+        at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+        at HTMLUnknownElement.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+        at Object.invokeGuardedCallbackDev (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+        at invokeGuardedCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+        at beginWork$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+        at performUnitOfWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+        at workLoopSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+        at renderRootSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+        at performSyncWorkOnRoot (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+        at scheduleUpdateOnFiber (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+        at updateContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+        at /home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+        at unbatchedUpdates (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+        at legacyRenderSubtreeIntoContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+        at Object.render (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+        at /home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:101:25
+        at batchedUpdates$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+        at act (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+        at render (/home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:97:26)
+        at Object.<anonymous> (/home/runner/work/webstore/webstore/src/App.test.tsx:6:11)
+        at Promise.then.completed (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:316:10)
+        at _callCircusTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:218:40)
+        at _runTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:155:3)
+        at _runTestsForDescribeBlock (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:66:9)
+        at run (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:25:3)
+        at runAndTransformResultsToJestFormat (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+        at jestAdapter (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+        at runTestInternal (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:389:16)
+        at runTest (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:475:34)
+        at TestRunner.runTests (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/index.js:101:12)
+        at TestScheduler.scheduleTests (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/TestScheduler.js:333:13)
+        at runJest (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/runJest.js:404:19)
+        at _run10000 (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:320:7)
+        at runCLI (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:173:3)
+        at Object.run (/home/runner/work/webstore/webstore/node_modules/jest-cli/build/cli/index.js:155:37) TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.
+        at LinkWithRef (/home/runner/work/webstore/webstore/node_modules/react-router-dom/index.tsx:432:11)
+        at renderWithHooks (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+        at updateForwardRef (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:17044:20)
+        at beginWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:19098:16)
+        at HTMLUnknownElement.callCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+        at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+        at innerInvokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+        at invokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+        at HTMLUnknownElementImpl._dispatch (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+        at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+        at HTMLUnknownElement.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+        at Object.invokeGuardedCallbackDev (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+        at invokeGuardedCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+        at beginWork$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+        at performUnitOfWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+        at workLoopSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+        at renderRootSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+        at performSyncWorkOnRoot (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+        at scheduleUpdateOnFiber (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+        at updateContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+        at /home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+        at unbatchedUpdates (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+        at legacyRenderSubtreeIntoContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+        at Object.render (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+        at /home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:101:25
+        at batchedUpdates$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+        at act (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+        at render (/home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:97:26)
+        at Object.<anonymous> (/home/runner/work/webstore/webstore/src/App.test.tsx:6:11)
+        at Promise.then.completed (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:316:10)
+        at _callCircusTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:218:40)
+        at _runTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:155:3)
+        at _runTestsForDescribeBlock (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:66:9)
+        at run (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:25:3)
+        at runAndTransformResultsToJestFormat (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+        at jestAdapter (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+        at runTestInternal (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:389:16)
+        at runTest (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:475:34)
+        at TestRunner.runTests (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/index.js:101:12)
+        at TestScheduler.scheduleTests (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/TestScheduler.js:333:13)
+        at runJest (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/runJest.js:404:19)
+        at _run10000 (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:320:7)
+        at runCLI (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:173:3)
+        at Object.run (/home/runner/work/webstore/webstore/node_modules/jest-cli/build/cli/index.js:155:37)
+
+      4 |
+      5 | test("renders learn react link", () => {
+    > 6 |     render(<App />);
+        |           ^
+      7 |     const linkElement = screen.getByText(/learn react/i);
+      8 |     expect(linkElement).toBeInTheDocument();
+      9 | });
+
+      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
+      at reportException (node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:70:28)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+      at beginWork$1 (node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:26021:7
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+      at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+      at Object.render (node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+      at node_modules/@testing-library/react/dist/pure.js:101:25
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+      at act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+      at render (node_modules/@testing-library/react/dist/pure.js:97:26)
+      at Object.<anonymous> (src/App.test.tsx:6:11)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Error: Uncaught [TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.]
+        at reportException (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+        at innerInvokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
+        at invokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+        at HTMLUnknownElementImpl._dispatch (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+        at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+        at HTMLUnknownElement.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+        at Object.invokeGuardedCallbackDev (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+        at invokeGuardedCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+        at beginWork$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+        at performUnitOfWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+        at workLoopSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+        at renderRootSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+        at performSyncWorkOnRoot (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+        at scheduleUpdateOnFiber (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+        at updateContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+        at /home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+        at unbatchedUpdates (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+        at legacyRenderSubtreeIntoContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+        at Object.render (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+        at /home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:101:25
+        at batchedUpdates$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+        at act (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+        at render (/home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:97:26)
+        at Object.<anonymous> (/home/runner/work/webstore/webstore/src/App.test.tsx:6:11)
+        at Promise.then.completed (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:316:10)
+        at _callCircusTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:218:40)
+        at _runTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:155:3)
+        at _runTestsForDescribeBlock (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:66:9)
+        at run (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:25:3)
+        at runAndTransformResultsToJestFormat (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+        at jestAdapter (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+        at runTestInternal (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:389:16)
+        at runTest (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:475:34)
+        at TestRunner.runTests (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/index.js:101:12)
+        at TestScheduler.scheduleTests (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/TestScheduler.js:333:13)
+        at runJest (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/runJest.js:404:19)
+        at _run10000 (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:320:7)
+        at runCLI (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:173:3)
+        at Object.run (/home/runner/work/webstore/webstore/node_modules/jest-cli/build/cli/index.js:155:37) TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.
+        at LinkWithRef (/home/runner/work/webstore/webstore/node_modules/react-router-dom/index.tsx:432:11)
+        at renderWithHooks (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+        at updateForwardRef (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:17044:20)
+        at beginWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:19098:16)
+        at HTMLUnknownElement.callCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+        at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+        at innerInvokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+        at invokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+        at HTMLUnknownElementImpl._dispatch (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+        at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+        at HTMLUnknownElement.dispatchEvent (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+        at Object.invokeGuardedCallbackDev (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+        at invokeGuardedCallback (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+        at beginWork$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+        at performUnitOfWork (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+        at workLoopSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+        at renderRootSync (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+        at performSyncWorkOnRoot (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+        at scheduleUpdateOnFiber (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+        at updateContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+        at /home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+        at unbatchedUpdates (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+        at legacyRenderSubtreeIntoContainer (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+        at Object.render (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+        at /home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:101:25
+        at batchedUpdates$1 (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+        at act (/home/runner/work/webstore/webstore/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+        at render (/home/runner/work/webstore/webstore/node_modules/@testing-library/react/dist/pure.js:97:26)
+        at Object.<anonymous> (/home/runner/work/webstore/webstore/src/App.test.tsx:6:11)
+        at Promise.then.completed (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/utils.js:316:10)
+        at _callCircusTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:218:40)
+        at _runTest (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:155:3)
+        at _runTestsForDescribeBlock (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:66:9)
+        at run (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/run.js:25:3)
+        at runAndTransformResultsToJestFormat (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+        at jestAdapter (/home/runner/work/webstore/webstore/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+        at runTestInternal (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:389:16)
+        at runTest (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/runTest.js:475:34)
+        at TestRunner.runTests (/home/runner/work/webstore/webstore/node_modules/jest-runner/build/index.js:101:12)
+        at TestScheduler.scheduleTests (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/TestScheduler.js:333:13)
+        at runJest (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/runJest.js:404:19)
+        at _run10000 (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:320:7)
+        at runCLI (/home/runner/work/webstore/webstore/node_modules/@jest/core/build/cli/index.js:173:3)
+        at Object.run (/home/runner/work/webstore/webstore/node_modules/jest-cli/build/cli/index.js:155:37)
+
+      4 |
+      5 | test("renders learn react link", () => {
+    > 6 |     render(<App />);
+        |           ^
+      7 |     const linkElement = screen.getByText(/learn react/i);
+      8 |     expect(linkElement).toBeInTheDocument();
+      9 | });
+
+      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
+      at reportException (node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:70:28)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+      at beginWork$1 (node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:26021:7
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+      at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+      at Object.render (node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+      at node_modules/@testing-library/react/dist/pure.js:101:25
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+      at act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+      at render (node_modules/@testing-library/react/dist/pure.js:97:26)
+      at Object.<anonymous> (src/App.test.tsx:6:11)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.log
+    []
+
+      at Catalog (src/components/Catalog.tsx:55:13)
+
+  console.error
     Error: Uncaught [Error: useRoutes() may be used only in the context of a <Router> component.]
         at reportException (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
         at innerInvokeEventListeners (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
@@ -133,11 +394,129 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
   console.error
+    The above error occurred in the <Link> component:
+    
+        at LinkWithRef (/home/runner/work/webstore/webstore/node_modules/react-router-dom/index.tsx:420:7)
+        at div
+        at ul
+        at nav
+        at Navbar (/home/runner/work/webstore/webstore/src/components/Navbar.tsx:19:42)
+        at div
+        at AuthContextProvider (/home/runner/work/webstore/webstore/src/context/AuthContext.tsx:17:39)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+      4 |
+      5 | test("renders learn react link", () => {
+    > 6 |     render(<App />);
+        |           ^
+      7 |     const linkElement = screen.getByText(/learn react/i);
+      8 |     expect(linkElement).toBeInTheDocument();
+      9 | });
+
+      at logCapturedError (node_modules/react-dom/cjs/react-dom.development.js:20085:23)
+      at update.callback (node_modules/react-dom/cjs/react-dom.development.js:20118:5)
+      at callCallback (node_modules/react-dom/cjs/react-dom.development.js:12318:12)
+      at commitUpdateQueue (node_modules/react-dom/cjs/react-dom.development.js:12339:9)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20736:11)
+      at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:23426:7)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+      at commitRootImpl (node_modules/react-dom/cjs/react-dom.development.js:23151:9)
+      at unstable_runWithPriority (node_modules/scheduler/cjs/scheduler.development.js:468:12)
+      at runWithPriority$1 (node_modules/react-dom/cjs/react-dom.development.js:11276:10)
+      at commitRoot (node_modules/react-dom/cjs/react-dom.development.js:22990:3)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:22329:3)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:26021:7
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+      at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+      at Object.render (node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+      at node_modules/@testing-library/react/dist/pure.js:101:25
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+      at act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+      at render (node_modules/@testing-library/react/dist/pure.js:97:26)
+      at Object.<anonymous> (src/App.test.tsx:6:11)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    The above error occurred in the <Link> component:
+    
+        at LinkWithRef (/home/runner/work/webstore/webstore/node_modules/react-router-dom/index.tsx:420:7)
+        at div
+        at ul
+        at nav
+        at Navbar (/home/runner/work/webstore/webstore/src/components/Navbar.tsx:19:42)
+        at div
+        at AuthContextProvider (/home/runner/work/webstore/webstore/src/context/AuthContext.tsx:17:39)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+      4 |
+      5 | test("renders learn react link", () => {
+    > 6 |     render(<App />);
+        |           ^
+      7 |     const linkElement = screen.getByText(/learn react/i);
+      8 |     expect(linkElement).toBeInTheDocument();
+      9 | });
+
+      at logCapturedError (node_modules/react-dom/cjs/react-dom.development.js:20085:23)
+      at update.callback (node_modules/react-dom/cjs/react-dom.development.js:20118:5)
+      at callCallback (node_modules/react-dom/cjs/react-dom.development.js:12318:12)
+      at commitUpdateQueue (node_modules/react-dom/cjs/react-dom.development.js:12339:9)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20736:11)
+      at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:23426:7)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+      at commitRootImpl (node_modules/react-dom/cjs/react-dom.development.js:23151:9)
+      at unstable_runWithPriority (node_modules/scheduler/cjs/scheduler.development.js:468:12)
+      at runWithPriority$1 (node_modules/react-dom/cjs/react-dom.development.js:11276:10)
+      at commitRoot (node_modules/react-dom/cjs/react-dom.development.js:22990:3)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:22329:3)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:26021:7
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+      at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+      at Object.render (node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+      at node_modules/@testing-library/react/dist/pure.js:101:25
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+      at act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+      at render (node_modules/@testing-library/react/dist/pure.js:97:26)
+      at Object.<anonymous> (src/App.test.tsx:6:11)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
     The above error occurred in the <Routes> component:
     
         at Routes (/home/runner/work/webstore/webstore/node_modules/react-router/lib/components.tsx:393:3)
-        at AuthContextProvider (/home/runner/work/webstore/webstore/src/context/AuthContext.tsx:17:39)
         at div
+        at AuthContextProvider (/home/runner/work/webstore/webstore/src/context/AuthContext.tsx:17:39)
         at App
     
     Consider adding an error boundary to your tree to customize error handling behavior.
@@ -188,11 +567,11 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (162 ms)
+  ✕ renders learn react link (303 ms)
 
   ● renders learn react link
 
-    useRoutes() may be used only in the context of a <Router> component.
+    TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.
 
       4 |
       5 | test("renders learn react link", () => {
@@ -202,12 +581,10 @@ FAIL src/App.test.tsx
       8 |     expect(linkElement).toBeInTheDocument();
       9 | });
 
-      at Object.invariant [as UNSAFE_invariant] (node_modules/@remix-run/router/history.ts:480:11)
-      at useRoutes (node_modules/react-router/lib/hooks.tsx:307:3)
-      at Routes (node_modules/react-router/lib/components.tsx:404:10)
+      at LinkWithRef (node_modules/react-router-dom/index.tsx:432:11)
       at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
-      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
-      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+      at updateForwardRef (node_modules/react-dom/cjs/react-dom.development.js:17044:20)
+      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:19098:16)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
       at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
@@ -241,16 +618,16 @@ FAIL src/App.test.tsx
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
-All files         |   12.83 |        0 |    4.16 |   12.92 |                   
- src              |   30.76 |      100 |   14.28 |   30.76 |                   
-  App.tsx         |     100 |      100 |     100 |     100 |                   
+All files         |   20.27 |     2.77 |    12.5 |    20.4 |                   
+ src              |   28.57 |      100 |    12.5 |   28.57 |                   
+  App.tsx         |      50 |      100 |      50 |      50 | 25                
   firebase.tsx    |      25 |      100 |       0 |      25 | 27-48             
- src/components   |    8.82 |        0 |       0 |    9.09 |                   
-  Catalog.tsx     |    6.66 |        0 |       0 |    6.66 | 14-69             
-  Navbar.tsx      |    7.14 |        0 |       0 |    7.69 | 20-41             
+ src/components   |   38.23 |     8.33 |   23.07 |   39.39 |                   
+  Catalog.tsx     |   33.33 |        0 |   14.28 |   33.33 | 14-24,58-60,69    
+  Navbar.tsx      |      50 |    16.66 |      40 |   53.84 | 23-31             
   Protected.tsx   |      20 |        0 |       0 |      20 | 15-19             
- src/context      |      50 |      100 |      20 |      50 |                   
-  AuthContext.tsx |      50 |      100 |      20 |      50 | 20-21,26-30,41    
+ src/context      |   57.14 |      100 |      40 |   57.14 |                   
+  AuthContext.tsx |   57.14 |      100 |      40 |   57.14 | 20-21,26-30       
  src/data         |       0 |      100 |     100 |       0 |                   
   products.tsx    |       0 |      100 |     100 |       0 | 3                 
  src/interfaces   |       0 |        0 |       0 |       0 |                   
@@ -258,15 +635,15 @@ All files         |   12.83 |        0 |    4.16 |   12.92 |
   order.ts        |       0 |        0 |       0 |       0 |                   
   product.ts      |       0 |        0 |       0 |       0 |                   
   user.ts         |       0 |        0 |       0 |       0 |                   
- src/pages        |    5.81 |        0 |       0 |    5.81 |                   
+ src/pages        |    5.88 |        0 |       0 |    5.88 |                   
   Account.tsx     |   33.33 |      100 |       0 |   33.33 | 10-11             
   Admin.tsx       |    2.63 |        0 |       0 |    2.63 | 9-185             
-  Home.tsx        |   33.33 |      100 |       0 |   33.33 | 6-14              
+  Home.tsx        |      50 |      100 |       0 |      50 | 4                 
   Signin.tsx      |       5 |        0 |       0 |       5 | 15-45             
   Signup.tsx      |    4.54 |        0 |       0 |    4.54 | 15-55             
 ------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.673 s
+Time:        3.793 s
 Ran all test suites.
