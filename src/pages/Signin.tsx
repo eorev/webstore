@@ -45,12 +45,12 @@ const Signin = () => {
     return (
         <div>
             (
-            <div className="signinHome">
-                <Link to="/">
-                    <button>Home</button>
-                </Link>
-            </div>
             <div className="signin-container">
+                <div>
+                    <Link to="/">
+                        <button className="signinHome">Home</button>
+                    </Link>
+                </div>
                 <form>
                     <input
                         className="signinEmail"
@@ -71,9 +71,10 @@ const Signin = () => {
                 >
                     Log In
                 </button>
-                <div className="googleButton">
-                    <GoogleButton onClick={handleGoogleSignIn} />
-                </div>
+                <GoogleButton
+                    className="signinInGoogleButton"
+                    onClick={handleGoogleSignIn}
+                />
             </div>
             )<h1 style={{ color: "#fcfafadd" }}>Sign In</h1>
         </div>

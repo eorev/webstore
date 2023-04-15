@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, updateProfile } from "firebase/auth";
 import { signup } from "../firebase";
 import "./Signup.css";
@@ -54,25 +54,40 @@ const Signup = () => {
 
     return (
         <div>
-            <div>Hello {user?.displayName}! </div>
-            {
-                <div className="login-container">
-                    <form>
-                        <input ref={emailRef} placeholder="Email" />
-                        <input
-                            ref={passwordRef}
-                            type="password"
-                            placeholder="Password"
-                        />
-                        <input
-                            ref={displayNameRef}
-                            placeholder="Display Name"
-                        />
-                    </form>
-                    <button onClick={handleSignup}>Sign Up</button>
+            (
+            <div className="signup-container">
+                <div>
+                    <Link to="/">
+                        <button className="signupHome">Home</button>
+                    </Link>
                 </div>
-            }
-            <GoogleButton onClick={handleGoogleSignIn} />
+                <form>
+                    <input
+                        className="signupEmail"
+                        ref={emailRef}
+                        placeholder="Email"
+                    />
+                    <input
+                        className="signupPassword"
+                        ref={passwordRef}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    <input
+                        className="signupDisplayName"
+                        ref={displayNameRef}
+                        placeholder="Display Name"
+                    />
+                </form>
+                <button className="signupButton" onClick={handleSignup}>
+                    Sign Up
+                </button>
+            </div>
+            <GoogleButton
+                className="googleButton"
+                onClick={handleGoogleSignIn}
+            />
+            )
         </div>
     );
 };
