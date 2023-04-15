@@ -4,8 +4,15 @@ import { Button } from "react-bootstrap";
 import ProductData from "../interfaces/product";
 import db from "../firebase";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { UserAuth } from "../context/AuthContext";
+import { User } from "firebase/auth";
+
+interface AuthContextType {
+    user: User;
+}
 
 const Admin = () => {
+    const { user } = UserAuth() as AuthContextType;
     const [showAddForm, setShowAddForm] = useState(false);
     const [showRemoveForm, setShowRemoveForm] = useState(false);
     const [removeProduct, setRemoveProduct] = useState<string>("");
@@ -16,7 +23,7 @@ const Admin = () => {
         image: "",
         rating: 0,
         category: "",
-        admin_id: 0,
+        admin_id: user?.uid,
         price: 0,
         units_instock: 0
     });
@@ -143,12 +150,6 @@ const Admin = () => {
                                 name="category"
                                 placeholder="Product Category"
                                 value={newProduct.category}
-                                onChange={handleAddInputChange}
-                            />
-                            <input
-                                type="number"
-                                name="admin_id"
-                                placeholder="Admin ID"
                                 onChange={handleAddInputChange}
                             />
                             <input
