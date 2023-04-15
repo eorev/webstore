@@ -11,7 +11,7 @@ const Account = () => {
     return (
         <div>
             <p>Account</p>
-            <Link to="/">
+            <Link to="/webstore">
                 <button>Home</button>
             </Link>
             <button onClick={logout}>Logout</button>
