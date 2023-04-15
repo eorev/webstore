@@ -26,11 +26,10 @@ function App() {
                 />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/webstore" element={<Home />} />
-                    <Route path="/webstore/signin" element={<Signin />} />
-                    <Route path="/webstore/signup" element={<Signup />} />
+                    <Route path="/signin" element={<Signin />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route
-                        path="/webstore/account"
+                        path="/account"
                         element={
                             <Protected>
                                 <Account />
@@ -38,7 +37,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/webstore/admin"
+                        path="/admin"
                         element={
                             <Protected>
                                 <Admin />
