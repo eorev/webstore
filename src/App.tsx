@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import catalog from "./data/products.json";
+import Catalog from "./components/Catalog";
+import "./components/Catalog.css";
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                     console.log("Open Cart");
                 }}
             />
-            <span>{catalog.PRODUCTS[0].name}</span>
+            <Catalog></Catalog>
         </div>
     );
 }
