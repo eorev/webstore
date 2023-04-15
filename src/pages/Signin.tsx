@@ -38,7 +38,7 @@ const Signin = () => {
 
     useEffect(() => {
         if (user != null) {
-            navigate("/webstore");
+            navigate("/");
         }
     }, [user]);
 
