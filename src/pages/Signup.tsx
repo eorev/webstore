@@ -48,7 +48,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (user != null) {
-            navigate("/homepage");
+            navigate("/webstore");
         }
     }, [user]);
 
@@ -57,7 +57,7 @@ const Signup = () => {
             (
             <div className="signup-container">
                 <div>
-                    <Link to="/">
+                    <Link to="/webstore">
                         <button className="signupHome">Home</button>
                     </Link>
                 </div>
