@@ -8,7 +8,7 @@
       at Catalog (src/components/Catalog.tsx:102:13)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (79 ms)
+  ✕ renders learn react link (83 ms)
 
   ● renders learn react link
 
@@ -20,12 +20,43 @@ FAIL src/App.test.tsx
         [36m<div[39m
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
-          [36m<nav>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"navbar"[39m
+          [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"logo"[39m
+              [33mclass[39m=[32m"navbar__logo"[39m
             [36m>[39m
-              [0mStore[0m
+              [36m<h1>[39m
+                [0mNestled[0m
+              [36m</h1>[39m
             [36m</div>[39m
+            [36m<ul[39m
+              [33mclass[39m=[32m"navbar__links"[39m
+            [36m>[39m
+              [36m<li[39m
+                [33mclass[39m=[32m"navbar__links-item"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"#about"[39m
+                [36m>[39m
+                  [0mAbout[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li[39m
+                [33mclass[39m=[32m"navbar__links-item"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"#products"[39m
+                [36m>[39m
+                  [0mProducts[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"navbar__cart-btn navbar__links-item"[39m
+              [36m>[39m
+                [0mCart[0m
+              [36m</button>[39m
+            [36m</ul>[39m
           [36m</nav>[39m
           [36m<div[39m
             [33mclass[39m=[32m"catalog-container"[39m
@@ -75,11 +106,11 @@ FAIL src/App.test.tsx
 ----------------|---------|----------|---------|---------|---------------------------------------------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                       
 ----------------|---------|----------|---------|---------|---------------------------------------------------------
-All files       |   33.92 |    16.66 |      20 |   33.92 |                                                         
- src            |     100 |      100 |     100 |     100 |                                                         
-  App.tsx       |     100 |      100 |     100 |     100 |                                                         
+All files       |   35.59 |    16.66 |   22.72 |   35.59 |                                                         
+ src            |      75 |      100 |      50 |      75 |                                                         
+  App.tsx       |      50 |      100 |      50 |      50 | 16                                                      
   firebase.tsx  |     100 |      100 |     100 |     100 |                                                         
- src/components |   30.76 |    16.66 |   15.78 |   30.76 |                                                         
+ src/components |   33.33 |    16.66 |      20 |   33.33 |                                                         
   Catalog.tsx   |   29.41 |    16.66 |   11.11 |   29.41 | 20-30,76-82,89-91,97-99,106-107,114-131,134-140,146-249 
   Navbar.tsx    |     100 |      100 |     100 |     100 |                                                         
  src/data       |       0 |      100 |     100 |       0 |                                                         
@@ -93,5 +124,5 @@ All files       |   33.92 |    16.66 |      20 |   33.92 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.435 s
+Time:        2.381 s
 Ran all test suites.
