@@ -9,11 +9,23 @@ import Signup from "./pages/Signup";
 import Account from "./pages/Account";
 import Protected from "./components/Protected";
 import Admin from "./pages/Admin";
+import Catalog from "./components/Catalog";
+import Navbar from "./components/Navbar";
 
 function App() {
     return (
         <AuthContextProvider>
             <div className="App">
+                <Navbar
+                    links={[
+                        { name: "About", url: "/about" },
+                        { name: "Products", url: "#products" }
+                    ]}
+                    cartOnClick={() => {
+                        console.log("Open Cart");
+                    }}
+                />
+                <Catalog></Catalog>
                 <Routes>
                     <Route path="/homepage" element={<Home />} />
                     <Route path="/" element={<Home />} />
