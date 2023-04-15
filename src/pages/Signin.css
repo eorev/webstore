@@ -1,14 +1,72 @@
-.login-container {
-    width: 50%;
-    margin: 0 auto;
+.signin-container {
+    width: 30%;
+    height: 60%;
+    margin: 1 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #891c0edd;
-    border: 2px solid #5a1309;
+    background-color: #0000005b;
+    border: 2px solid #ffffff;
     border-radius: 5px;
     padding: 50px;
     box-sizing: border-box;
     z-index: 1;
+}
+
+.signinHome {
+    background-color: #000000;
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #ffffff;
+    position: absolute;
+    top: 14%;
+    left: 48.7%
+}
+
+.googleButton {
+    position: relative;
+    top: 80%;
+    left: 27%;
+}
+
+.signinEmail{
+    background-color: #00000031;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #ffffff;
+    width: 40%;
+    height: 10%;
+    position: absolute;
+    top:25%;
+    left: 30%;
+}
+
+.signinPassword {
+    background-color: #00000031;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #ffffff;
+    width: 40%;
+    height: 10%;
+    position: absolute;
+    top:40%;
+    left: 30%;
+}
+
+.siginLogin {
+    background-color: #00000031;
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #ffffff;
+    top: 58%;
+    left: 42%;
+    width: 19%;
+    height: 6%;
 }

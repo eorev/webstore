@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User } from "firebase/auth";
 import { login } from "../firebase";
+import "./Signin.css";
 
 interface AuthContextType {
     googleSignIn: () => void;
@@ -44,23 +45,37 @@ const Signin = () => {
     return (
         <div>
             (
-            <div className="login-container">
+            <div className="signinHome">
+                <Link to="/">
+                    <button>Home</button>
+                </Link>
+            </div>
+            <div className="signin-container">
                 <form>
-                    <input ref={emailRef} placeholder="Email" />
                     <input
+                        className="signinEmail"
+                        ref={emailRef}
+                        placeholder="Email"
+                    />
+                    <input
+                        className="signinPassword"
                         ref={passwordRef}
                         type="password"
                         placeholder="Password"
                     />
                 </form>
-                <button disabled={loading} onClick={handleEmailLogin}>
+                <button
+                    className="siginLogin"
+                    disabled={loading}
+                    onClick={handleEmailLogin}
+                >
                     Log In
                 </button>
+                <div className="googleButton">
+                    <GoogleButton onClick={handleGoogleSignIn} />
+                </div>
             </div>
-            )<h1 className="text-center text-3xl font-bold py-8">Sign in</h1>
-            <div className="max-w-[240px] m-auto py-4">
-                <GoogleButton onClick={handleGoogleSignIn} />
-            </div>
+            )<h1 style={{ color: "#fcfafadd" }}>Sign In</h1>
         </div>
     );
 };
