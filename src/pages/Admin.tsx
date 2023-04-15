@@ -80,7 +80,7 @@ const Admin = () => {
     };
     return (
         <div>
-            <Link to="/webstore">
+            <Link to="/">
                 <button>Home</button>
             </Link>
             <div>
