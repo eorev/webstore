@@ -258,11 +258,6 @@
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-  console.log
-    []
-
-      at Catalog (src/components/Catalog.tsx:55:13)
-
   console.error
     Error: Uncaught [Error: useRoutes() may be used only in the context of a <Router> component.]
         at reportException (/home/runner/work/webstore/webstore/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
@@ -567,7 +562,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (276 ms)
+  ✕ renders learn react link (236 ms)
 
   ● renders learn react link
 
@@ -618,12 +613,12 @@ FAIL src/App.test.tsx
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
-All files         |   20.27 |     2.77 |    12.5 |    20.4 |                   
+All files         |   17.56 |     2.77 |   10.41 |   17.68 |                   
  src              |   28.57 |      100 |    12.5 |   28.57 |                   
-  App.tsx         |      50 |      100 |      50 |      50 | 25                
+  App.tsx         |      50 |      100 |      50 |      50 | 24                
   firebase.tsx    |      25 |      100 |       0 |      25 | 27-48             
- src/components   |   38.23 |     8.33 |   23.07 |   39.39 |                   
-  Catalog.tsx     |   33.33 |        0 |   14.28 |   33.33 | 14-24,58-60,69    
+ src/components   |   26.47 |     8.33 |   15.38 |   27.27 |                   
+  Catalog.tsx     |    6.66 |        0 |       0 |    6.66 | 14-69             
   Navbar.tsx      |      50 |    16.66 |      40 |   53.84 | 23-31             
   Protected.tsx   |      20 |        0 |       0 |      20 | 15-19             
  src/context      |   57.14 |      100 |      40 |   57.14 |                   
@@ -638,12 +633,12 @@ All files         |   20.27 |     2.77 |    12.5 |    20.4 |
  src/pages        |    5.88 |        0 |       0 |    5.88 |                   
   Account.tsx     |   33.33 |      100 |       0 |   33.33 | 10-11             
   Admin.tsx       |    2.63 |        0 |       0 |    2.63 | 9-185             
-  Home.tsx        |      50 |      100 |       0 |      50 | 4                 
+  Home.tsx        |      50 |      100 |       0 |      50 | 5                 
   Signin.tsx      |       5 |        0 |       0 |       5 | 15-45             
   Signup.tsx      |    4.54 |        0 |       0 |    4.54 | 15-55             
 ------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.921 s
+Time:        3.111 s
 Ran all test suites.
