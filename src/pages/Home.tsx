@@ -4,7 +4,7 @@ import Catalog from "../components/Catalog";
 
 const Home = () => {
     return (
-        <div className="App">
+        <div>
             <Navbar
                 links={[
                     { name: "About", url: "/about" },
