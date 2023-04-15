@@ -12,8 +12,8 @@ import Admin from "./pages/Admin";
 
 function App() {
     return (
-        <AuthContextProvider>
-            <div className="App">
+        <div className="App">
+            <AuthContextProvider>
                 <Routes>
                     <Route path="/homepage" element={<Home />} />
                     <Route path="/" element={<Home />} />
@@ -36,8 +36,8 @@ function App() {
                         }
                     />
                 </Routes>
-            </div>
-        </AuthContextProvider>
+            </AuthContextProvider>
+        </div>
     );
 }
 
