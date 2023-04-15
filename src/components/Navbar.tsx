@@ -45,21 +45,21 @@ const Navbar: React.FC<NavbarProps> = ({ links, cartOnClick }) => {
                 {user ? (
                     <div>
                         <button onClick={logout}>Logout</button>
-                        <Link to="/webstore/account">
+                        <Link to="/account">
                             <button>Account</button>
                         </Link>
                         {isAdmin ? (
-                            <Link to="/webstore/admin">
+                            <Link to="/admin">
                                 <button>Admin</button>
                             </Link>
                         ) : null}
                     </div>
                 ) : (
                     <div>
-                        <Link to="/webstore/signin">
+                        <Link to="/signin">
                             <button>Sign in</button>
                         </Link>
-                        <Link to="/webstore/signup">
+                        <Link to="/signup">
                             <button>Signup</button>
                         </Link>
                     </div>

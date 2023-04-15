@@ -47,7 +47,7 @@ const Signin = () => {
             (
             <div className="signin-container">
                 <div>
-                    <Link to="/webstore">
+                    <Link to="/">
                         <button className="signinHome">Home</button>
                     </Link>
                 </div>

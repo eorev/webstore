@@ -57,7 +57,7 @@ const Signup = () => {
             (
             <div className="signup-container">
                 <div>
-                    <Link to="/webstore">
+                    <Link to="/">
                         <button className="signupHome">Home</button>
                     </Link>
                 </div>
