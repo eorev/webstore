@@ -43,7 +43,7 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     >
                         Add to Cart
                     </Button>
-                    <p>${product.price}</p>
+                    <p className="price">${product.price}</p>
                 </div>
             )}
         </div>
