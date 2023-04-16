@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { User } from "firebase/auth";
-import { login } from "../firebase";
+import { User, sendPasswordResetEmail } from "firebase/auth";
+import { auth, login, useAuth } from "../firebase";
 import "./Signin.css";
 
 interface AuthContextType {
@@ -15,6 +15,8 @@ const Signin = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [passwordResetError, setPasswordResetError] = useState(false);
     const { googleSignIn, user } = UserAuth() as AuthContextType;
     const navigate = useNavigate();
     const handleGoogleSignIn = async () => {
@@ -30,11 +32,25 @@ const Signin = () => {
             if (emailRef.current && passwordRef.current) {
                 await login(emailRef.current.value, passwordRef.current.value);
             }
-        } catch {
-            alert("Error with login!");
+        } catch (error) {
+            console.log(error);
+            setError(true);
         }
         setLoading(false);
     }
+
+    const handlePasswordReset = async () => {
+        setError(false);
+        try {
+            await sendPasswordResetEmail(
+                auth,
+                emailRef.current?.value as string
+            );
+        } catch (error) {
+            console.log(error);
+            setPasswordResetError(true);
+        }
+    };
 
     useEffect(() => {
         if (user != null) {
@@ -71,6 +87,22 @@ const Signin = () => {
                 >
                     Log In
                 </button>
+                {error && !passwordResetError ? (
+                    <div style={{ color: "red", textAlign: "center" }}>
+                        Email and/or Password are incorrect!
+                        <button
+                            className="resetPassword"
+                            onClick={handlePasswordReset}
+                        >
+                            Reset Password
+                        </button>
+                    </div>
+                ) : null}
+                {passwordResetError ? (
+                    <div style={{ color: "red", textAlign: "center" }}>
+                        An account with this email does not exit!
+                    </div>
+                ) : null}
                 <GoogleButton
                     className="signinInGoogleButton"
                     onClick={handleGoogleSignIn}

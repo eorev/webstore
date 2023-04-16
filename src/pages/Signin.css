@@ -42,7 +42,7 @@
 .signinInGoogleButton {
     position: absolute;
     top: 75%;
-    left: 28%;
+    left: 18%;
 }
 
 .signinEmail{
@@ -79,8 +79,20 @@
     border-radius: 5px;
     border: 2px solid #cacaca;
     color: #000000;
-    top: 58%;
+    top: 56%;
     left: 42%;
     width: 19%;
+    height: 6%;
+}
+
+.resetPassword {
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    top: 66%;
+    left: 22%;
+    width: 55%;
     height: 6%;
 }
