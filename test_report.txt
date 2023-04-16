@@ -562,7 +562,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (256 ms)
+  ✕ renders learn react link (307 ms)
 
   ● renders learn react link
 
@@ -623,16 +623,14 @@ All files         |   17.56 |     2.77 |   10.41 |   17.68 |
   Protected.tsx   |      20 |        0 |       0 |      20 | 15-19             
  src/context      |   57.14 |      100 |      40 |   57.14 |                   
   AuthContext.tsx |   57.14 |      100 |      40 |   57.14 | 20-21,26-30       
- src/data         |       0 |      100 |     100 |       0 |                   
-  products.tsx    |       0 |      100 |     100 |       0 | 3                 
  src/interfaces   |       0 |        0 |       0 |       0 |                   
   cart.ts         |       0 |        0 |       0 |       0 |                   
   order.ts        |       0 |        0 |       0 |       0 |                   
   product.ts      |       0 |        0 |       0 |       0 |                   
   user.ts         |       0 |        0 |       0 |       0 |                   
- src/pages        |    5.88 |        0 |       0 |    5.88 |                   
+ src/pages        |    5.81 |        0 |       0 |    5.81 |                   
   Account.tsx     |   33.33 |      100 |       0 |   33.33 | 10-11             
-  Admin.tsx       |    2.63 |        0 |       0 |    2.63 | 9-185             
+  Admin.tsx       |    2.56 |        0 |       0 |    2.56 | 15-186            
   Home.tsx        |      50 |      100 |       0 |      50 | 5                 
   Signin.tsx      |       5 |        0 |       0 |       5 | 15-45             
   Signup.tsx      |    4.54 |        0 |       0 |    4.54 | 15-55             
@@ -640,5 +638,5 @@ All files         |   17.56 |     2.77 |   10.41 |   17.68 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.051 s
+Time:        3.881 s
 Ran all test suites.
