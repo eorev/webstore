@@ -100,7 +100,7 @@ const Signin = () => {
                 ) : null}
                 {passwordResetError ? (
                     <div style={{ color: "red", textAlign: "center" }}>
-                        An account with this email does not exit!
+                        An account with this email does not exist!
                     </div>
                 ) : null}
                 <GoogleButton
