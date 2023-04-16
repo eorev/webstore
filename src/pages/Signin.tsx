@@ -3,7 +3,7 @@ import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
-import { auth, login, useAuth } from "../firebase";
+import { auth, login } from "../firebase";
 import "./Signin.css";
 
 interface AuthContextType {
