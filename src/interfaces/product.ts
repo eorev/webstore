@@ -5,7 +5,7 @@ export interface product {
     image: string;
     rating: number; //rating from 1 to 5
     category: string;
-    admin_id: number; //id belonging to the admin who created the product
+    admin_id: string; //id belonging to the admin who created the product
     price: number;
     units_instock: number;
 }
