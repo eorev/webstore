@@ -10,6 +10,7 @@ import Account from "./pages/Account";
 import Protected from "./components/Protected";
 import Admin from "./pages/Admin";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                         }
                     />
                 </Routes>
+                <Footer></Footer>
             </div>{" "}
         </AuthContextProvider>
     );

@@ -1,14 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
 import HotProducts from "../components/HotProducts";
-import Footer from "../components/Footer";
 
 const Home = () => {
     return (
-        <div>
+        <div className="home">
             <Header></Header>
             <HotProducts></HotProducts>
-            <Footer></Footer>
         </div>
     );
 };
