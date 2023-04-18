@@ -33,11 +33,11 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                 <div className="text-overlay">{product.description}</div>
             </div>
             {product.units_instock <= 0 ? (
-                <p>Out of Stock</p>
+                <p className="outofstock">Out of Stock</p>
             ) : (
                 <div className="catalog-view">
                     {" "}
-                    <p>In Stock: {product.units_instock}</p>
+                    <p className="instock">In Stock: {product.units_instock}</p>
                     <Button
                         className="catalog-addToCart"
                         onClick={handleAddToCart}

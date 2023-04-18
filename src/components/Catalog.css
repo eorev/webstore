@@ -73,6 +73,18 @@
     padding: 10px;
 }
 
+.catalog-item .instock {
+    font-size: 17px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.catalog-item .outofstock {
+    font-size: 17px;
+    text-align: center;
+    white-space: nowrap;
+}
+
 .catalog-addToCart {
     background-color: #891d0e;
     border: none;

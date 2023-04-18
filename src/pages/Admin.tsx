@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ProductData from "../interfaces/product";
 import db from "../firebase";
@@ -13,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
+import "./Admin.css";
 
 interface AuthContextType {
     user: User;
@@ -24,6 +24,7 @@ const Admin = () => {
     const [showRemoveForm, setShowRemoveForm] = useState(false);
     const [products, setProducts] = useState<ProductData[]>([]);
     const [removeProduct, setRemoveProduct] = useState<string>("");
+    const [stockInputValue, setStockInputValue] = useState<string>();
     const [newProduct, setNewProduct] = useState<ProductData>({
         name: "",
         description: "",
@@ -75,6 +76,14 @@ const Admin = () => {
         setRemoveProduct(value);
     };
 
+    const handleStockInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        event.preventDefault();
+        const { value } = event.target;
+        setStockInputValue(value);
+    };
+
     const handleNewProduct = async () => {
         const form = document.querySelector("form");
         form?.addEventListener("submit", function (e) {
@@ -108,49 +117,41 @@ const Admin = () => {
 
     return (
         <div>
-            <Link to="/">
-                <button>Home</button>
-            </Link>
-            <ul>
-                {products.map((product: ProductData) => (
-                    <li key={product.id}>
-                        <div>
-                            <span>
-                                Name: {product.name} Units InStock:{" "}
-                                {product.units_instock}
-                            </span>
-                            <button
-                                onClick={async () => {
-                                    const productRef = doc(
-                                        db,
-                                        "products",
-                                        product.name
-                                    );
-                                    await updateDoc(productRef, {
-                                        units_instock: product.units_instock + 1
-                                    });
-                                }}
-                            >
-                                +
-                            </button>
-                            <button
-                                onClick={async () => {
-                                    const productRef = doc(
-                                        db,
-                                        "products",
-                                        product.name
-                                    );
-                                    await updateDoc(productRef, {
-                                        units_instock: product.units_instock - 1
-                                    });
-                                }}
-                            >
-                                -
-                            </button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            <div className="products">
+                <p>Products:</p>
+                <ul>
+                    {products.map((product: ProductData) => (
+                        <li key={product.id}>
+                            <div>
+                                <span>
+                                    Name: {product.name} Units InStock:{" "}
+                                    {product.units_instock}
+                                </span>
+                                <input
+                                    type="number"
+                                    placeholder="units"
+                                    value={stockInputValue}
+                                    onChange={handleStockInputChange}
+                                />
+                                <button
+                                    onClick={async () => {
+                                        const productRef = doc(
+                                            db,
+                                            "products",
+                                            product.name
+                                        );
+                                        await updateDoc(productRef, {
+                                            units_instock: stockInputValue
+                                        });
+                                    }}
+                                >
+                                    Confirm
+                                </button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
             <div>
                 <Button
                     onClick={() => toggleForm("add")}
