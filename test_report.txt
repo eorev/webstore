@@ -938,7 +938,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (296 ms)
+  ✕ renders learn react link (310 ms)
 
   ● renders learn react link
 
@@ -989,12 +989,12 @@ FAIL src/App.test.tsx
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
-All files         |   16.77 |     4.54 |    9.61 |   16.87 |                   
+All files         |   12.91 |      3.7 |    8.19 |   12.98 |                   
  src              |   28.57 |      100 |    12.5 |   28.57 |                   
   App.tsx         |      50 |      100 |      50 |      50 | 22                
   firebase.tsx    |      25 |      100 |       0 |      25 | 27-48             
- src/components   |      25 |    14.28 |   13.33 |   25.71 |                   
-  Catalog.tsx     |    6.66 |        0 |       0 |    6.66 | 14-69             
+ src/components   |   25.71 |    16.66 |   13.33 |   26.47 |                   
+  Catalog.tsx     |    7.14 |        0 |       0 |    7.14 | 14-70             
   Footer.tsx      |     100 |      100 |     100 |     100 |                   
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
   HotProducts.tsx |       0 |      100 |       0 |       0 | 5                 
@@ -1007,16 +1007,16 @@ All files         |   16.77 |     4.54 |    9.61 |   16.87 |
   order.ts        |       0 |        0 |       0 |       0 |                   
   product.ts      |       0 |        0 |       0 |       0 |                   
   user.ts         |       0 |        0 |       0 |       0 |                   
- src/pages        |    6.18 |        0 |       0 |    6.18 |                   
+ src/pages        |     4.1 |        0 |       0 |     4.1 |                   
   Account.tsx     |   33.33 |      100 |       0 |   33.33 | 10-11             
-  Admin.tsx       |    2.56 |        0 |       0 |    2.56 | 15-186            
+  Admin.tsx       |    1.88 |        0 |       0 |    1.88 | 22-248            
   Home.tsx        |      50 |      100 |       0 |      50 | 6                 
   Products.tsx    |      50 |      100 |       0 |      50 | 6                 
-  Signin.tsx      |    3.44 |        0 |       0 |    3.44 | 15-61             
-  Signup.tsx      |    4.54 |        0 |       0 |    4.54 | 15-55             
+  Signin.tsx      |    2.12 |        0 |       0 |    2.12 | 17-136            
+  Signup.tsx      |    2.56 |        0 |       0 |    2.56 | 17-83             
 ------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.114 s
+Time:        3.015 s
 Ran all test suites.
