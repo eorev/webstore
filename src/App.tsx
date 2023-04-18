@@ -11,6 +11,7 @@ import Protected from "./components/Protected";
 import Admin from "./pages/Admin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Products from "./pages/Products";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/products" element={<Products />} />
                     <Route
                         path="/account"
                         element={

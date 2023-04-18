@@ -44,11 +44,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                     <div></div>
                 )}
                 <ul className="navbar__links">
-                    <Link to="/account" className="navbar__links-item">
+                    <Link to="/products" className="navbar__links-item">
                         <button>Products</button>
-                    </Link>
-                    <Link to="/account" className="navbar__links-item">
-                        <button>About</button>
                     </Link>
                     {user ? (
                         <div>
