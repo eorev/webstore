@@ -1,10 +1,14 @@
 import React from "react";
-import Catalog from "../components/Catalog";
+import Header from "../components/Header";
+import HotProducts from "../components/HotProducts";
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
         <div>
-            <Catalog></Catalog>
+            <Header></Header>
+            <HotProducts></HotProducts>
+            <Footer></Footer>
         </div>
     );
 };
