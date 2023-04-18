@@ -10,6 +10,7 @@ import Account from "./pages/Account";
 import Protected from "./components/Protected";
 import Admin from "./pages/Admin";
 import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         console.log("Open Cart");
                     }}
                 />
+                <Header></Header>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/signin" element={<Signin />} />
