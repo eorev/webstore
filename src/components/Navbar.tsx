@@ -7,7 +7,6 @@ import db from "../firebase";
 import { Link } from "react-router-dom";
 
 type NavbarProps = {
-    links: { name: string; url: string }[];
     cartOnClick: () => void;
 };
 
@@ -16,7 +15,7 @@ interface AuthContextType {
     user: User;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ links, cartOnClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
     const { user, logout } = UserAuth() as AuthContextType;
     const [adminIDs, setAdminIDs] = useState<string[]>([]);
     useEffect(() => {
@@ -36,44 +35,59 @@ const Navbar: React.FC<NavbarProps> = ({ links, cartOnClick }) => {
             <div className="navbar__logo">
                 <h1>Nestled</h1>
             </div>
-            <ul className="navbar__links">
-                {links.map((link) => (
-                    <li key={link.url} className="navbar__links-item">
-                        <a href={link.url}>{link.name}</a>
-                    </li>
-                ))}
+            <div className="navbar__right">
                 {user ? (
-                    <div>
-                        <div className="navbar_greeting">
-                            Welcome, {user.displayName}!
-                        </div>
-                        <button onClick={logout}>Logout</button>
-                        <Link to="/account">
-                            <button>Account</button>
-                        </Link>
-                        {isAdmin ? (
-                            <Link to="/admin">
-                                <button>Admin</button>
-                            </Link>
-                        ) : null}
+                    <div className="navbar__greeting">
+                        <div>Welcome, {user.displayName}!</div>
                     </div>
                 ) : (
-                    <div>
-                        <Link to="/signin">
-                            <button>Sign in</button>
-                        </Link>
-                        <Link to="/signup">
-                            <button>Signup</button>
-                        </Link>
-                    </div>
+                    <div></div>
                 )}
-                <button
-                    className="navbar__cart-btn navbar__links-item"
-                    onClick={cartOnClick}
-                >
-                    Cart
-                </button>
-            </ul>
+                <ul className="navbar__links">
+                    <Link to="/account" className="navbar__links-item">
+                        <button>Products</button>
+                    </Link>
+                    <Link to="/account" className="navbar__links-item">
+                        <button>About</button>
+                    </Link>
+                    {user ? (
+                        <div>
+                            <button
+                                className="navbar__links-item"
+                                onClick={logout}
+                            >
+                                Logout
+                            </button>
+                            <Link to="/account" className="navbar__links-item">
+                                <button>Account</button>
+                            </Link>
+                            {isAdmin ? (
+                                <Link
+                                    to="/admin"
+                                    className="navbar__links-item"
+                                >
+                                    <button>Admin</button>
+                                </Link>
+                            ) : null}
+                        </div>
+                    ) : (
+                        <div>
+                            <Link to="/signin" className="navbar__links-item">
+                                <button>Sign in</button>
+                            </Link>
+                            <Link to="/signup" className="navbar__links-item">
+                                <button>Sign Up</button>
+                            </Link>
+                        </div>
+                    )}
+                    <button
+                        className="navbar__cart-btn navbar__links-item"
+                        onClick={cartOnClick}
+                    >
+                        Cart
+                    </button>
+                </ul>
+            </div>
         </nav>
     );
 };

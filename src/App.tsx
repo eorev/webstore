@@ -16,10 +16,6 @@ function App() {
         <AuthContextProvider>
             <div className="App">
                 <Navbar
-                    links={[
-                        { name: "About", url: "#about" },
-                        { name: "Products", url: "#products" }
-                    ]}
                     cartOnClick={() => {
                         console.log("Open Cart");
                     }}
