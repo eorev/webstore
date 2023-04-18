@@ -12,7 +12,7 @@ export default function Header() {
                 <div className="header__right">
                     <h2>Find your Piece.</h2>
                     <p>Browse a Curated Collection</p>
-                    <Link to="/" className="header__button">
+                    <Link to="/products" className="header__button">
                         <button>Products</button>
                     </Link>
                 </div>

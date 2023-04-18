@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { User, updateProfile } from "firebase/auth";
 import { signup } from "../firebase";
 import "./Signup.css";
+import db from "../firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 interface AuthContextType {
     googleSignIn: () => void;
@@ -46,9 +48,35 @@ const Signup = () => {
         }
     };
 
+    const handleNewUser = async () => {
+        if (user) {
+            const cartDocRef = doc(db, "carts", user.uid);
+            const orderbinDocRef = doc(db, "orderbins", user.uid);
+            try {
+                const cartDocSnap = await getDoc(cartDocRef);
+                const orderbinDocSnap = await getDoc(orderbinDocRef);
+                if (cartDocSnap.exists()) {
+                    console.log("cart for user already exists");
+                } else {
+                    await setDoc(cartDocRef, { products: [] });
+                    console.log("added doc");
+                }
+                if (orderbinDocSnap.exists()) {
+                    console.log("orderbin for user already exists");
+                } else {
+                    await setDoc(orderbinDocRef, { orders: [] });
+                    console.log("added doc");
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
+
     useEffect(() => {
         if (user != null) {
-            navigate("/webstore");
+            handleNewUser();
+            navigate("/");
         }
     }, [user]);
 

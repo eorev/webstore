@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
 import { auth, login } from "../firebase";
 import "./Signin.css";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import db from "../firebase";
 
 interface AuthContextType {
     googleSignIn: () => void;
@@ -24,6 +26,30 @@ const Signin = () => {
             await googleSignIn();
         } catch (error) {
             console.log(error);
+        }
+    };
+    const handleNewUser = async () => {
+        if (user) {
+            const cartDocRef = doc(db, "carts", user?.uid);
+            const orderbinDocRef = doc(db, "orderbins", user?.uid);
+            try {
+                const cartDocSnap = await getDoc(cartDocRef);
+                const orderbinDocSnap = await getDoc(orderbinDocRef);
+                if (cartDocSnap.exists()) {
+                    console.log("cart for user already exists");
+                } else {
+                    await setDoc(cartDocRef, { products: [] });
+                    console.log("added doc");
+                }
+                if (orderbinDocSnap.exists()) {
+                    console.log("orderbin for user already exists");
+                } else {
+                    await setDoc(orderbinDocRef, { orders: [] });
+                    console.log("added doc");
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
     async function handleEmailLogin() {
@@ -54,6 +80,7 @@ const Signin = () => {
 
     useEffect(() => {
         if (user != null) {
+            handleNewUser();
             navigate("/");
         }
     }, [user]);
@@ -105,7 +132,9 @@ const Signin = () => {
                 ) : null}
                 <GoogleButton
                     className="signinInGoogleButton"
-                    onClick={handleGoogleSignIn}
+                    onClick={() => {
+                        handleGoogleSignIn();
+                    }}
                 />
             </div>
             )<h1 style={{ color: "#fcfafadd" }}>Sign In</h1>
