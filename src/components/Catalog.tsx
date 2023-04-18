@@ -4,7 +4,7 @@ import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
 import "./Catalog.css";
 import db from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 interface CatalogProps {
     product: ProductData;
@@ -12,13 +12,14 @@ interface CatalogProps {
 
 const View: React.FC<CatalogProps> = ({ product }) => {
     const [productUnits, setProductUnits] = useState(0);
+    const productRef = doc(db, "products", product.name);
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
         /*need to add functionality to modify json file data, so that the units in stock does not reset when the site is reloaded*/
-        if (product.units_instock > 0) {
-            product.units_instock--;
-            setProductUnits(productUnits + 1);
-        }
+        await updateDoc(productRef, {
+            units_instock: product.units_instock - 1,
+            times_purchased: product.times_purchased + 1
+        });
     };
 
     return (

@@ -8,6 +8,7 @@ export interface product {
     admin_id: string; //id belonging to the admin who created the product
     price: number;
     units_instock: number;
+    times_purchased: number;
 }
 
 export default product;

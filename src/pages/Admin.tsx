@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ProductData from "../interfaces/product";
 import db from "../firebase";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    onSnapshot,
+    setDoc,
+    updateDoc
+} from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
 
@@ -15,6 +22,7 @@ const Admin = () => {
     const { user } = UserAuth() as AuthContextType;
     const [showAddForm, setShowAddForm] = useState(false);
     const [showRemoveForm, setShowRemoveForm] = useState(false);
+    const [products, setProducts] = useState<ProductData[]>([]);
     const [removeProduct, setRemoveProduct] = useState<string>("");
     const [newProduct, setNewProduct] = useState<ProductData>({
         name: "",
@@ -25,8 +33,20 @@ const Admin = () => {
         category: "",
         admin_id: user?.uid,
         price: 0,
-        units_instock: 0
+        units_instock: 0,
+        times_purchased: 0
     });
+
+    console.log(products);
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "products"), (snapshot) =>
+                setProducts(
+                    snapshot.docs.map((doc) => doc.data() as ProductData)
+                )
+            ),
+        []
+    );
 
     const toggleForm = (name: string) => {
         if (name === "add") {
@@ -85,11 +105,52 @@ const Admin = () => {
         const docRef = doc(db, "products", removeProduct);
         await deleteDoc(docRef);
     };
+
     return (
         <div>
             <Link to="/">
                 <button>Home</button>
             </Link>
+            <ul>
+                {products.map((product: ProductData) => (
+                    <li key={product.id}>
+                        <div>
+                            <span>
+                                Name: {product.name} Units InStock:{" "}
+                                {product.units_instock}
+                            </span>
+                            <button
+                                onClick={async () => {
+                                    const productRef = doc(
+                                        db,
+                                        "products",
+                                        product.name
+                                    );
+                                    await updateDoc(productRef, {
+                                        units_instock: product.units_instock + 1
+                                    });
+                                }}
+                            >
+                                +
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    const productRef = doc(
+                                        db,
+                                        "products",
+                                        product.name
+                                    );
+                                    await updateDoc(productRef, {
+                                        units_instock: product.units_instock - 1
+                                    });
+                                }}
+                            >
+                                -
+                            </button>
+                        </div>
+                    </li>
+                ))}
+            </ul>
             <div>
                 <Button
                     onClick={() => toggleForm("add")}
