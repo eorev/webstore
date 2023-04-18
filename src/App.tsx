@@ -10,16 +10,14 @@ import Account from "./pages/Account";
 import Protected from "./components/Protected";
 import Admin from "./pages/Admin";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Products from "./pages/Products";
 
 function App() {
     return (
         <AuthContextProvider>
             <div className="App">
                 <Navbar
-                    links={[
-                        { name: "About", url: "#about" },
-                        { name: "Products", url: "#products" }
-                    ]}
                     cartOnClick={() => {
                         console.log("Open Cart");
                     }}
@@ -28,6 +26,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/products" element={<Products />} />
                     <Route
                         path="/account"
                         element={
@@ -45,6 +44,7 @@ function App() {
                         }
                     />
                 </Routes>
+                <Footer></Footer>
             </div>{" "}
         </AuthContextProvider>
     );

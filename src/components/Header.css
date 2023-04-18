@@ -1,0 +1,44 @@
+header {
+    max-width: 1000px;
+    display: flex;
+    margin: auto;
+    height: 800px;
+}
+
+.header__row {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.header__left {
+    display: flex;
+    width: 50%;
+    max-width: 500px;
+}
+
+.header__left h1 {
+    margin: auto;
+    font-size: 64px;
+    text-align: center;
+}
+
+.header__right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 500px;
+    align-items: center;
+}
+
+.header__right h2 {
+    display: flex;
+    font-size: 44px;
+}
+
+.header__right button {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
