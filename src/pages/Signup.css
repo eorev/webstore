@@ -1,116 +1,63 @@
 .signup-container {
     display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 50%;
+    height: 500px;
+    margin: auto;
+    border-radius: 16px;
+    padding: 20px;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
 }
 
-.signupEmail {
+.signup-form__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form__container h1 {
+    margin: 16px 0px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.signup-form__container h2 {
+    margin: 16px 0px;
+}
+
+.signup-container form input {
     background-color: #ffffff;
     font-size: 20px;
     text-align: center;
     border-radius: 5px;
     border: 2px solid #cacaca;
     color: #000000;
-    width: 40%;
-    height: 10%;
-    position: absolute;
-    top: 20%;
-    left: 30%;
-}
-
-.signupEmail:focus {
-    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
-}
-
-.signupPassword {
-    background-color: #ffffff;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 5px;
-    border: 2px solid #cacaca;
-    color: #000000;
-    width: 40%;
-    height: 10%;
-    position: absolute;
-    top: 35%;
-    left: 30%;
-}
-
-.signupPassword:focus {
-    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
+    width: 80%;
+    height: 20%;
+    padding: 8px;
+    margin: 4px;
 }
 
 .signupButton {
-    background-color: #ffffff;
-    position: absolute;
+    color: white;
+    background-color: rgba(0, 108, 209, 0.63);
+    border: 2px solid rgba(0, 108, 209, 0.63);
     border-radius: 5px;
-    border: 2px solid #cacaca;
-    color: #000000;
-    top: 70%;
-    left: 42%;
-    width: 19%;
-    height: 6%;
+    width: 30%;
+    margin-top: 16px;
+    width: 80%;
 }
 
-.signupDisplayName {
-    background-color: #ffffff;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 5px;
-    border: 2px solid #cacaca;
-    color: #000000;
-    width: 40%;
-    height: 10%;
-    position: absolute;
-    top: 50%;
-    left: 30%;
-}
-
-.signupDisplayName:focus {
+.signup-container form input:focus {
     box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
-}
-
-.signupButton {
-    background-color: #ffffff;
-    position: absolute;
-    border-radius: 5px;
-    border: 2px solid #cacaca;
-    color: #000000;
-    top: 70%;
-    left: 42%;
-    width: 19%;
-    height: 6%;
-}
-
-.googleButton {
-    position: absolute;
-    top: 70%;
-    left: 44%;
-}
-
-.signupHome {
-    position: fixed;
-    bottom: 0;
-    top: -15%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 20px;
-    background-color: #dadadac9;
-    border: 5px solid #000000;
-    border: none;
-    border-radius: 5px;
-    color: #000000;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 125px;
-    height: 50px;
-}
-
-.signup:hover {
-    background-color: #5a1309;
 }

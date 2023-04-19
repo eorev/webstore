@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
 import { auth, login } from "../firebase";
 import "./Signin.css";

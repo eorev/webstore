@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { User, updateProfile } from "firebase/auth";
 import { signup } from "../firebase";
 import "./Signup.css";
@@ -81,14 +81,9 @@ const Signup = () => {
     }, [user]);
 
     return (
-        <div>
-            (
-            <div className="signup-container">
-                <div>
-                    <Link to="/">
-                        <button className="signupHome">Home</button>
-                    </Link>
-                </div>
+        <div className="signup-container">
+            <div className="signup-form__container">
+                <h1>Join the Nestled Community!</h1>
                 <form>
                     <input
                         className="signupEmail"
@@ -106,16 +101,18 @@ const Signup = () => {
                         ref={displayNameRef}
                         placeholder="Display Name"
                     />
+                    <button className="signupButton" onClick={handleSignup}>
+                        Sign Up
+                    </button>
                 </form>
-                <button className="signupButton" onClick={handleSignup}>
-                    Sign Up
-                </button>
+                <h2>OR</h2>
+                <GoogleButton
+                    className="signinInGoogleButton"
+                    onClick={() => {
+                        handleGoogleSignIn();
+                    }}
+                />
             </div>
-            <GoogleButton
-                className="googleButton"
-                onClick={handleGoogleSignIn}
-            />
-            )
         </div>
     );
 };
