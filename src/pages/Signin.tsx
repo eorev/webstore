@@ -101,14 +101,14 @@ const Signin = () => {
                         type="password"
                         placeholder="Password"
                     />
+                    <button
+                        className="signinLogin"
+                        disabled={loading}
+                        onClick={handleEmailLogin}
+                    >
+                        Log In
+                    </button>
                 </form>
-                <button
-                    className="signinLogin"
-                    disabled={loading}
-                    onClick={handleEmailLogin}
-                >
-                    Log In
-                </button>
                 {error && !passwordResetError ? (
                     <div style={{ color: "red", textAlign: "center" }}>
                         Email and/or Password are incorrect!

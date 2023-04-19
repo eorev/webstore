@@ -54,6 +54,7 @@ form {
     border-radius: 5px;
     width: 30%;
     margin-top: 16px;
+    width: 80%;
 }
 
 .signin-container form input:focus {
