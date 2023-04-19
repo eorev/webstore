@@ -86,14 +86,9 @@ const Signin = () => {
     }, [user]);
 
     return (
-        <div>
-            (
-            <div className="signin-container">
-                <div>
-                    <Link to="/">
-                        <button className="signinHome">Home</button>
-                    </Link>
-                </div>
+        <div className="signin-container">
+            <div className="signin-form__container">
+                <h1>Ready to Sign In?</h1>
                 <form>
                     <input
                         className="signinEmail"
@@ -108,7 +103,7 @@ const Signin = () => {
                     />
                 </form>
                 <button
-                    className="siginLogin"
+                    className="signinLogin"
                     disabled={loading}
                     onClick={handleEmailLogin}
                 >
@@ -130,6 +125,7 @@ const Signin = () => {
                         An account with this email does not exist!
                     </div>
                 ) : null}
+                <h1>OR</h1>
                 <GoogleButton
                     className="signinInGoogleButton"
                     onClick={() => {
@@ -137,7 +133,6 @@ const Signin = () => {
                     }}
                 />
             </div>
-            )<h1 style={{ color: "#fcfafadd" }}>Sign In</h1>
         </div>
     );
 };

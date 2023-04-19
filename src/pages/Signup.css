@@ -1,20 +1,8 @@
 .signup-container {
-    width: 25%;
-    height: 60%;
-    margin: 1 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #dadadac9;
-    border: 2px solid #ffffff;
-    border-radius: 20px;
-    padding: 50px;
-    box-sizing: border-box;
-    z-index: 0;
+    display: flex;
 }
 
-.signupEmail{
+.signupEmail {
     background-color: #ffffff;
     font-size: 20px;
     text-align: center;
@@ -24,12 +12,12 @@
     width: 40%;
     height: 10%;
     position: absolute;
-    top:20%;
+    top: 20%;
     left: 30%;
 }
 
 .signupEmail:focus {
-  box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
+    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
 }
 
 .signupPassword {
@@ -42,12 +30,12 @@
     width: 40%;
     height: 10%;
     position: absolute;
-    top:35%;
+    top: 35%;
     left: 30%;
 }
 
 .signupPassword:focus {
-  box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
+    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
 }
 
 .signupButton {
@@ -72,12 +60,12 @@
     width: 40%;
     height: 10%;
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 30%;
 }
 
 .signupDisplayName:focus {
-  box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
+    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
 }
 
 .signupButton {
