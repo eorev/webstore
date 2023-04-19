@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
 import { auth, login } from "../firebase";
 import "./Signin.css";
@@ -86,14 +86,9 @@ const Signin = () => {
     }, [user]);
 
     return (
-        <div>
-            (
-            <div className="signin-container">
-                <div>
-                    <Link to="/">
-                        <button className="signinHome">Home</button>
-                    </Link>
-                </div>
+        <div className="signin-container">
+            <div className="signin-form__container">
+                <h1>Ready to Sign In?</h1>
                 <form>
                     <input
                         className="signinEmail"
@@ -106,14 +101,14 @@ const Signin = () => {
                         type="password"
                         placeholder="Password"
                     />
+                    <button
+                        className="signinLogin"
+                        disabled={loading}
+                        onClick={handleEmailLogin}
+                    >
+                        Log In
+                    </button>
                 </form>
-                <button
-                    className="siginLogin"
-                    disabled={loading}
-                    onClick={handleEmailLogin}
-                >
-                    Log In
-                </button>
                 {error && !passwordResetError ? (
                     <div style={{ color: "red", textAlign: "center" }}>
                         Email and/or Password are incorrect!
@@ -130,6 +125,7 @@ const Signin = () => {
                         An account with this email does not exist!
                     </div>
                 ) : null}
+                <h2>OR</h2>
                 <GoogleButton
                     className="signinInGoogleButton"
                     onClick={() => {
@@ -137,7 +133,6 @@ const Signin = () => {
                     }}
                 />
             </div>
-            )<h1 style={{ color: "#fcfafadd" }}>Sign In</h1>
         </div>
     );
 };
