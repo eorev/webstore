@@ -125,7 +125,7 @@ const Signin = () => {
                         An account with this email does not exist!
                     </div>
                 ) : null}
-                <h1>OR</h1>
+                <h2>OR</h2>
                 <GoogleButton
                     className="signinInGoogleButton"
                     onClick={() => {

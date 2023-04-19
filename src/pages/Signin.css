@@ -5,9 +5,10 @@
     width: 50%;
     height: 500px;
     margin: auto;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 20px;
     justify-content: center;
+    box-shadow: 0 0 5px 2px rgba(0, 108, 209, 0.63);
 }
 
 .signin-form__container {
@@ -26,6 +27,11 @@ form {
 
 .signin-form__container h1 {
     margin: 16px 0px;
+    font-size: 40px;
+}
+
+.signin-form__container h2 {
+    margin: 16px 0px;
 }
 
 .signin-container form input {
@@ -36,7 +42,7 @@ form {
     border: 2px solid #cacaca;
     color: #000000;
     width: 80%;
-    height: 10%;
+    height: 20%;
     padding: 8px;
     margin: 4px;
 }
@@ -47,6 +53,7 @@ form {
     border: 2px solid rgba(0, 108, 209, 0.63);
     border-radius: 5px;
     width: 30%;
+    margin-top: 16px;
 }
 
 .signin-container form input:focus {
