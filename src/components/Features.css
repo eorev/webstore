@@ -1,0 +1,35 @@
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+.features-top__container {
+    display: flex;
+}
+
+.features-top__title {
+}
+
+.features-top__logos {
+}
+
+.features-top__logos img {
+}
+
+.features-bottom__container {
+}
+
+.features-bottom__reviews {
+}
+
+.features-bottom__reviews h1 {
+}
+
+.stars {
+}
+
+.fas {
+}
+
+.features-bottom__reviews h2 {
+}
