@@ -8,14 +8,15 @@ export default function Header() {
             <div className="header__row">
                 <div className="header__left">
                     <h1>Welcome to Nestled!</h1>
-                </div>
-                <div className="header__right">
-                    <h2>Find your Piece.</h2>
-                    <p>Browse a Curated Collection</p>
+                    <p>
+                        Welcome to Nestled, your destination for modern
+                        furniture curated with a discerning eye.
+                    </p>
                     <Link to="/products" className="header__button">
-                        <button>Products</button>
+                        <button>Browse Our Catalog</button>
                     </Link>
                 </div>
+                <div className="header__right"></div>
             </div>
         </header>
     );
