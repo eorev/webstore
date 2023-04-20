@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
 import { auth, login } from "../firebase";
 import "./Signin.css";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import db from "../firebase";
 
 interface AuthContextType {
@@ -32,19 +32,62 @@ const Signin = () => {
         if (user) {
             const cartDocRef = doc(db, "carts", user?.uid);
             const orderbinDocRef = doc(db, "orderbins", user?.uid);
+            const subcartcollectionRef = collection(cartDocRef, "products");
+            const suborderbincollectionRef = collection(
+                orderbinDocRef,
+                "orders"
+            );
+
             try {
                 const cartDocSnap = await getDoc(cartDocRef);
                 const orderbinDocSnap = await getDoc(orderbinDocRef);
+                const subcartollectionSnap = await getDocs(
+                    subcartcollectionRef
+                );
+                const suborderbincollectionSnap = await getDocs(
+                    suborderbincollectionRef
+                );
+
                 if (cartDocSnap.exists()) {
                     console.log("cart for user already exists");
                 } else {
-                    await setDoc(cartDocRef, { products: [] });
+                    if (subcartollectionSnap.empty) {
+                        // Create subcollection if it doesn't exist
+                        //await addDoc(subcartcollectionRef, {});
+                        const nullDocRef = doc(
+                            db,
+                            "carts",
+                            user.uid,
+                            "products",
+                            "null"
+                        );
+                        await setDoc(nullDocRef, {
+                            name: "null" /* your document data */
+                        });
+
+                        await setDoc(cartDocRef, { cost: 0 });
+                    }
                     console.log("added doc");
                 }
                 if (orderbinDocSnap.exists()) {
                     console.log("orderbin for user already exists");
                 } else {
-                    await setDoc(orderbinDocRef, { orders: [] });
+                    if (suborderbincollectionSnap.empty) {
+                        // Create subcollection if it doesn't exist
+                        //await addDoc(subcartcollectionRef, {});
+                        const nullDocRef = doc(
+                            db,
+                            "orderbins",
+                            user.uid,
+                            "orders",
+                            "null"
+                        );
+                        await setDoc(nullDocRef, {
+                            name: "null"
+                        });
+
+                        await setDoc(orderbinDocRef, { totalspent: 0 });
+                    }
                     console.log("added doc");
                 }
             } catch (error) {
