@@ -30,17 +30,16 @@ const View: React.FC<CatalogProps> = ({ product }) => {
     const { user } = UserAuth() as AuthContextType;
 
     const handleAddToCart = async () => {
-        const newProductRef = doc(
-            collection(db, "carts", user.uid, "products"),
-            product.name
-        );
-        const productSnapshot = await getDoc(newProductRef);
-        /*need to add functionality to modify json file data, so that the units in stock does not reset when the site is reloaded*/
         await updateDoc(productRef, {
             units_instock: product.units_instock - 1,
             times_purchased: product.times_purchased + 1
         });
         if (user) {
+            const newProductRef = doc(
+                collection(db, "carts", user.uid, "products"),
+                product.name
+            );
+            const productSnapshot = await getDoc(newProductRef);
             if (productSnapshot.exists()) {
                 await updateDoc(newProductRef, {
                     quantity: increment(1)
@@ -56,7 +55,6 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     category: product.category,
                     admin_id: product.admin_id, //id belonging to the admin who created the product
                     price: product.price,
-                    units_instock: product.units_instock,
                     quantity: 1
                 });
             }
