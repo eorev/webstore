@@ -5,14 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { User, sendPasswordResetEmail } from "firebase/auth";
 import { auth, login } from "../firebase";
 import "./Signin.css";
-import {
-    addDoc,
-    collection,
-    doc,
-    getDoc,
-    getDocs,
-    setDoc
-} from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import db from "../firebase";
 
 interface AuthContextType {
@@ -81,7 +74,19 @@ const Signin = () => {
                 } else {
                     if (suborderbincollectionSnap.empty) {
                         // Create subcollection if it doesn't exist
-                        await addDoc(suborderbincollectionRef, {});
+                        //await addDoc(subcartcollectionRef, {});
+                        const nullDocRef = doc(
+                            db,
+                            "orderbins",
+                            user.uid,
+                            "orders",
+                            "null"
+                        );
+                        await setDoc(nullDocRef, {
+                            name: "null"
+                        });
+
+                        await setDoc(orderbinDocRef, { totalspent: 0 });
                     }
                     console.log("added doc");
                 }
