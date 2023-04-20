@@ -1,20 +1,29 @@
 import React from "react";
 import { UserAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { User } from "firebase/auth";
+import "./Account.css";
 
 interface AuthContextType {
     logout: () => void;
+    user: User;
 }
 
 const Account = () => {
-    const { logout } = UserAuth() as AuthContextType;
+    const { user } = UserAuth() as AuthContextType;
     return (
-        <div>
-            <p>Account</p>
-            <Link to="/">
-                <button>Home</button>
-            </Link>
-            <button onClick={logout}>Logout</button>
+        <div className="account-info__container">
+            <h1>Account</h1>
+            <div className="account-options__container">
+                <div className="account-options__item">
+                    <form className="account-options__form">
+                        <h2>Account Information</h2>
+                        <div className="account-options__form-item">
+                            <h1>Email: {user.email}</h1>
+                            <h1>Username: {user.displayName}</h1>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };
