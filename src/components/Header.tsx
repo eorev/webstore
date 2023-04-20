@@ -17,7 +17,7 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="header__right">
-                    <img src="https://picsum.photos/400/600" alt="" />
+                    <img src="https://picsum.photos/600/600" alt="" />
                 </div>
             </div>
         </header>

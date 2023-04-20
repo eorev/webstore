@@ -26,6 +26,7 @@
 }
 
 .stars {
+    display: flex;
 }
 
 .fas {
