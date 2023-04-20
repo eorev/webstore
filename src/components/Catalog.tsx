@@ -34,6 +34,32 @@ const View: React.FC<CatalogProps> = ({ product }) => {
             units_instock: product.units_instock - 1,
             times_purchased: product.times_purchased + 1
         });
+        if (!user) {
+            console.log("adding to temp cart for non user");
+            const newProductRef = doc(
+                collection(db, "carts", "temp", "products"),
+                product.name
+            );
+            const productSnapshot = await getDoc(newProductRef);
+            if (productSnapshot.exists()) {
+                await updateDoc(newProductRef, {
+                    quantity: increment(1)
+                });
+                console.log("increased quantity");
+            } else {
+                await setDoc(newProductRef, {
+                    name: product.name,
+                    description: product.description,
+                    id: product.id,
+                    image: product.image,
+                    rating: product.rating, //rating from 1 to 5
+                    category: product.category,
+                    admin_id: product.admin_id, //id belonging to the admin who created the product
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+        }
         if (user) {
             const newProductRef = doc(
                 collection(db, "carts", user.uid, "products"),
