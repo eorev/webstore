@@ -3,11 +3,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: #52b58812;
 }
 
 .hotProducts h1 {
     font-size: 40px;
+    margin-bottom: 16px;
+    margin-top: 16px;
 }
 
 .hotProducts p {
