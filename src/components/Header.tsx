@@ -16,7 +16,9 @@ export default function Header() {
                         <button>Browse Our Catalog</button>
                     </Link>
                 </div>
-                <div className="header__right"></div>
+                <div className="header__right">
+                    <img src="https://picsum.photos/400/600" alt="" />
+                </div>
             </div>
         </header>
     );
