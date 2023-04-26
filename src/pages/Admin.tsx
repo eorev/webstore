@@ -24,7 +24,9 @@ const Admin = () => {
     const [showRemoveForm, setShowRemoveForm] = useState(false);
     const [products, setProducts] = useState<ProductData[]>([]);
     const [removeProduct, setRemoveProduct] = useState<string>("");
-    const [stockInputValue, setStockInputValue] = useState<string>();
+    const [stockInputValues, setStockInputValues] = useState<
+        Record<string, number>
+    >({});
     const [newProduct, setNewProduct] = useState<ProductData>({
         name: "",
         description: "",
@@ -63,7 +65,6 @@ const Admin = () => {
     const handleAddInputChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        event.preventDefault();
         const { name, value } = event.target;
         setNewProduct({ ...newProduct, [name]: value });
     };
@@ -77,19 +78,21 @@ const Admin = () => {
     };
 
     const handleStockInputChange = (
-        event: React.ChangeEvent<HTMLInputElement>
+        event: React.ChangeEvent<HTMLInputElement>,
+        productId: string
     ) => {
         event.preventDefault();
         const { value } = event.target;
-        setStockInputValue(value);
+        setStockInputValues({
+            ...stockInputValues,
+            [productId]: parseInt(value)
+        });
     };
 
-    const handleNewProduct = async () => {
-        const form = document.querySelector("form");
-        form?.addEventListener("submit", function (e) {
-            e.preventDefault(); // prevent default form submission behavior
-            // your form submission logic here
-        });
+    const handleNewProduct = async (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault(); // prevent default form submission behavior
         const docRef = doc(db, "products", newProduct.name);
         const payload = {
             name: newProduct.name,
@@ -116,24 +119,32 @@ const Admin = () => {
     };
 
     return (
-        <div>
+        <div className="products-container">
             <div className="products">
-                <p>Products:</p>
+                <h1>Products:</h1>
                 <ul>
                     {products.map((product: ProductData) => (
                         <li key={product.id}>
-                            <div>
-                                <span>
-                                    Name: {product.name} Units InStock:{" "}
-                                    {product.units_instock}
+                            <div className="product-container">
+                                <span className="product-name">
+                                    {product.name}
+                                    <br></br>
+                                    Units: {product.units_instock}
                                 </span>
                                 <input
+                                    className="product-input"
                                     type="number"
                                     placeholder="units"
-                                    value={stockInputValue}
-                                    onChange={handleStockInputChange}
+                                    value={stockInputValues[product.name] || ""}
+                                    onChange={(event) =>
+                                        handleStockInputChange(
+                                            event,
+                                            product.name
+                                        )
+                                    }
                                 />
                                 <button
+                                    className="product-button"
                                     onClick={async () => {
                                         const productRef = doc(
                                             db,
@@ -141,11 +152,12 @@ const Admin = () => {
                                             product.name
                                         );
                                         await updateDoc(productRef, {
-                                            units_instock: stockInputValue
+                                            units_instock:
+                                                stockInputValues[product.name]
                                         });
                                     }}
                                 >
-                                    Confirm
+                                    Update Units
                                 </button>
                             </div>
                         </li>
@@ -173,7 +185,7 @@ const Admin = () => {
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
                     {
-                        <form onSubmit={() => toggleForm("add")}>
+                        <form onSubmit={handleNewProduct}>
                             <input
                                 type="text"
                                 name="name"
@@ -227,7 +239,6 @@ const Admin = () => {
                                 onChange={handleAddInputChange}
                             />
                             <Button
-                                onClick={handleNewProduct}
                                 type="submit"
                                 className="catalog-button"
                                 style={{
@@ -242,6 +253,7 @@ const Admin = () => {
                     }
                 </div>
             )}
+
             {showRemoveForm && (
                 <div className="catalog-add-remove-product-container">
                     {
