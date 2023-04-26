@@ -1,12 +1,8 @@
 footer {
     font-family: "Montserrat", sans-serif;
     display: flex;
-    justify-content: left;
     margin-top: auto;
     padding: 50px;
-    background-color: white;
-}
-.footer__right p {
-    padding-left: 1000px;
-    align-items: right;
+    justify-content: space-between;
+    align-items: center;
 }
