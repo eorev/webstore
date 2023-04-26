@@ -244,6 +244,17 @@ const Admin = () => {
                                 placeholder="Units in Stock"
                                 onChange={handleAddInputChange}
                             />
+                            <Button
+                                type="submit"
+                                className="catalog-button"
+                                style={{
+                                    backgroundColor: "black",
+                                    position: "absolute",
+                                    bottom: -12
+                                }}
+                            >
+                                Add
+                            </Button>
                         </form>
                     }
                 </div>
