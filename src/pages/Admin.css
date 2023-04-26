@@ -67,3 +67,27 @@ ul {
 .product-button:hover {
     background-color: #e0e0e0;
 }
+
+.close-add-product-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.close-remove-product-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 0;
+}

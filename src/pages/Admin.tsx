@@ -184,6 +184,12 @@ const Admin = () => {
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
+                    <Button
+                        className="close-add-product-form"
+                        onClick={() => toggleForm("add")}
+                    >
+                        X
+                    </Button>
                     {
                         <form onSubmit={handleNewProduct}>
                             <input
@@ -238,24 +244,18 @@ const Admin = () => {
                                 placeholder="Units in Stock"
                                 onChange={handleAddInputChange}
                             />
-                            <Button
-                                type="submit"
-                                className="catalog-button"
-                                style={{
-                                    backgroundColor: "black",
-                                    position: "absolute",
-                                    bottom: -12
-                                }}
-                            >
-                                Add
-                            </Button>
                         </form>
                     }
                 </div>
             )}
-
             {showRemoveForm && (
                 <div className="catalog-add-remove-product-container">
+                    <Button
+                        className="close-remove-product-form"
+                        onClick={() => toggleForm("remove")}
+                    >
+                        X
+                    </Button>
                     {
                         <form onSubmit={() => toggleForm("remove")}>
                             <input
