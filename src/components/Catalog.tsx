@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
@@ -25,7 +24,6 @@ interface AuthContextType {
 }
 
 const View: React.FC<CatalogProps> = ({ product }) => {
-    const [productUnits, setProductUnits] = useState(0);
     const productRef = doc(db, "products", product.name);
     const { user } = UserAuth() as AuthContextType;
 
