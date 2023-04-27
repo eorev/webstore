@@ -41,7 +41,8 @@ const View: React.FC<CatalogProps> = ({ product }) => {
             const productSnapshot = await getDoc(newProductRef);
             if (productSnapshot.exists()) {
                 await updateDoc(newProductRef, {
-                    quantity: increment(1)
+                    quantity: increment(1),
+                    units_instock: increment(-1)
                 });
                 console.log("increased quantity");
             } else {
@@ -54,6 +55,7 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     category: product.category,
                     admin_id: product.admin_id, //id belonging to the admin who created the product
                     price: product.price,
+                    units_instock: product.units_instock - 1,
                     quantity: 1
                 });
             }
@@ -66,7 +68,8 @@ const View: React.FC<CatalogProps> = ({ product }) => {
             const productSnapshot = await getDoc(newProductRef);
             if (productSnapshot.exists()) {
                 await updateDoc(newProductRef, {
-                    quantity: increment(1)
+                    quantity: increment(1),
+                    units_instock: increment(-1)
                 });
                 console.log("increased quantity");
             } else {
@@ -79,6 +82,7 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     category: product.category,
                     admin_id: product.admin_id, //id belonging to the admin who created the product
                     price: product.price,
+                    units_instock: product.units_instock - 1,
                     quantity: 1
                 });
             }
