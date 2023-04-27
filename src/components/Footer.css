@@ -1,6 +1,8 @@
 footer {
+    font-family: "Montserrat", sans-serif;
     display: flex;
-    justify-content: center;
     margin-top: auto;
-    padding: 12px;
+    padding: 50px;
+    justify-content: space-between;
+    align-items: center;
 }
