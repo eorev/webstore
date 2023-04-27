@@ -938,7 +938,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (330 ms)
+  ✕ renders learn react link (301 ms)
 
   ● renders learn react link
 
@@ -989,12 +989,12 @@ FAIL src/App.test.tsx
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
-All files         |   11.11 |     2.77 |    7.46 |   11.15 |                   
+All files         |    9.62 |     2.22 |    6.49 |    9.65 |                   
  src              |      25 |      100 |    9.09 |      25 |                   
   App.tsx         |      25 |      100 |      20 |      25 | 26-31,37,45       
-  firebase.tsx    |      25 |      100 |       0 |      25 | 27-48             
- src/components   |    17.3 |       10 |    12.5 |   17.64 |                   
-  Catalog.tsx     |    3.33 |        0 |       0 |    3.33 | 28-135            
+  firebase.tsx    |      25 |      100 |       0 |      25 | 26-47             
+ src/components   |   17.64 |       10 |    12.5 |      18 |                   
+  Catalog.tsx     |    3.44 |        0 |       0 |    3.44 | 27-137            
   Features.tsx    |       0 |      100 |       0 |       0 | 5                 
   Footer.tsx      |     100 |      100 |     100 |     100 |                   
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
@@ -1005,11 +1005,12 @@ All files         |   11.11 |     2.77 |    7.46 |   11.15 |
   AuthContext.tsx |   57.14 |      100 |      40 |   57.14 | 20-21,26-30       
  src/interfaces   |       0 |        0 |       0 |       0 |                   
   cart.ts         |       0 |        0 |       0 |       0 |                   
+  cartProduct.ts  |       0 |        0 |       0 |       0 |                   
   order.ts        |       0 |        0 |       0 |       0 |                   
   product.ts      |       0 |        0 |       0 |       0 |                   
   user.ts         |       0 |        0 |       0 |       0 |                   
- src/pages        |    3.61 |        0 |       0 |    3.61 |                   
-  Account.tsx     |   33.33 |      100 |       0 |   33.33 | 10-11             
+ src/pages        |    2.91 |        0 |       0 |    2.91 |                   
+  Account.tsx     |    2.32 |        0 |       0 |    2.32 | 23-141            
   Admin.tsx       |    1.92 |        0 |       0 |    1.92 | 22-271            
   Home.tsx        |      50 |      100 |       0 |      50 | 7                 
   Products.tsx    |      50 |      100 |       0 |      50 | 6                 
@@ -1019,5 +1020,5 @@ All files         |   11.11 |     2.77 |    7.46 |   11.15 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.153 s
+Time:        3.226 s
 Ran all test suites.
