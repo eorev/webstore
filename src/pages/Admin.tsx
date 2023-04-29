@@ -6,6 +6,7 @@ import {
     collection,
     deleteDoc,
     doc,
+    getDocs,
     onSnapshot,
     setDoc,
     updateDoc
@@ -39,17 +40,56 @@ const Admin = () => {
         units_instock: 0,
         times_purchased: 0
     });
+    const [orderbins, setOrderbins] = useState<string[]>([]);
+    const [selectedOrderBin, setSelectedOrderBin] = useState<string>("");
+    const [orderIds, setOrderIds] = useState<string[]>([]);
+
+    const handleOrderbinChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setSelectedOrderBin(event.target.value);
+        if (event.target.value != "" && event.target.value != "Select a User") {
+            const ordersRef = collection(
+                db,
+                "orderbins",
+                event.target.value,
+                "orders"
+            );
+            getDocs(ordersRef)
+                .then((querySnapshot) => {
+                    const docIds = querySnapshot.docs.map((doc) => doc.id);
+                    setOrderIds(docIds);
+                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+        }
+    };
 
     console.log(products);
-    useEffect(
-        () =>
-            onSnapshot(collection(db, "products"), (snapshot) =>
+    useEffect(() => {
+        const unsubProducts = onSnapshot(
+            collection(db, "products"),
+            (snapshot) =>
                 setProducts(
                     snapshot.docs.map((doc) => doc.data() as ProductData)
                 )
-            ),
-        []
-    );
+        );
+        const unsubOrderbins = onSnapshot(
+            collection(db, "orderbins"),
+            (snapshot) => {
+                const newShowUserOrders: Record<string, boolean> = {};
+                snapshot.docs.forEach((doc) => {
+                    newShowUserOrders[doc.id] = false;
+                });
+                setOrderbins(snapshot.docs.map((doc) => doc.id));
+            }
+        );
+        return () => {
+            unsubProducts();
+            unsubOrderbins();
+        };
+    }, []);
 
     const toggleForm = (name: string) => {
         if (name === "add") {
@@ -163,6 +203,26 @@ const Admin = () => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div>
+                <p>Orders</p>
+                <select onChange={handleOrderbinChange}>
+                    <option value="">Select a User</option>
+                    {orderbins.map((orderbin) => (
+                        <option key={orderbin} value={orderbin}>
+                            {orderbin}
+                        </option>
+                    ))}
+                </select>
+                {selectedOrderBin != "" && selectedOrderBin != "Select a User" && (
+                    <ul>
+                        {orderIds.map((orderId) => {
+                            if (orderId !== "null") {
+                                return <li key={orderId}>{orderId}</li>;
+                            }
+                        })}
+                    </ul>
+                )}
             </div>
             <div>
                 <Button
