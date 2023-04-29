@@ -21,6 +21,7 @@ import {
     where
 } from "firebase/firestore";
 import db from "./firebase";
+import Contact from "./components/Contact";
 
 async function clearTempCart() {
     const cartDocRef = doc(db, "carts", "temp");
@@ -67,6 +68,7 @@ function App() {
                         }
                     />
                 </Routes>
+                <Contact></Contact>
                 <Footer></Footer>
             </div>{" "}
         </AuthContextProvider>
