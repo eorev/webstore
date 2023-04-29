@@ -66,7 +66,7 @@ const Admin = () => {
         }
     };
 
-    console.log(products);
+    //console.log(products);
     useEffect(() => {
         const unsubProducts = onSnapshot(
             collection(db, "products"),
