@@ -204,6 +204,14 @@ const Admin = () => {
                     ))}
                 </ul>
             </div>
+            <div className="add-remove-button-container">
+                <Button onClick={() => toggleForm("add")} id="AddProduct">
+                    Add Product
+                </Button>
+                <Button onClick={() => toggleForm("remove")} id="AddProduct">
+                    Remove Product
+                </Button>
+            </div>
             <div>
                 <p>Orders</p>
                 <select onChange={handleOrderbinChange}>
@@ -223,24 +231,6 @@ const Admin = () => {
                         })}
                     </ul>
                 )}
-            </div>
-            <div>
-                <Button
-                    onClick={() => toggleForm("add")}
-                    className="catalog-add-product-button"
-                    id="AddProduct"
-                >
-                    Add Product
-                </Button>
-            </div>
-            <div>
-                <Button
-                    onClick={() => toggleForm("remove")}
-                    className="catalog-remove-product-button"
-                    id="AddProduct"
-                >
-                    Remove Product
-                </Button>
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
