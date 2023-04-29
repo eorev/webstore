@@ -91,3 +91,47 @@ ul {
     line-height: 1;
     border-radius: 0;
 }
+
+.add-remove-button-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-remove-button-container Button {
+    background-color: #14985c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 125px;
+}
+
+.catalog-add-remove-product-container {
+    width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00000067;
+    border: 2px solid #147c4d;
+    border-radius: 5px;
+    padding: 50px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.add-remove-button-container Button:hover {
+    background-color: #147c4d;
+}
