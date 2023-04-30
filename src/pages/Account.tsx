@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 import { User } from "firebase/auth";
 import {
     collection,
@@ -15,12 +14,11 @@ import cartProductData from "../interfaces/cartProduct";
 import db from "../firebase";
 
 interface AuthContextType {
-    logout: () => void;
     user: User;
 }
 
 const Account = () => {
-    const { logout, user } = UserAuth() as AuthContextType;
+    const { user } = UserAuth() as AuthContextType;
     const [removeProduct, setRemoveProduct] = useState<string>("");
     const [products, setProducts] = useState<cartProductData[]>([]);
     console.log(products);
@@ -116,10 +114,6 @@ const Account = () => {
     return (
         <div>
             <p>Account</p>
-            <Link to="/">
-                <button>Home</button>
-            </Link>
-            <button onClick={logout}>Logout</button>
             <div>
                 {products.map((item: cartProductData) =>
                     item.name !== "null" ? (

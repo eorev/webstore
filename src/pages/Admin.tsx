@@ -209,7 +209,7 @@ const Admin = () => {
     return (
         <div className="products-container">
             <div className="products">
-                <h1>Products:</h1>
+                <h1>Products</h1>
                 <ul>
                     {products.map((product: ProductData) => (
                         <li key={product.id}>
