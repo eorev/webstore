@@ -1,5 +1,6 @@
 .products-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -134,4 +135,13 @@ ul {
 
 .add-remove-button-container Button:hover {
     background-color: #147c4d;
+}
+
+
+
+.column-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 250px;
 }

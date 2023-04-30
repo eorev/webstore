@@ -6,6 +6,7 @@ import {
     collection,
     deleteDoc,
     doc,
+    getDoc,
     getDocs,
     onSnapshot,
     setDoc,
@@ -14,6 +15,7 @@ import {
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
 import "./Admin.css";
+import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
     user: User;
@@ -43,6 +45,9 @@ const Admin = () => {
     const [orderbins, setOrderbins] = useState<string[]>([]);
     const [selectedOrderBin, setSelectedOrderBin] = useState<string>("");
     const [orderIds, setOrderIds] = useState<string[]>([]);
+    const [addAdminID, setAddAdminID] = useState<string>("");
+    const [removeAdminID, setRemoveAdminID] = useState<string>("");
+    const navigate = useNavigate();
 
     const handleOrderbinChange = async (
         event: React.ChangeEvent<HTMLSelectElement>
@@ -85,11 +90,21 @@ const Admin = () => {
                 setOrderbins(snapshot.docs.map((doc) => doc.id));
             }
         );
+        const unsubAdminIDs = onSnapshot(doc(db, "ids", "adminIDs"), (doc) => {
+            if (doc.exists()) {
+                const adminData = doc.data();
+                const adminIDs = adminData.full as string[];
+                if (!adminIDs.includes(user.uid)) {
+                    navigate("/");
+                }
+            }
+        });
         return () => {
             unsubProducts();
             unsubOrderbins();
+            unsubAdminIDs();
         };
-    }, []);
+    }, [user.uid]);
 
     const toggleForm = (name: string) => {
         if (name === "add") {
@@ -156,6 +171,39 @@ const Admin = () => {
         });
         const docRef = doc(db, "products", removeProduct);
         await deleteDoc(docRef);
+    };
+
+    const handleAdminChange = async (
+        event: React.FormEvent<HTMLFormElement>,
+        action: string
+    ) => {
+        event.preventDefault();
+        if (action == "add") {
+            try {
+                const docRef = doc(db, "ids", "adminIDs");
+                const docSnap = await getDoc(docRef);
+                const { full } = docSnap.data() as { full: string[] };
+                await updateDoc(docRef, {
+                    full: [...full, addAdminID]
+                });
+                setAddAdminID("");
+            } catch (error) {
+                console.error("Error adding adminID:", error);
+            }
+        } else if (action === "remove") {
+            try {
+                const docRef = doc(db, "ids", "adminIDs");
+                const docSnap = await getDoc(docRef);
+                const { full } = docSnap.data() as { full: string[] };
+                const filteredFull = full.filter((id) => id !== removeAdminID);
+                await updateDoc(docRef, {
+                    full: filteredFull
+                });
+                setRemoveAdminID("");
+            } catch (error) {
+                console.error("Error removing adminID:", error);
+            }
+        } else console.log("invalid action");
     };
 
     return (
@@ -231,6 +279,42 @@ const Admin = () => {
                         })}
                     </ul>
                 )}
+            </div>
+            <div className="column-container">
+                <div>
+                    Add Admin
+                    <form
+                        onSubmit={(event) => {
+                            handleAdminChange(event, "add");
+                        }}
+                    >
+                        <input
+                            type="text"
+                            value={addAdminID}
+                            onChange={(event) =>
+                                setAddAdminID(event.target.value)
+                            }
+                        />
+                        <button type="submit">Add</button>
+                    </form>
+                    Remove Admin
+                    <form
+                        onSubmit={(event) => {
+                            handleAdminChange(event, "remove");
+                        }}
+                    >
+                        <input
+                            type="text"
+                            value={removeAdminID}
+                            onChange={(event) =>
+                                setRemoveAdminID(event.target.value)
+                            }
+                        />
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+                <div>Column 2</div>
+                <div>Column 3</div>
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
