@@ -206,6 +206,10 @@ const Admin = () => {
         } else console.log("invalid action");
     };
 
+    const cancelOrder = async (orderID: string) => {
+        console.log(`Cancelling Order# ${orderID}`);
+    };
+
     return (
         <div className="products-container">
             <div className="products">
@@ -274,7 +278,18 @@ const Admin = () => {
                     <ul>
                         {orderIds.map((orderId) => {
                             if (orderId !== "null") {
-                                return <li key={orderId}>{orderId}</li>;
+                                return (
+                                    <li key={orderId}>
+                                        {orderId}{" "}
+                                        <button
+                                            onClick={() => {
+                                                cancelOrder(orderId);
+                                            }}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </li>
+                                );
                             }
                         })}
                     </ul>
