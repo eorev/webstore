@@ -328,8 +328,8 @@ const Admin = () => {
                         <button type="submit">Remove</button>
                     </form>
                 </div>
-                <div>Column 2</div>
-                <div>Column 3</div>
+                <div>_________________________</div>
+                <div>_________________________</div>
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
