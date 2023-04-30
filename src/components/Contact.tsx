@@ -42,14 +42,33 @@ const ContactForm = () => {
                 <div className="contact-form-container">
                     <form ref={form} onSubmit={sendEmail}>
                         <label>Name</label>
-                        <input type="text" name="name" />
+                        <input
+                            type="text"
+                            name="name"
+                            className="contact-form-container-input"
+                        />
                         <label>Email</label>
-                        <input type="email" name="email" />
+                        <input
+                            type="email"
+                            name="email"
+                            className="contact-form-container-input"
+                        />
                         <label>Subject</label>
-                        <input type="subject" name="subject" />
+                        <input
+                            type="subject"
+                            name="subject"
+                            className="contact-form-container-input"
+                        />
                         <label>Message</label>
-                        <textarea name="message" />
-                        <input type="submit" value="Send" />
+                        <textarea
+                            name="message"
+                            className="contact-form-container-input-message"
+                        />
+                        <input
+                            type="submit"
+                            value="Send"
+                            className="contact-form-send"
+                        />
                     </form>
                 </div>
             )}

@@ -28,7 +28,56 @@
     position: fixed;
     bottom: 90px;
     right: 20px;
-    height: 200px;
+    width: 300px;
+    height: 375px;
     z-index: 3;
-    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    margin: auto;
+    border-radius: 16px;
+    padding: 20px;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px #14985c;
+    font-weight: bold;
+}
+
+.contact-form-send {
+    color: white;
+    background-color: rgba(0, 108, 209, 0.63);
+    border: 2px solid rgba(0, 108, 209, 0.63);
+    border-radius: 5px;
+    width: 90px;
+    height: 30px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.contact-form-container-input {
+    background-color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 70%;
+    height: 3%;
+    padding: 8px;
+    margin: 4px;
+    font-size: 15px;
+}
+
+.contact-form-container-input-message {
+    background-color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 70%;
+    height: 90px;
+    padding: 8px;
+    margin: 4px;
+    font-size: 15px;
+    resize: none;
 }
