@@ -1,7 +1,10 @@
-.hotProducts {
-    text-align: center;
+.hotProducts-container {
     background-color: #52b58812;
     padding: 24px;
+}
+
+.hotProducts {
+    text-align: center;
     padding-bottom: 48px;
 }
 

@@ -55,24 +55,29 @@ const HotProducts = () => {
     };
 
     return (
-        <div className="hotProducts">
-            <h1>🔥 Hot Products 🔥</h1>
-            <h2>Get them before they&apos;re gone!</h2>
-            <Slider {...settings}>
-                {products.map((product) => (
-                    <div key={product.name} className="hotProducts__product">
-                        <img
-                            src={process.env.PUBLIC_URL + product.image}
-                            alt={product.name}
-                        />
-                        <div className="hotProducts__productInfo">
-                            <h3>{product.name}</h3>
-                            <p>Price: ${product.price}</p>
-                            <p>Stock: {product.units_instock}</p>
+        <div className="hotProducts-container">
+            <div className="hotProducts">
+                <h1>🔥 Hot Products 🔥</h1>
+                <h2>Get them before they&apos;re gone!</h2>
+                <Slider {...settings}>
+                    {products.map((product) => (
+                        <div
+                            key={product.name}
+                            className="hotProducts__product"
+                        >
+                            <img
+                                src={process.env.PUBLIC_URL + product.image}
+                                alt={product.name}
+                            />
+                            <div className="hotProducts__productInfo">
+                                <h3>{product.name}</h3>
+                                <p>Price: ${product.price}</p>
+                                <p>Stock: {product.units_instock}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </Slider>
+                    ))}
+                </Slider>
+            </div>
         </div>
     );
 };
