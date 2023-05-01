@@ -41,7 +41,7 @@ All files         |       0 |        0 |       0 |       0 |
   Features.tsx    |       0 |      100 |       0 |       0 | 5                 
   Footer.tsx      |       0 |      100 |       0 |       0 | 5                 
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
-  HotProducts.tsx |       0 |      100 |       0 |       0 | 10-63             
+  HotProducts.tsx |       0 |      100 |       0 |       0 | 10-64             
   Navbar.tsx      |       0 |        0 |       0 |       0 | 18-33             
   Protected.tsx   |       0 |        0 |       0 |       0 | 14-19             
  src/context      |       0 |      100 |       0 |       0 |                   
@@ -64,5 +64,5 @@ All files         |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        3.42 s
+Time:        5.328 s
 Ran all test suites.
