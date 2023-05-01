@@ -35,7 +35,7 @@
 
 .features-bottom__container {
     display: flex;
-    max-width: 900px;
+    max-width: 1000px;
     justify-content: space-between;
 }
 
