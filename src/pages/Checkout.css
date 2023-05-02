@@ -1,7 +1,7 @@
 .checkout-summary-container {
     position: absolute;
     top: 50%;
-    left: 80%;
+    left: 1040px;
     transform: translate(-50%, -50%);
     width: 250px;
     height: 450px;
@@ -20,7 +20,7 @@
     position: absolute;
     top: 30px;
     align-self: center;
-    font-size:27px;
+    font-size: 27px;
 }
 
 .order-summary-underline {
@@ -30,7 +30,7 @@
     margin-top: 5px;
     width: 240px;
     left: -19px;
-    align-self: center; 
+    align-self: center;
 }
 
 .subtotal-title {
@@ -40,12 +40,12 @@
 }
 
 .subtotal {
-    position:absolute;
+    position: absolute;
     top: 80px;
     left: 215px;
 }
 
-.placeorder{
+.placeorder {
     position: absolute;
     color: white;
     background-color: rgba(0, 108, 209, 0.63);
@@ -82,9 +82,9 @@
 .cart-display-container {
     position: absolute;
     top: 50%;
-    left: 550px;
+    left: 475px;
     transform: translate(-50%, -50%);
-    width: 850px;
+    width: 700px;
     height: 450px;
     z-index: 3;
     display: flex;
@@ -95,4 +95,27 @@
     padding: 20px;
     justify-content: center;
     border: 2px solid #14985c;
+}
+
+.recently-deleted {
+    position: absolute;
+    top: 350px;
+    left: 649px;
+    transform: translate(-50%, -50%);
+    width: 1040px;
+    height: 100px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    margin: auto;
+    border-radius: 16px;
+    padding: 20px;
+    justify-content: center;
+    border: 2px solid #14985c;
+}
+
+.checkout-container {
+    position: absolute;
+    top: 45%;
 }

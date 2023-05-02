@@ -126,7 +126,7 @@ const Checkout = () => {
         }
     };
     return (
-        <div>
+        <div className="checkout-container">
             <div className="cart-display-container">
                 <h1>Cart</h1>
                 <div>
@@ -203,7 +203,7 @@ const Checkout = () => {
                 </h3>
                 <button className="placeorder">Place Order</button>
             </div>
-            <div>Recently Deleted</div>
+            <div className="recently-deleted">Recently Deleted</div>
         </div>
     );
 };

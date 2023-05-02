@@ -83,12 +83,14 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                     <Link to="/aboutus" className="navbar__links-item">
                         <button>About Us</button>
                     </Link>
-                    <button
-                        className="navbar__cart-btn navbar__links-item"
-                        onClick={cartOnClick}
-                    >
-                        Cart
-                    </button>
+                    <Link to="/checkout">
+                        <button
+                            className="navbar__cart-btn navbar__links-item"
+                            onClick={cartOnClick}
+                        >
+                            Cart
+                        </button>
+                    </Link>
                 </ul>
             </div>
         </nav>
