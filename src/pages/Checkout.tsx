@@ -286,7 +286,11 @@ const Checkout = () => {
                 <h3 className="total">
                     ${(subTotal + shippingCost).toFixed(2)}
                 </h3>
-                <button className="placeorder" onClick={handleOrderPlacement}>
+                <button
+                    className="placeorder"
+                    onClick={handleOrderPlacement}
+                    disabled={selectedShipping === ""}
+                >
                     Place Order
                 </button>
             </div>
