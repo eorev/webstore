@@ -339,7 +339,11 @@ const Checkout = () => {
                     </div>
                 ))}
             </div>
-            {orderPlaced ? <div className="order-confirmation"></div> : null}
+            {orderPlaced ? (
+                <div className="order-confirmation">
+                    <h1 className="title">Order Confirmation</h1>
+                </div>
+            ) : null}
         </div>
     );
 };
