@@ -198,7 +198,9 @@ const Checkout = () => {
                     </label>
                 </div>
                 <h3 className="total-title">Total: </h3>
-                <h3 className="total">${subTotal + shippingCost}</h3>
+                <h3 className="total">
+                    ${(subTotal + shippingCost).toFixed(2)}
+                </h3>
                 <button className="placeorder">Place Order</button>
             </div>
             <div>Recently Deleted</div>
