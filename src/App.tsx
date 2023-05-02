@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Products from "./pages/Products";
 import AboutUs from "./pages/AboutUs";
+import Checkout from "./pages/Checkout";
 import {
     collection,
     deleteDoc,
@@ -53,6 +54,7 @@ function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/aboutus" element={<AboutUs />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     <Route
                         path="/account"
                         element={
