@@ -9,6 +9,7 @@ import {
     getDoc,
     increment,
     onSnapshot,
+    setDoc,
     updateDoc
 } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
@@ -21,9 +22,11 @@ interface AuthContextType {
 const Checkout = () => {
     const { user } = UserAuth() as AuthContextType;
     const [products, setProducts] = useState<cartProductData[]>([]);
-    const [removeProduct, setRemoveProduct] = useState<string>("");
-    const [shippingCost, setShippingCost] = useState<number>(0.0);
-    const [subTotal, setSubTotal] = useState<number>(0.0);
+    const [shippingCost, setShippingCost] = useState<number>(0);
+    const [subTotal, setSubTotal] = useState<number>(0);
+    const [removedProducts, setRemovedProducts] = useState<cartProductData[]>(
+        []
+    );
 
     const [selectedShipping, setSelectedShipping] = useState<string>("");
     useEffect(() => {
@@ -38,7 +41,7 @@ const Checkout = () => {
                     const totalCost = cartProducts.reduce(
                         (accumulator, product) =>
                             accumulator + product.price * product.quantity,
-                        0.0
+                        0
                     );
                     setSubTotal(totalCost);
                     console.log(totalCost);
@@ -49,22 +52,84 @@ const Checkout = () => {
     }, [user]);
 
     console.log(products);
-    const handleRemove = async (item: string) => {
-        setRemoveProduct(item);
+    const handleRemove = async (product: cartProductData) => {
         if (!user) {
             const productRef = doc(
                 collection(db, "carts", "temp", "products"),
-                removeProduct
+                product.name
             );
+            setRemovedProducts([...removedProducts, product]);
             await deleteDoc(productRef);
         }
         if (user) {
             const productRef = doc(
                 collection(db, "carts", user.uid, "products"),
-                removeProduct
+                product.name
             );
+            setRemovedProducts([...removedProducts, product]);
             await deleteDoc(productRef);
         }
+    };
+
+    const handleAddToCart = async (product: cartProductData) => {
+        if (!user) {
+            console.log("adding to temp cart for non user");
+            const newProductRef = doc(
+                collection(db, "carts", "temp", "products"),
+                product.name
+            );
+            const productSnapshot = await getDoc(newProductRef);
+            if (productSnapshot.exists()) {
+                await updateDoc(newProductRef, {
+                    quantity: increment(1),
+                    units_instock: increment(-1)
+                });
+                console.log("increased quantity");
+            } else {
+                await setDoc(newProductRef, {
+                    name: product.name,
+                    description: product.description,
+                    id: product.id,
+                    image: product.image,
+                    rating: product.rating, //rating from 1 to 5
+                    category: product.category,
+                    admin_id: product.admin_id, //id belonging to the admin who created the product
+                    price: product.price,
+                    units_instock: product.units_instock,
+                    quantity: product.quantity
+                });
+            }
+        }
+        if (user) {
+            const newProductRef = doc(
+                collection(db, "carts", user.uid, "products"),
+                product.name
+            );
+            const productSnapshot = await getDoc(newProductRef);
+            if (productSnapshot.exists()) {
+                await updateDoc(newProductRef, {
+                    quantity: increment(1),
+                    units_instock: increment(-1)
+                });
+                console.log("increased quantity");
+            } else {
+                await setDoc(newProductRef, {
+                    name: product.name,
+                    description: product.description,
+                    id: product.id,
+                    image: product.image,
+                    rating: product.rating, //rating from 1 to 5
+                    category: product.category,
+                    admin_id: product.admin_id, //id belonging to the admin who created the product
+                    price: product.price,
+                    units_instock: product.units_instock,
+                    quantity: product.quantity
+                });
+            }
+        }
+        setRemovedProducts((prevProducts) =>
+            prevProducts.filter((p) => p.name !== product.name)
+        );
     };
 
     const increaseQuantity = async (product: cartProductData) => {
@@ -104,6 +169,7 @@ const Checkout = () => {
             const updatedQuantity = updatedProduct.data()?.quantity;
 
             if (updatedQuantity === 0) {
+                setRemovedProducts([...removedProducts, product]);
                 await deleteDoc(productRef);
             }
         }
@@ -121,6 +187,7 @@ const Checkout = () => {
             const updatedQuantity = updatedProduct.data()?.quantity;
 
             if (updatedQuantity === 0) {
+                setRemovedProducts([...removedProducts, product]);
                 await deleteDoc(productRef);
             }
         }
@@ -130,34 +197,46 @@ const Checkout = () => {
             <div className="cart-display-container">
                 <h1>Cart</h1>
                 <div>
-                    {products.map((item: cartProductData) =>
-                        item.name !== "null" ? (
-                            <div key={item.name}>
-                                <span>
-                                    {item.name} | Quantity: {item.quantity} |
-                                    Price: {item.price * item.quantity}
-                                </span>
+                    {products.map((product: cartProductData) => (
+                        <div
+                            key={product.name}
+                            className="cart-product-display"
+                        >
+                            <div className="img-container">
+                                <img
+                                    src={process.env.PUBLIC_URL + product.image}
+                                    alt={product.name}
+                                />
+                            </div>
+
+                            <span className="name">{product.name}</span>
+                            <span className="instock">In Stock</span>
+                            <span className="price">${product.price}</span>
+                            <span className="quantity">
+                                Quantity: {product.quantity}
+                            </span>
+                            <div className="buttons">
                                 <button
-                                    onClick={() => increaseQuantity(item)}
-                                    disabled={item.units_instock === 0}
+                                    onClick={() => increaseQuantity(product)}
+                                    disabled={product.units_instock === 0}
                                 >
                                     +
                                 </button>
-                                <button onClick={() => decreaseQuantity(item)}>
+                                <button
+                                    onClick={() => decreaseQuantity(product)}
+                                >
                                     -
                                 </button>
                                 <button
                                     onClick={() => {
-                                        handleRemove(item.name);
+                                        handleRemove(product);
                                     }}
                                 >
                                     Remove
                                 </button>
                             </div>
-                        ) : (
-                            <div key={item.id}></div>
-                        )
-                    )}
+                        </div>
+                    ))}
                 </div>
             </div>
 
@@ -203,7 +282,51 @@ const Checkout = () => {
                 </h3>
                 <button className="placeorder">Place Order</button>
             </div>
-            <div className="recently-deleted">Recently Deleted</div>
+            <div className="recently-deleted">
+                <h4>Recently Deleted</h4>
+                {removedProducts.map((product: cartProductData) => (
+                    <div key={product.name}>
+                        <span>
+                            {product.name} | Quantity: {product.quantity} |
+                            Price:
+                            {product.price * product.quantity}
+                        </span>
+                        <button
+                            onClick={() => {
+                                product.quantity++;
+                                const updatedProducts = [...removedProducts];
+                                const index = updatedProducts.findIndex(
+                                    (p) => p.name === product.name
+                                );
+                                updatedProducts[index] = product;
+                                setRemovedProducts(updatedProducts);
+                            }}
+                        >
+                            +
+                        </button>
+                        <button
+                            onClick={() => {
+                                product.quantity--;
+                                const updatedProducts = [...removedProducts];
+                                const index = updatedProducts.findIndex(
+                                    (p) => p.name === product.name
+                                );
+                                updatedProducts[index] = product;
+                                setRemovedProducts(updatedProducts);
+                            }}
+                        >
+                            -
+                        </button>
+                        <button
+                            onClick={() => {
+                                handleAddToCart(product);
+                            }}
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

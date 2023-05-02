@@ -76,7 +76,7 @@
 .total {
     position: absolute;
     top: 240px;
-    left: 215px;
+    left: 195px;
 }
 
 .cart-display-container {
@@ -99,11 +99,11 @@
 
 .recently-deleted {
     position: absolute;
-    top: 350px;
-    left: 649px;
+    top: 360px;
+    left: 475px;
     transform: translate(-50%, -50%);
-    width: 1040px;
-    height: 100px;
+    width: 705px;
+    height: 150px;
     z-index: 3;
     display: flex;
     flex-direction: column;
@@ -112,10 +112,65 @@
     border-radius: 16px;
     padding: 20px;
     justify-content: center;
-    border: 2px solid #14985c;
+    border: 2px solid grey;
 }
 
 .checkout-container {
-    position: absolute;
-    top: 45%;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 800px;
+}
+
+.cart-product-display {
+    font-weight: bold;
+    margin-bottom: -30px;
+}
+.cart-product-display .img-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border: 2px solid black;
+}
+.cart-product-display img {
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.cart-product-display .quantity {
+    position: relative;
+    font-weight: 500;
+    font-size: 13px;
+    top: -57px;
+    left: -23px;
+}
+
+.cart-product-display .price {
+    position: relative;
+    top: -115px;
+    left: 200px;
+}
+
+.cart-product-display .name {
+    position: relative;
+    left: 18.5%;
+    top: -115px;;
+}
+
+.cart-product-display .instock {
+    position: relative;
+    color: green;
+    font-weight: 500;
+    font-size: 13px;
+    top: -94px;
+    left: 42px;
+}
+
+.cart-product-display .buttons {
+    position: relative;
+    top: -55px;
+    left: 18%;
 }
