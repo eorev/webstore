@@ -200,7 +200,7 @@ const Checkout = () => {
     };
     return (
         <div className="checkout-container">
-            <h1>Cart</h1>
+            <h1 className="cart-title">Cart</h1>
             <div className="cart-display-container">
                 <div>
                     {products.map((product: cartProductData) => (
