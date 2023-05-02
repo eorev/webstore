@@ -27,8 +27,8 @@ const Checkout = () => {
     const [removedProducts, setRemovedProducts] = useState<cartProductData[]>(
         []
     );
-
     const [selectedShipping, setSelectedShipping] = useState<string>("");
+    const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
     useEffect(() => {
         if (user) {
             const unsub = onSnapshot(
@@ -52,6 +52,12 @@ const Checkout = () => {
     }, [user]);
 
     console.log(products);
+
+    const handleOrderPlacement = () => {
+        console.log("order placed");
+        setOrderPlaced(true);
+    };
+
     const handleRemove = async (product: cartProductData) => {
         if (!user) {
             const productRef = doc(
@@ -280,7 +286,9 @@ const Checkout = () => {
                 <h3 className="total">
                     ${(subTotal + shippingCost).toFixed(2)}
                 </h3>
-                <button className="placeorder">Place Order</button>
+                <button className="placeorder" onClick={handleOrderPlacement}>
+                    Place Order
+                </button>
             </div>
             <div className="recently-deleted">
                 <h4>Recently Deleted</h4>
@@ -327,6 +335,7 @@ const Checkout = () => {
                     </div>
                 ))}
             </div>
+            {orderPlaced ? <div className="order-confirmation"></div> : null}
         </div>
     );
 };
