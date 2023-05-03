@@ -89,14 +89,21 @@ const View: React.FC<CatalogProps> = ({ product }) => {
         }
     };
 
+    function isUrl(str: string): boolean {
+        const urlPattern =
+            /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?(\?[^\s]*)?$/;
+        return urlPattern.test(str);
+    }
+
+    const image = isUrl(product.image)
+        ? product.image
+        : process.env.PUBLIC_URL + product.image;
+
     return (
         <div className="catalog-view">
             <h1 className="name">{product.name}</h1>
             <div className="image-container">
-                <img
-                    src={process.env.PUBLIC_URL + product.image}
-                    alt={product.name}
-                />
+                <img src={image} alt={product.name} />
                 <div className="text-overlay">{product.description}</div>
             </div>
             {product.units_instock <= 0 ? (

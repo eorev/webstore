@@ -198,11 +198,18 @@ const Checkout = () => {
             }
         }
     };
+
+    function isUrl(str: string): boolean {
+        const urlPattern =
+            /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?(\?[^\s]*)?$/;
+        return urlPattern.test(str);
+    }
+
     return (
         <div className="checkout-container">
             <h1 className="cart-title">Cart</h1>
             <div className="cart-display-container">
-                <div>
+                <div className="products-container">
                     {products.map((product: cartProductData) => (
                         <div
                             key={product.name}
@@ -210,7 +217,12 @@ const Checkout = () => {
                         >
                             <div className="img-container">
                                 <img
-                                    src={process.env.PUBLIC_URL + product.image}
+                                    src={
+                                        isUrl(product.image)
+                                            ? product.image
+                                            : process.env.PUBLIC_URL +
+                                              product.image
+                                    }
                                     alt={product.name}
                                 />
                             </div>
@@ -220,8 +232,6 @@ const Checkout = () => {
                             <span className="price">${product.price}</span>
                             <span className="quantity">
                                 Quantity: {product.quantity}
-                            </span>
-                            <div className="buttons">
                                 <button
                                     onClick={() => increaseQuantity(product)}
                                     disabled={product.units_instock === 0}
@@ -233,6 +243,8 @@ const Checkout = () => {
                                 >
                                     -
                                 </button>
+                            </span>
+                            <div className="buttons">
                                 <button
                                     onClick={() => {
                                         handleRemove(product);

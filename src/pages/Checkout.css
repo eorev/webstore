@@ -58,6 +58,10 @@
     align-self: center;
 }
 
+.placeorder:hover {
+    background-color: rgba(0, 93, 192, 0.63);
+}
+
 .shipping-options {
     position: absolute;
     top: 120px;
@@ -98,6 +102,12 @@
     overflow-x: hidden;
 }
 
+.cart-display-container .products-container {
+    position: absolute;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
 .recently-deleted {
     position: absolute;
     top: 360px;
@@ -118,51 +128,67 @@
 }
 
 .checkout-container {
-  position: relative;
-  top: 200px;
-  left: 35%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 800px;
-  margin-bottom: 700px;
-  margin-top: 100px;
+    position: relative;
+    top: 200px;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 700px;
+    margin-top: 100px;
 }
 
 .cart-product-display {
     font-weight: bold;
-    margin-bottom: -30px;
+    margin-bottom: 70px;
+    align-items: center;
 }
 
 .cart-product-display .img-container {
-    position: relative;
+    position: absolute;
     width: 110px;
     height: 110px;
     border: 2px solid black;
+    left: 0;
 }
 .cart-product-display img {
-    position: relative;
-    width: 110px;
-    height: 110px;
+    width: 100%;
+    height: 100%;
 }
 
 .cart-product-display .quantity {
     position: relative;
     font-weight: 500;
     font-size: 13px;
-    top: -57px;
-    left: -23px;
+    top: 60px;
+    left: -25px;
+}
+
+.cart-product-display .quantity button {
+    position: relative;
+    border: 1px solid rgb(95, 95, 95);
+    background-color: rgba(0, 108, 209, 0.63);
+    height: 15px;
+    left: 10px;
+    align-items: center;
+    display: inline-flex;
+    color: white;
+}
+
+.cart-product-display .quantity button:hover {
+    border: 1px solid rgb(95, 95, 95);
+    background-color: rgba(0, 93, 192, 0.63);
 }
 
 .cart-product-display .price {
     position: relative;
-    top: -115px;
+    top: 47%;
     left: 200px;
 }
 
 .cart-product-display .name {
     position: relative;
-    left: 18.5%;
-    top: -115px;;
+    left: 47%;
 }
 
 .cart-product-display .instock {
@@ -170,14 +196,24 @@
     color: green;
     font-weight: 500;
     font-size: 13px;
-    top: -94px;
-    left: 42px;
+    top: 20px;
+    left: 40px;
 }
 
-.cart-product-display .buttons {
+.cart-product-display .buttons button {
     position: relative;
-    top: -55px;
-    left: 18%;
+    top: 60px;
+    left: 48%;
+    color: white;
+    height: 5px;
+    border: 1px solid rgb(95, 95, 95);
+    background-color: rgba(0, 108, 209, 0.63);
+    align-items: center;
+    display: inline-flex;
+}
+
+.cart-product-display .buttons button:hover {
+    background-color: rgba(0, 93, 192, 0.63);
 }
 
 .checkout-container .order-confirmation {
