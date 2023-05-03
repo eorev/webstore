@@ -7,6 +7,16 @@ import db from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import ProductData from "../interfaces/product";
 
+function isUrl(str: string): boolean {
+    const urlPattern =
+        /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?(\?[^\s]*)?$/;
+    return urlPattern.test(str);
+}
+
+function three_purchases(product: ProductData): boolean {
+    return product.times_purchased >= 3;
+}
+
 const HotProducts = () => {
     const [products, setProducts] = useState<ProductData[]>([]);
 
@@ -60,22 +70,29 @@ const HotProducts = () => {
                 <h1>🔥 Hot Products 🔥</h1>
                 <h2>Get them before they&apos;re gone!</h2>
                 <Slider {...settings}>
-                    {products.map((product) => (
-                        <div
-                            key={product.name}
-                            className="hotProducts__product"
-                        >
-                            <img
-                                src={process.env.PUBLIC_URL + product.image}
-                                alt={product.name}
-                            />
-                            <div className="hotProducts__productInfo">
-                                <h3>{product.name}</h3>
-                                <p>Price: ${product.price}</p>
-                                <p>Stock: {product.units_instock}</p>
+                    {products
+                        .filter((product) => product.times_purchased >= 3)
+                        .map((product) => (
+                            <div
+                                key={product.name}
+                                className="hotProducts__product"
+                            >
+                                <img
+                                    src={
+                                        isUrl(product.image)
+                                            ? product.image
+                                            : process.env.PUBLIC_URL +
+                                              product.image
+                                    }
+                                    alt={product.name}
+                                />
+                                <div className="hotProducts__productInfo">
+                                    <h3>{product.name}</h3>
+                                    <p>Price: ${product.price}</p>
+                                    <p>Stock: {product.units_instock}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </Slider>
             </div>
         </div>
