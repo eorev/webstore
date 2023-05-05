@@ -158,6 +158,7 @@ const Admin = () => {
             category: newProduct.category,
             admin_id: newProduct.admin_id, //id belonging to the admin who created the product
             price: newProduct.price,
+            times_purchased: 0,
             units_instock: newProduct.units_instock
         };
         await setDoc(docRef, payload);

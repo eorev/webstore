@@ -20,7 +20,9 @@ const HotProducts = () => {
         () =>
             onSnapshot(collection(db, "products"), (snapshot) =>
                 setProducts(
-                    snapshot.docs.map((doc) => doc.data() as ProductData)
+                    snapshot.docs
+                        .map((doc) => doc.data() as ProductData)
+                        .filter((product) => product.times_purchased >= 3)
                 )
             ),
         []
@@ -31,7 +33,7 @@ const HotProducts = () => {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: products.length < 3 ? products.length : 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
@@ -66,29 +68,26 @@ const HotProducts = () => {
                 <h1>🔥 Hot Products 🔥</h1>
                 <h2>Get them before they&apos;re gone!</h2>
                 <Slider {...settings}>
-                    {products
-                        .filter((product) => product.times_purchased >= 3)
-                        .map((product) => (
-                            <div
-                                key={product.name}
-                                className="hotProducts__product"
-                            >
-                                <img
-                                    src={
-                                        isUrl(product.image)
-                                            ? product.image
-                                            : process.env.PUBLIC_URL +
-                                              product.image
-                                    }
-                                    alt={product.name}
-                                />
-                                <div className="hotProducts__productInfo">
-                                    <h3>{product.name}</h3>
-                                    <p>Price: ${product.price}</p>
-                                    <p>Stock: {product.units_instock}</p>
-                                </div>
+                    {products.map((product) => (
+                        <div
+                            key={product.name}
+                            className="hotProducts__product"
+                        >
+                            <img
+                                src={
+                                    isUrl(product.image)
+                                        ? product.image
+                                        : process.env.PUBLIC_URL + product.image
+                                }
+                                alt={product.name}
+                            />
+                            <div className="hotProducts__productInfo">
+                                <h3>{product.name}</h3>
+                                <p>Price: ${product.price}</p>
+                                <p>Stock: {product.units_instock}</p>
                             </div>
-                        ))}
+                        </div>
+                    ))}
                 </Slider>
             </div>
         </div>
