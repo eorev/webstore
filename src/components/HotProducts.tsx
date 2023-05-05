@@ -13,10 +13,6 @@ function isUrl(str: string): boolean {
     return urlPattern.test(str);
 }
 
-function three_purchases(product: ProductData): boolean {
-    return product.times_purchased >= 3;
-}
-
 const HotProducts = () => {
     const [products, setProducts] = useState<ProductData[]>([]);
 
