@@ -31,7 +31,41 @@ const Checkout = () => {
     );
     const [selectedShipping, setSelectedShipping] = useState<string>("");
     const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+    const [paymentInfo, setPaymentInfo] = useState({
+        cardNumber: "",
+        nameOnCard: "",
+        cvv: "",
+        expiration: ""
+    });
+    const [tempPaymentInfo, setTempPaymentInfo] = useState({
+        cardNumber: "",
+        nameOnCard: "",
+        cvv: "",
+        expiration: ""
+    });
+    const [tempShippingAddress, setTempShippingAddress] = useState({
+        name: "",
+        number: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: 0
+    });
+    const [shippingAddress, setShippingAddress] = useState({
+        name: "",
+        number: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: 0
+    });
+    const [hasShippingAddress, setHasShippingAddress] =
+        useState<boolean>(false);
+    const [hasPaymentInfo, setHasPaymentInfo] = useState<boolean>(false);
+    const [showShippingForm, setShowShippingForm] = useState<boolean>(false);
+    const [showPaymentForm, setShowPaymentForm] = useState<boolean>(false);
     const uid = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+
     useEffect(() => {
         if (!user) {
             const unsub = onSnapshot(
@@ -78,6 +112,20 @@ const Checkout = () => {
     const handleOrderPlacement = () => {
         console.log("order placed");
         setOrderPlaced(true);
+    };
+
+    const handleShippingInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const { name, value } = event.target;
+        setTempShippingAddress({ ...tempShippingAddress, [name]: value });
+    };
+
+    const handlePaymentInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const { name, value } = event.target;
+        setTempPaymentInfo({ ...tempPaymentInfo, [name]: value });
     };
 
     const handleRemove = async (product: cartProductData) => {
@@ -320,10 +368,70 @@ const Checkout = () => {
                 <h3 className="total">
                     ${(subTotal + shippingCost).toFixed(2)}
                 </h3>
+                <br></br>
+                <div className="shipping-info">
+                    <h4>Shipping Address</h4>
+                    {hasShippingAddress ? (
+                        <>
+                            <span>
+                                {shippingAddress?.name} |{" "}
+                                {shippingAddress?.address},{" "}
+                                {shippingAddress?.city},{" "}
+                                {shippingAddress?.state} {shippingAddress?.zip}
+                            </span>
+                            <button
+                                onClick={() => {
+                                    setShowShippingForm(true);
+                                }}
+                            >
+                                Edit
+                            </button>
+                        </>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                setShowShippingForm(true);
+                            }}
+                        >
+                            Add
+                        </button>
+                    )}
+                </div>
+                <div className="payment-info">
+                    <h4>Payment Method</h4>
+                    {hasPaymentInfo ? (
+                        <>
+                            <span>
+                                {paymentInfo?.nameOnCard}{" "}
+                                {paymentInfo?.cardNumber},{" "}
+                                {paymentInfo?.expiration}
+                            </span>
+                            <button
+                                onClick={() => {
+                                    setShowPaymentForm(!showPaymentForm);
+                                }}
+                            >
+                                Edit
+                            </button>
+                        </>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                setShowPaymentForm(!showPaymentForm);
+                            }}
+                        >
+                            Add
+                        </button>
+                    )}
+                </div>
                 <button
                     className="placeorder"
                     onClick={handleOrderPlacement}
-                    disabled={selectedShipping === ""}
+                    disabled={
+                        selectedShipping === "" ||
+                        !hasPaymentInfo ||
+                        !hasShippingAddress
+                    }
                 >
                     Place Order
                 </button>
@@ -378,6 +486,132 @@ const Checkout = () => {
                     <h1 className="title">Order Confirmation</h1>
                 </div>
             ) : null}
+            {showShippingForm && (
+                <div className="checkout-form-container">
+                    <button onClick={() => setShowShippingForm(false)}>
+                        X
+                    </button>
+                    {
+                        <form>
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder={shippingAddress.name}
+                                onChange={handleShippingInputChange}
+                            />
+                            <label>Number</label>
+                            <input
+                                type="text"
+                                name="number"
+                                placeholder={shippingAddress.number}
+                                onChange={handleShippingInputChange}
+                            />
+                            <label>Address</label>
+                            <input
+                                type="text"
+                                name="address"
+                                placeholder={shippingAddress.address}
+                                onChange={handleShippingInputChange}
+                            />
+                            <label>City</label>
+                            <input
+                                type="text"
+                                name="city"
+                                placeholder={shippingAddress.city}
+                                onChange={handleShippingInputChange}
+                            />
+                            <label>State</label>
+                            <input
+                                type="string"
+                                name="state"
+                                placeholder={shippingAddress.state}
+                                onChange={handleShippingInputChange}
+                            />
+                            <label>Zip Code</label>
+                            <input
+                                type="number"
+                                name="zip"
+                                placeholder={
+                                    shippingAddress.zip === 0
+                                        ? ""
+                                        : shippingAddress.zip.toString()
+                                }
+                                onChange={handleShippingInputChange}
+                            />
+                            <button
+                                type="submit"
+                                className="catalog-button"
+                                style={{
+                                    backgroundColor: "green",
+                                    position: "absolute",
+                                    bottom: -12
+                                }}
+                                onClick={() => {
+                                    setShippingAddress(tempShippingAddress);
+                                    setHasShippingAddress(true);
+                                    setShowShippingForm(false);
+                                }}
+                            >
+                                Save
+                            </button>
+                        </form>
+                    }
+                </div>
+            )}
+            {showPaymentForm && (
+                <div className="checkout-form-container">
+                    <button onClick={() => setShowPaymentForm(false)}>X</button>
+                    {
+                        <form>
+                            <label>Card Number</label>
+                            <input
+                                type="text"
+                                name="cardNumber"
+                                placeholder={paymentInfo.cardNumber}
+                                onChange={handlePaymentInputChange}
+                            />
+                            <label>Name on card</label>
+                            <input
+                                type="text"
+                                name="nameOnCard"
+                                placeholder={paymentInfo.nameOnCard}
+                                onChange={handlePaymentInputChange}
+                            />
+                            <label>cvv</label>
+                            <input
+                                type="number"
+                                name="cvv"
+                                placeholder={paymentInfo.cvv}
+                                onChange={handlePaymentInputChange}
+                            />
+                            <label>Expiration</label>
+                            <input
+                                type="text"
+                                name="expiration"
+                                placeholder={paymentInfo.expiration}
+                                onChange={handlePaymentInputChange}
+                            />
+                            <button
+                                type="submit"
+                                className="catalog-button"
+                                style={{
+                                    backgroundColor: "green",
+                                    position: "absolute",
+                                    bottom: -12
+                                }}
+                                onClick={() => {
+                                    setPaymentInfo(tempPaymentInfo);
+                                    setHasPaymentInfo(true);
+                                    setShowShippingForm(false);
+                                }}
+                            >
+                                Save
+                            </button>
+                        </form>
+                    }
+                </div>
+            )}
         </div>
     );
 };

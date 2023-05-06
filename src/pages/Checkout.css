@@ -73,13 +73,13 @@
 
 .total-title {
     position: absolute;
-    top: 240px;
+    top: 200px;
     left: 20px;
 }
 
 .total {
     position: absolute;
-    top: 240px;
+    top: 200px;
     left: 195px;
 }
 
@@ -236,4 +236,23 @@
     position: absolute;
     top: -300px;
     left: 120px;
+}
+
+.checkout-summary-container .shipping-info {
+    margin-top: 80px;
+}
+
+.checkout-summary-container .payment-info {
+    margin-top: 10px;
+}
+
+.checkout-container .checkout-form-container {
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    z-index: 10;
+    border: 2px solid black;
+    top: -100px;
+    left: 450px;
 }
