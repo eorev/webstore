@@ -54,16 +54,16 @@ All files         |       0 |        0 |       0 |       0 |
   user.ts         |       0 |        0 |       0 |       0 |                   
  src/pages        |       0 |        0 |       0 |       0 |                   
   AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5               
-  Account.tsx     |       0 |        0 |       0 |       0 | 20-135            
+  Account.tsx     |       0 |      100 |       0 |       0 | 9-12              
   Admin.tsx       |       0 |        0 |       0 |       0 | 24-421            
-  Checkout.tsx    |       0 |        0 |       0 |       0 | 22-368            
+  Checkout.tsx    |       0 |        0 |       0 |       0 | 22-606            
   Home.tsx        |       0 |      100 |       0 |       0 | 6-7               
   Products.tsx    |       0 |      100 |       0 |       0 | 5-6               
-  Signin.tsx      |       0 |        0 |       0 |       0 | 16-175            
-  Signup.tsx      |       0 |        0 |       0 |       0 | 16-155            
+  Signin.tsx      |       0 |        0 |       0 |       0 | 16-173            
+  Signup.tsx      |       0 |        0 |       0 |       0 | 16-153            
 ------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        5.677 s
+Time:        3.956 s
 Ran all test suites.
