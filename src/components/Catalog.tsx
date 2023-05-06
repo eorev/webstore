@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { User } from "firebase/auth";
 import { UserAuth } from "../context/AuthContext";
+import { v4 as uuidv4 } from "uuid";
 
 interface CatalogProps {
     product: ProductData;
@@ -23,27 +24,52 @@ interface AuthContextType {
     user: User;
 }
 
+const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+
 const View: React.FC<CatalogProps> = ({ product }) => {
     const productRef = doc(db, "products", product.name);
     const { user } = UserAuth() as AuthContextType;
-    const [cart, setCart] = useState<ProductData[]>([]);
-    window.sessionStorage.setItem("cart", JSON.stringify(cart));
 
     const handleAddToCart = async () => {
         await updateDoc(productRef, {
             units_instock: product.units_instock - 1,
             times_purchased: product.times_purchased + 1
         });
-        if (!user) {
-            console.log("unauthenticated user");
-            const cartString = window.sessionStorage.getItem("cart");
-            const [cartRef, setCartRef] = useState<ProductData[]>([]);
-            setCart([...cart]);
-            if (cartString != null) {
-                setCartRef(JSON.parse(cartString));
+        const userId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+        if (!userId) {
+            let nonAuthUserId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+            if (!nonAuthUserId) {
+                nonAuthUserId = uuidv4();
+                localStorage.setItem(NON_AUTH_USER_ID_KEY, nonAuthUserId);
             }
-            setCart([...cartRef, product]);
-            console.log(cart);
+            console.log(localStorage.getItem(NON_AUTH_USER_ID_KEY));
+        }
+        if (!user) {
+            const newProductRef = doc(
+                collection(db, "carts", "temp" + userId, "products"),
+                product.name
+            );
+            const productSnapshot = await getDoc(newProductRef);
+            if (productSnapshot.exists()) {
+                await updateDoc(newProductRef, {
+                    quantity: increment(1),
+                    units_instock: increment(-1)
+                });
+                console.log("increased quantity");
+            } else {
+                await setDoc(newProductRef, {
+                    name: product.name,
+                    description: product.description,
+                    id: product.id,
+                    image: product.image,
+                    rating: product.rating, //rating from 1 to 5
+                    category: product.category,
+                    admin_id: product.admin_id, //id belonging to the admin who created the product
+                    price: product.price,
+                    units_instock: product.units_instock - 1,
+                    quantity: 1
+                });
+            }
         }
         if (user) {
             const newProductRef = doc(

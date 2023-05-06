@@ -18,12 +18,15 @@ import {
     collection,
     deleteDoc,
     doc,
+    getDoc,
     getDocs,
     query,
+    setDoc,
     where
 } from "firebase/firestore";
 import db from "./firebase";
 import Contact from "./components/Contact";
+import { v4 as uuidv4 } from "uuid";
 
 async function clearTempCart() {
     const cartDocRef = doc(db, "carts", "temp");
@@ -35,9 +38,78 @@ async function clearTempCart() {
     });
 }
 
+const handleNewUser = async (uid: string) => {
+    const cartDocRef = doc(db, "carts", "temp" + uid);
+    const orderbinDocRef = doc(db, "orderbins", "temp" + uid);
+    const subcartcollectionRef = collection(cartDocRef, "products");
+    const suborderbincollectionRef = collection(orderbinDocRef, "orders");
+
+    try {
+        const cartDocSnap = await getDoc(cartDocRef);
+        const orderbinDocSnap = await getDoc(orderbinDocRef);
+        const subcartollectionSnap = await getDocs(subcartcollectionRef);
+        const suborderbincollectionSnap = await getDocs(
+            suborderbincollectionRef
+        );
+
+        if (cartDocSnap.exists()) {
+            console.log("cart for user already exists");
+        } else {
+            if (subcartollectionSnap.empty) {
+                const nullDocRef = doc(
+                    db,
+                    "carts",
+                    "temp" + uid,
+                    "products",
+                    "null"
+                );
+                await setDoc(nullDocRef, {
+                    name: "null"
+                });
+
+                await setDoc(cartDocRef, { cost: 0 });
+            }
+            console.log("added doc");
+        }
+        if (orderbinDocSnap.exists()) {
+            console.log("orderbin for user already exists");
+        } else {
+            if (suborderbincollectionSnap.empty) {
+                const nullDocRef = doc(
+                    db,
+                    "orderbins",
+                    "temp" + uid,
+                    "orders",
+                    "null"
+                );
+                await setDoc(nullDocRef, {
+                    name: "null"
+                });
+
+                await setDoc(orderbinDocRef, {
+                    totalspent: 0,
+                    lastAccessed: new Date().toLocaleDateString("en-US")
+                });
+            }
+            console.log("added doc");
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+
 function App() {
     useEffect(() => {
         clearTempCart();
+        let nonAuthUserId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+        if (!nonAuthUserId) {
+            nonAuthUserId = uuidv4();
+            localStorage.setItem(NON_AUTH_USER_ID_KEY, nonAuthUserId);
+        }
+        console.log(localStorage.getItem(NON_AUTH_USER_ID_KEY));
+        handleNewUser(nonAuthUserId);
     }, []);
 
     return (

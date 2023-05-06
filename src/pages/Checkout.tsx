@@ -19,6 +19,8 @@ interface AuthContextType {
     user: User;
 }
 
+const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+
 const Checkout = () => {
     const { user } = UserAuth() as AuthContextType;
     const [products, setProducts] = useState<cartProductData[]>([]);
@@ -29,7 +31,27 @@ const Checkout = () => {
     );
     const [selectedShipping, setSelectedShipping] = useState<string>("");
     const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+    const uid = localStorage.getItem(NON_AUTH_USER_ID_KEY);
     useEffect(() => {
+        if (!user) {
+            const unsub = onSnapshot(
+                collection(db, "carts", "temp" + uid, "products"),
+                (snapshot) => {
+                    const cartProducts = snapshot.docs
+                        .map((doc) => doc.data() as cartProductData)
+                        .filter((product) => product.name != "null");
+                    setProducts(cartProducts);
+                    const totalCost = cartProducts.reduce(
+                        (accumulator, product) =>
+                            accumulator + product.price * product.quantity,
+                        0
+                    );
+                    setSubTotal(totalCost);
+                    console.log(totalCost);
+                }
+            );
+            return () => unsub();
+        }
         if (user) {
             const unsub = onSnapshot(
                 collection(db, "carts", user.uid, "products"),
@@ -61,7 +83,7 @@ const Checkout = () => {
     const handleRemove = async (product: cartProductData) => {
         if (!user) {
             const productRef = doc(
-                collection(db, "carts", "temp", "products"),
+                collection(db, "carts", "temp" + uid, "products"),
                 product.name
             );
             setRemovedProducts([...removedProducts, product]);
@@ -81,7 +103,7 @@ const Checkout = () => {
         if (!user) {
             console.log("adding to temp cart for non user");
             const newProductRef = doc(
-                collection(db, "carts", "temp", "products"),
+                collection(db, "carts", "temp" + uid, "products"),
                 product.name
             );
             const productSnapshot = await getDoc(newProductRef);
@@ -141,7 +163,7 @@ const Checkout = () => {
     const increaseQuantity = async (product: cartProductData) => {
         if (!user) {
             const productRef = doc(
-                collection(db, "carts", "temp", "products"),
+                collection(db, "carts", "temp" + uid, "products"),
                 product.name
             );
             await updateDoc(productRef, {
@@ -164,7 +186,7 @@ const Checkout = () => {
     const decreaseQuantity = async (product: cartProductData) => {
         if (!user) {
             const productRef = doc(
-                collection(db, "carts", "temp", "products"),
+                collection(db, "carts", "temp" + uid, "products"),
                 product.name
             );
             await updateDoc(productRef, {
