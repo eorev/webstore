@@ -52,7 +52,6 @@ const Signin = () => {
                     console.log("cart for user already exists");
                 } else {
                     if (subcartollectionSnap.empty) {
-                        // Create subcollection if it doesn't exist
                         //await addDoc(subcartcollectionRef, {});
                         const nullDocRef = doc(
                             db,
@@ -62,7 +61,7 @@ const Signin = () => {
                             "null"
                         );
                         await setDoc(nullDocRef, {
-                            name: "null" /* your document data */
+                            name: "null"
                         });
 
                         await setDoc(cartDocRef, { cost: 0 });
@@ -73,7 +72,6 @@ const Signin = () => {
                     console.log("orderbin for user already exists");
                 } else {
                     if (suborderbincollectionSnap.empty) {
-                        // Create subcollection if it doesn't exist
                         //await addDoc(subcartcollectionRef, {});
                         const nullDocRef = doc(
                             db,
