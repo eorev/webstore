@@ -14,7 +14,7 @@
 }
 
 .catalog-view h1.name {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -46,7 +46,7 @@
     flex-direction: column;
     color: #fff;
     text-align: center;
-    font-size: 15px;
+    font-size: 11px;
     background-color: rgba(0, 0, 0, 0.582);
     border-radius: 5px;
 }
