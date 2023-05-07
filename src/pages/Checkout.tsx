@@ -603,7 +603,7 @@ const Checkout = () => {
                                 onClick={() => {
                                     setPaymentInfo(tempPaymentInfo);
                                     setHasPaymentInfo(true);
-                                    setShowShippingForm(false);
+                                    setShowPaymentForm(false);
                                 }}
                             >
                                 Save
