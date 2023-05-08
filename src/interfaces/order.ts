@@ -1,7 +1,7 @@
 import { product } from "./product";
 
 export interface order {
-    id: number;
+    id: string;
     customer_id: string;
     date: string;
     mailing_address: string;

@@ -216,20 +216,45 @@
     background-color: rgba(0, 93, 192, 0.63);
 }
 
-.checkout-container .order-confirmation {
-    position: fixed;
-    width: 700px;
-    height: 500px;
-    background-color: white;
-    z-index: 10;
-    border: 2px solid black;
-    top: -150px;
-    left: 250px;
+.underlay .order-confirmation {
+  position: fixed;
+  width: 550px;
+  height: 550px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.checkout-container .order-confirmation .title {
+.underlay .order-confirmation img {
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.underlay .order-confirmation .title {
     position: relative;
     color: green;
+    text-align: center;
+}
+
+.underlay .order-confirmation .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.underlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; /* make sure the underlay is behind the order-confirmation div */
 }
 
 .checkout-container .cart-title {
