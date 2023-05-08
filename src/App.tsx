@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./components/Catalog.css";
 import { Route, Routes } from "react-router-dom";
@@ -27,6 +27,7 @@ import {
 import db from "./firebase";
 import Contact from "./components/Contact";
 import { v4 as uuidv4 } from "uuid";
+import Promotion from "./components/Promotion";
 
 async function clearTempCart() {
     const cartDocRef = doc(db, "carts", "temp");
@@ -101,6 +102,7 @@ const handleNewUser = async (uid: string) => {
 const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
 
 function App() {
+    const [showPromotion, setShowPromotion] = useState<boolean>(false);
     useEffect(() => {
         clearTempCart();
         let nonAuthUserId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
@@ -110,6 +112,12 @@ function App() {
         }
         console.log(localStorage.getItem(NON_AUTH_USER_ID_KEY));
         handleNewUser(nonAuthUserId);
+
+        const hasShownPromotion = localStorage.getItem("hasShownPromotion");
+        if (!showPromotion && !hasShownPromotion) {
+            setShowPromotion(true);
+            localStorage.setItem("hasShownPromotion", "true");
+        }
     }, []);
 
     return (
@@ -146,6 +154,12 @@ function App() {
                 </Routes>
                 <Contact></Contact>
                 <Footer></Footer>
+                {showPromotion ? (
+                    <Promotion
+                        open={showPromotion}
+                        onClose={() => setShowPromotion(false)}
+                    />
+                ) : null}
             </div>{" "}
         </AuthContextProvider>
     );

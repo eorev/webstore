@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import ProductData from "../interfaces/product";
+import OrderData from "../interfaces/order";
 import db from "../firebase";
 import {
     collection,
@@ -42,8 +43,10 @@ const Admin = () => {
         units_instock: 0,
         times_purchased: 0
     });
-    const [orderbins, setOrderbins] = useState<string[]>([]);
+    const [binIds, setBinIds] = useState<string[]>([]);
     const [selectedOrderBin, setSelectedOrderBin] = useState<string>("");
+    const [selectedOrder, setSelectedOrder] = useState<OrderData | null>(null);
+    const [binOrderIds, setBinOrderIds] = useState<string[]>([]);
     const [orderIds, setOrderIds] = useState<string[]>([]);
     const [addAdminID, setAddAdminID] = useState<string>("");
     const [removeAdminID, setRemoveAdminID] = useState<string>("");
@@ -63,11 +66,25 @@ const Admin = () => {
             getDocs(ordersRef)
                 .then((querySnapshot) => {
                     const docIds = querySnapshot.docs.map((doc) => doc.id);
-                    setOrderIds(docIds);
+                    setBinOrderIds(docIds);
                 })
                 .catch((error) => {
                     console.log("Error getting documents: ", error);
                 });
+        }
+    };
+    const handleOrderChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        console.log(event.target.value);
+        if (
+            event.target.value == "Select an Order" ||
+            event.target.value == ""
+        ) {
+            setSelectedOrder(null);
+        } else {
+            const orderDoc = doc(collection(db, "orders"), event.target.value);
+            setSelectedOrder((await getDoc(orderDoc)).data() as OrderData);
         }
     };
 
@@ -87,7 +104,17 @@ const Admin = () => {
                 snapshot.docs.forEach((doc) => {
                     newShowUserOrders[doc.id] = false;
                 });
-                setOrderbins(snapshot.docs.map((doc) => doc.id));
+                setBinIds(snapshot.docs.map((doc) => doc.id));
+            }
+        );
+        const unsubOrderIds = onSnapshot(
+            collection(db, "orders"),
+            (snapshot) => {
+                const newShowOrder: Record<string, boolean> = {};
+                snapshot.docs.forEach((doc) => {
+                    newShowOrder[doc.id] = false;
+                });
+                setOrderIds(snapshot.docs.map((doc) => doc.id));
             }
         );
         const unsubAdminIDs = onSnapshot(doc(db, "ids", "adminIDs"), (doc) => {
@@ -103,6 +130,7 @@ const Admin = () => {
             unsubProducts();
             unsubOrderbins();
             unsubAdminIDs();
+            unsubOrderIds();
         };
     }, [user.uid]);
 
@@ -147,16 +175,16 @@ const Admin = () => {
     const handleNewProduct = async (
         event: React.FormEvent<HTMLFormElement>
     ) => {
-        event.preventDefault(); // prevent default form submission behavior
+        event.preventDefault();
         const docRef = doc(db, "products", newProduct.name);
         const payload = {
             name: newProduct.name,
             description: newProduct.description,
             id: newProduct.id,
             image: newProduct.image,
-            rating: newProduct.rating, //rating from 1 to 5
+            rating: newProduct.rating,
             category: newProduct.category,
-            admin_id: newProduct.admin_id, //id belonging to the admin who created the product
+            admin_id: newProduct.admin_id,
             price: newProduct.price,
             times_purchased: 0,
             units_instock: newProduct.units_instock
@@ -167,8 +195,7 @@ const Admin = () => {
     const handleRemoveProduct = async () => {
         const form = document.querySelector("form");
         form?.addEventListener("submit", function (e) {
-            e.preventDefault(); // prevent default form submission behavior
-            // your form submission logic here
+            e.preventDefault();
         });
         const docRef = doc(db, "products", removeProduct);
         await deleteDoc(docRef);
@@ -207,13 +234,9 @@ const Admin = () => {
         } else console.log("invalid action");
     };
 
-    const cancelOrder = async (orderID: string) => {
-        console.log(`Cancelling Order# ${orderID}`);
-    };
-
     return (
         <div className="products-container">
-            <div className="products">
+            <div className="products_view">
                 <h1>Products</h1>
                 <ul>
                     {products.map((product: ProductData) => (
@@ -269,7 +292,7 @@ const Admin = () => {
                 <p>Orders</p>
                 <select onChange={handleOrderbinChange}>
                     <option value="">Select a User</option>
-                    {orderbins.map((orderbin) => (
+                    {binIds.map((orderbin) => (
                         <option key={orderbin} value={orderbin}>
                             {orderbin}
                         </option>
@@ -277,14 +300,23 @@ const Admin = () => {
                 </select>
                 {selectedOrderBin != "" && selectedOrderBin != "Select a User" && (
                     <ul>
-                        {orderIds.map((orderId) => {
+                        {binOrderIds.map((orderId) => {
                             if (orderId !== "null") {
                                 return (
                                     <li key={orderId}>
                                         {orderId}{" "}
                                         <button
                                             onClick={() => {
-                                                cancelOrder(orderId);
+                                                const orderDocRef = doc(
+                                                    collection(
+                                                        db,
+                                                        "orderbins",
+                                                        selectedOrderBin,
+                                                        "orders"
+                                                    ),
+                                                    orderId
+                                                );
+                                                deleteDoc(orderDocRef);
                                             }}
                                         >
                                             Cancel
@@ -330,7 +362,89 @@ const Admin = () => {
                     </form>
                 </div>
                 <div>_________________________</div>
-                <div>_________________________</div>
+                <div>
+                    <p>Pending Orders</p>
+                    <select onChange={handleOrderChange}>
+                        <option value="">Select an Order</option>
+                        {orderIds
+                            .filter((orderbin) => orderbin !== "null")
+                            .map((orderbin) => (
+                                <option key={orderbin} value={orderbin}>
+                                    {orderbin}
+                                </option>
+                            ))}
+                    </select>
+                    <br></br>
+                    {selectedOrder != null ? (
+                        <div>
+                            <span>
+                                User Name:{" "}
+                                {JSON.parse(selectedOrder.mailing_address).name}
+                                <br />
+                            </span>
+                            <span>
+                                User ID: {selectedOrder.userid}
+                                <br />
+                            </span>
+                            <span>
+                                Order ID: {selectedOrder.id} <br />
+                            </span>
+                            <span>
+                                Mailing Address:
+                                {
+                                    JSON.parse(selectedOrder.mailing_address)
+                                        .address
+                                }
+                                <br />
+                            </span>
+                            <span>
+                                Card Number:{" "}
+                                {"**** **** **** " +
+                                    JSON.parse(
+                                        selectedOrder.payment_info
+                                    ).cardNumber.substr(-4)}
+                            </span>
+                            <br></br>
+                            <button
+                                onClick={() => {
+                                    const userDocRef = doc(
+                                        collection(db, "orderbins"),
+                                        selectedOrder.userid.toString()
+                                    );
+                                    const ordersCollectionRef = collection(
+                                        userDocRef,
+                                        "orders"
+                                    );
+                                    const newOrderDocRef = doc(
+                                        ordersCollectionRef,
+                                        selectedOrder.id.toString()
+                                    );
+                                    setDoc(newOrderDocRef, selectedOrder);
+                                    const orderDocRef = doc(
+                                        collection(db, "orders"),
+                                        selectedOrder.id.toString()
+                                    );
+                                    deleteDoc(orderDocRef);
+                                    setSelectedOrder(null);
+                                }}
+                            >
+                                Confirm
+                            </button>
+                            <button
+                                onClick={() => {
+                                    const orderDoc = doc(
+                                        collection(db, "orders"),
+                                        selectedOrder.id.toString()
+                                    );
+                                    deleteDoc(orderDoc);
+                                    setSelectedOrder(null);
+                                }}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    ) : null}
+                </div>
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">
