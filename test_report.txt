@@ -33,7 +33,7 @@ File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ------------------|---------|----------|---------|---------|-------------------
 All files         |       0 |        0 |       0 |       0 |                   
  src              |       0 |        0 |       0 |       0 |                   
-  App.tsx         |       0 |        0 |       0 |       0 | 32-120            
+  App.tsx         |       0 |        0 |       0 |       0 | 33-160            
   firebase.tsx    |       0 |      100 |       0 |       0 | 13-47             
  src/components   |       0 |        0 |       0 |       0 |                   
   Catalog.tsx     |       0 |        0 |       0 |       0 | 27-155            
@@ -43,6 +43,7 @@ All files         |       0 |        0 |       0 |       0 |
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
   HotProducts.tsx |       0 |        0 |       0 |       0 | 12-72             
   Navbar.tsx      |       0 |        0 |       0 |       0 | 18-33             
+  Promotion.tsx   |       0 |        0 |       0 |       0 | 9-28              
   Protected.tsx   |       0 |        0 |       0 |       0 | 14-19             
  src/context      |       0 |      100 |       0 |       0 |                   
   AuthContext.tsx |       0 |      100 |       0 |       0 | 15-41             
@@ -55,8 +56,8 @@ All files         |       0 |        0 |       0 |       0 |
  src/pages        |       0 |        0 |       0 |       0 |                   
   AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5               
   Account.tsx     |       0 |      100 |       0 |       0 | 9-12              
-  Admin.tsx       |       0 |        0 |       0 |       0 | 24-421            
-  Checkout.tsx    |       0 |        0 |       0 |       0 | 22-606            
+  Admin.tsx       |       0 |        0 |       0 |       0 | 25-535            
+  Checkout.tsx    |       0 |        0 |       0 |       0 | 26-745            
   Home.tsx        |       0 |      100 |       0 |       0 | 6-7               
   Products.tsx    |       0 |      100 |       0 |       0 | 5-6               
   Signin.tsx      |       0 |        0 |       0 |       0 | 16-173            
@@ -65,5 +66,5 @@ All files         |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        5.443 s
+Time:        4.307 s
 Ran all test suites.
