@@ -128,11 +128,11 @@ const Checkout = () => {
         } else {
             setTotal(subTotal + shippingCost);
         }
-        confirmationNumber =
-            Math.floor(Math.random() * (99999999 - 13748917 + 1)) + 13748917;
     }, [subTotal, shippingCost, promoCodes, promoCode]);
 
     const handleOrderPlacement = async () => {
+        confirmationNumber =
+            Math.floor(Math.random() * (99999999 - 13748917 + 1)) + 13748917;
         setOrderPlaced(true);
         if (!user) {
             const cartDocRef = doc(
@@ -149,6 +149,17 @@ const Checkout = () => {
             querySnapshot.forEach((doc) => {
                 deleteDoc(doc.ref);
             });
+            const docRef = doc(db, "orders", confirmationNumber.toString());
+            const payload = {
+                id: confirmationNumber,
+                userid: "temp" + uid,
+                date: new Date().toLocaleDateString("en-US"),
+                mailing_address: JSON.stringify(shippingAddress),
+                payment_info: JSON.stringify(paymentInfo),
+                products: products,
+                cost: total
+            };
+            await setDoc(docRef, payload);
         }
         if (user) {
             const cartDocRef = doc(db, "carts", user.uid);
@@ -161,6 +172,17 @@ const Checkout = () => {
             querySnapshot.forEach((doc) => {
                 deleteDoc(doc.ref);
             });
+            const docRef = doc(db, "orders", confirmationNumber.toString());
+            const payload = {
+                id: confirmationNumber,
+                userid: user.uid,
+                date: new Date().toLocaleDateString("en-US"),
+                mailing_address: JSON.stringify(shippingAddress),
+                payment_info: JSON.stringify(paymentInfo),
+                products: products,
+                cost: total
+            };
+            await setDoc(docRef, payload);
         }
     };
 

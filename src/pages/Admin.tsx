@@ -42,8 +42,10 @@ const Admin = () => {
         units_instock: 0,
         times_purchased: 0
     });
-    const [orderbins, setOrderbins] = useState<string[]>([]);
+    const [binIds, setBinIds] = useState<string[]>([]);
     const [selectedOrderBin, setSelectedOrderBin] = useState<string>("");
+    const [selectedOrder, setSelectedOrder] = useState<string>("");
+    const [binOrderIds, setBinOrderIds] = useState<string[]>([]);
     const [orderIds, setOrderIds] = useState<string[]>([]);
     const [addAdminID, setAddAdminID] = useState<string>("");
     const [removeAdminID, setRemoveAdminID] = useState<string>("");
@@ -60,6 +62,25 @@ const Admin = () => {
                 event.target.value,
                 "orders"
             );
+            getDocs(ordersRef)
+                .then((querySnapshot) => {
+                    const docIds = querySnapshot.docs.map((doc) => doc.id);
+                    setBinOrderIds(docIds);
+                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+        }
+    };
+    const handleOrderChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setSelectedOrder(event.target.value);
+        if (
+            event.target.value != "" &&
+            event.target.value != "Select an Order"
+        ) {
+            const ordersRef = collection(db, "orders", event.target.value);
             getDocs(ordersRef)
                 .then((querySnapshot) => {
                     const docIds = querySnapshot.docs.map((doc) => doc.id);
@@ -87,7 +108,17 @@ const Admin = () => {
                 snapshot.docs.forEach((doc) => {
                     newShowUserOrders[doc.id] = false;
                 });
-                setOrderbins(snapshot.docs.map((doc) => doc.id));
+                setBinIds(snapshot.docs.map((doc) => doc.id));
+            }
+        );
+        const unsubOrderIds = onSnapshot(
+            collection(db, "orders"),
+            (snapshot) => {
+                const newShowOrder: Record<string, boolean> = {};
+                snapshot.docs.forEach((doc) => {
+                    newShowOrder[doc.id] = false;
+                });
+                setOrderIds(snapshot.docs.map((doc) => doc.id));
             }
         );
         const unsubAdminIDs = onSnapshot(doc(db, "ids", "adminIDs"), (doc) => {
@@ -103,6 +134,7 @@ const Admin = () => {
             unsubProducts();
             unsubOrderbins();
             unsubAdminIDs();
+            unsubOrderIds();
         };
     }, [user.uid]);
 
@@ -147,16 +179,16 @@ const Admin = () => {
     const handleNewProduct = async (
         event: React.FormEvent<HTMLFormElement>
     ) => {
-        event.preventDefault(); // prevent default form submission behavior
+        event.preventDefault();
         const docRef = doc(db, "products", newProduct.name);
         const payload = {
             name: newProduct.name,
             description: newProduct.description,
             id: newProduct.id,
             image: newProduct.image,
-            rating: newProduct.rating, //rating from 1 to 5
+            rating: newProduct.rating,
             category: newProduct.category,
-            admin_id: newProduct.admin_id, //id belonging to the admin who created the product
+            admin_id: newProduct.admin_id,
             price: newProduct.price,
             times_purchased: 0,
             units_instock: newProduct.units_instock
@@ -167,8 +199,7 @@ const Admin = () => {
     const handleRemoveProduct = async () => {
         const form = document.querySelector("form");
         form?.addEventListener("submit", function (e) {
-            e.preventDefault(); // prevent default form submission behavior
-            // your form submission logic here
+            e.preventDefault();
         });
         const docRef = doc(db, "products", removeProduct);
         await deleteDoc(docRef);
@@ -213,7 +244,7 @@ const Admin = () => {
 
     return (
         <div className="products-container">
-            <div className="products">
+            <div className="products_view">
                 <h1>Products</h1>
                 <ul>
                     {products.map((product: ProductData) => (
@@ -269,7 +300,7 @@ const Admin = () => {
                 <p>Orders</p>
                 <select onChange={handleOrderbinChange}>
                     <option value="">Select a User</option>
-                    {orderbins.map((orderbin) => (
+                    {binIds.map((orderbin) => (
                         <option key={orderbin} value={orderbin}>
                             {orderbin}
                         </option>
@@ -277,7 +308,7 @@ const Admin = () => {
                 </select>
                 {selectedOrderBin != "" && selectedOrderBin != "Select a User" && (
                     <ul>
-                        {orderIds.map((orderId) => {
+                        {binOrderIds.map((orderId) => {
                             if (orderId !== "null") {
                                 return (
                                     <li key={orderId}>
@@ -330,7 +361,22 @@ const Admin = () => {
                     </form>
                 </div>
                 <div>_________________________</div>
-                <div>_________________________</div>
+                <div>
+                    <p>Pending Orders</p>
+                    <select onChange={handleOrderChange}>
+                        <option value="">Select an Order</option>
+                        {orderIds
+                            .filter((orderbin) => orderbin !== "null")
+                            .map((orderbin) => (
+                                <option key={orderbin} value={orderbin}>
+                                    {orderbin}
+                                </option>
+                            ))}
+                    </select>
+                    <br></br>
+                    <button>Confirm</button>
+                    <button>Cancel</button>
+                </div>
             </div>
             {showAddForm && (
                 <div className="catalog-add-remove-product-container">

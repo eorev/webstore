@@ -7,10 +7,12 @@
     margin: auto;
 }
 
-.products {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.products_view {
+    max-width: 1500px;
+}
+
+.products_view h1 {
+    text-align: center;
 }
 
 li {
