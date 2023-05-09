@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 50%;
+    height: 600px;
+    top: 200px;
+    right: 24%;
+    margin: auto;
+    border-radius: 16px;
+    padding: 20px;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px #14985c;
+}
