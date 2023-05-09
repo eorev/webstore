@@ -52,12 +52,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                     </Link>
                     {user ? (
                         <div>
-                            <button
-                                className="navbar__links-item"
-                                onClick={logout}
-                            >
-                                Logout
-                            </button>
                             <Link to="/account" className="navbar__links-item">
                                 <button>Account</button>
                             </Link>
@@ -69,6 +63,12 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                                     <button>Admin</button>
                                 </Link>
                             ) : null}
+                            <button
+                                className="navbar__links-item"
+                                onClick={logout}
+                            >
+                                Logout
+                            </button>
                         </div>
                     ) : (
                         <div>
@@ -80,12 +80,23 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                             </Link>
                         </div>
                     )}
+                    <Link to="/aboutus" className="navbar__links-item">
+                        <button>About Us</button>
+                    </Link>
                     <button
                         className="navbar__cart-btn navbar__links-item"
                         onClick={cartOnClick}
                     >
                         Cart
                     </button>
+
+                    <div>
+                        <div className="navbar__links-item">
+                            <button className="navbar__filter-btn">
+                                Filter
+                            </button>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </nav>
