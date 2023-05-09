@@ -3,15 +3,16 @@ h1 {
 }
 
 .container {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
     width: 50%;
     height: 600px;
-    top: 200px;
-    right: 24%;
+    top: 40px;
+    right: 0%;
     margin: auto;
+    margin-bottom: 100px;
     border-radius: 16px;
     padding: 20px;
     justify-content: center;
