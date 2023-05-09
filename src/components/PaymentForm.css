@@ -1,0 +1,86 @@
+.card {
+    position: relative;
+    top: -80px;
+}
+
+.payment-form-container {
+    position: relative;
+    top: -50px;
+    background-color: whitesmoke;
+    height: 550px;
+    width: 450px;
+    border-radius: 18px;
+    box-shadow: 0 0 5px 1px #14985c;
+}
+
+.payment-form-container .submit button {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 108, 209, 0.63);
+    border: 2px solid rgba(0, 108, 209, 0.63);
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    top: 420px;
+    left: 100px;
+    font-weight: bold;
+    font-size: medium;
+    align-self: center;
+}
+
+.payment-form-container .submit button:hover {
+    background-color: rgba(0, 93, 192, 0.63);
+}
+
+.payment-form-container .close button {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 108, 209, 0.63);
+    border: 2px solid rgba(0, 108, 209, 0.63);
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    top: 480px;
+    left: 175px;
+    font-weight: bold;
+    font-size: 13px;
+    align-self: center;
+    text-align: center;
+}
+
+.payment-form-container .close button:hover {
+    background-color: rgba(0, 93, 192, 0.63);
+}
+
+.payment-form-container form input {
+    background-color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 70%;
+    height: 20%;
+    padding: 8px;
+    margin: 4px;
+}
+
+.payment-form-container button:disabled {
+    background-color: grey;
+}
+
+.payment-form-container button:disabled:hover {
+    background-color: grey;
+    cursor: default;
+}
+
+.payment-form-container input::-webkit-outer-spin-button,
+.payment-form-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.close button {
+    position: relative;
+    top: -10%;
+}
