@@ -43,6 +43,7 @@ All files         |       0 |        0 |       0 |       0 |
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
   HotProducts.tsx |       0 |        0 |       0 |       0 | 12-72             
   Navbar.tsx      |       0 |        0 |       0 |       0 | 18-33             
+  PaymentForm.tsx |       0 |        0 |       0 |       0 | 27-164            
   Promotion.tsx   |       0 |        0 |       0 |       0 | 9-28              
   Protected.tsx   |       0 |        0 |       0 |       0 | 14-19             
  src/context      |       0 |      100 |       0 |       0 |                   
@@ -57,7 +58,7 @@ All files         |       0 |        0 |       0 |       0 |
   AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5               
   Account.tsx     |       0 |      100 |       0 |       0 | 9-12              
   Admin.tsx       |       0 |        0 |       0 |       0 | 25-535            
-  Checkout.tsx    |       0 |        0 |       0 |       0 | 26-745            
+  Checkout.tsx    |       0 |        0 |       0 |       0 | 28-719            
   Home.tsx        |       0 |      100 |       0 |       0 | 6-7               
   Products.tsx    |       0 |      100 |       0 |       0 | 5-6               
   Signin.tsx      |       0 |        0 |       0 |       0 | 16-173            
@@ -66,5 +67,5 @@ All files         |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        4.307 s
+Time:        6.022 s
 Ran all test suites.
