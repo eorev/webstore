@@ -42,3 +42,17 @@ button {
     border-radius: 8px;
     border: none;
 }
+button:hover {
+    background-color: #e5e5e5;
+}
+.navbar__filter-btn {
+    background-color: #090909;
+    color: rgb(232, 226, 226);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
