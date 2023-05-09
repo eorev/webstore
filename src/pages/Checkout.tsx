@@ -26,6 +26,8 @@ interface AuthContextType {
 }
 
 const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+const USED_PROMO = "false";
+
 let confirmationNumber =
     Math.floor(Math.random() * (99999999 - 13748917 + 1)) + 13748917;
 
@@ -117,7 +119,7 @@ const Checkout = () => {
     }, [user]);
 
     useEffect(() => {
-        if (verifiedPromo in promoCodes && addedPromo) {
+        if (verifiedPromo in promoCodes && addedPromo && subTotal >= 150) {
             setTotal(subTotal + shippingCost - promoCodes[verifiedPromo]);
         } else {
             setTotal(subTotal + shippingCost);
@@ -178,6 +180,11 @@ const Checkout = () => {
             };
             await setDoc(docRef, payload);
         }
+        if (addedPromo) {
+            localStorage.setItem(USED_PROMO, "true");
+        } else {
+            localStorage.setItem(USED_PROMO, "false");
+        }
     };
 
     const handleShippingInputChange = (
@@ -206,7 +213,11 @@ const Checkout = () => {
     };
 
     const checkPromoCode = () => {
-        if (promoCode in promoCodes) {
+        if (localStorage.getItem(USED_PROMO) === "true") {
+            alert("This promo code has already been used!");
+        } else if (subTotal < 150) {
+            alert("Subtotal must be at least $150");
+        } else if (promoCode in promoCodes) {
             setAddedPromo(true);
             setVerifiedPromo(promoCode);
         }
@@ -503,9 +514,11 @@ const Checkout = () => {
                                     </span>
                                     <button
                                         onClick={() => {
-                                            setShowPaymentForm(
-                                                !showPaymentForm
-                                            );
+                                            if (!showShippingForm) {
+                                                setShowPaymentForm(
+                                                    !showPaymentForm
+                                                );
+                                            }
                                         }}
                                     >
                                         Change
@@ -514,7 +527,11 @@ const Checkout = () => {
                             ) : (
                                 <button
                                     onClick={() => {
-                                        setShowPaymentForm(!showPaymentForm);
+                                        if (!showShippingForm) {
+                                            setShowPaymentForm(
+                                                !showPaymentForm
+                                            );
+                                        }
                                     }}
                                 >
                                     Add
@@ -650,9 +667,10 @@ const Checkout = () => {
                                         type="submit"
                                         className="catalog-button"
                                         style={{
-                                            backgroundColor: "green",
+                                            backgroundColor:
+                                                "rgba(0, 108, 209, 0.63)",
                                             position: "absolute",
-                                            bottom: -12
+                                            bottom: -1
                                         }}
                                         onClick={() => {
                                             setShippingAddress(

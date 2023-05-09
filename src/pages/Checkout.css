@@ -273,13 +273,27 @@
 
 .checkout-container .checkout-form-container {
     position: fixed;
-    width: 600px;
-    height: 400px;
-    background-color: white;
+    width: 400px;
+    height: 510px;
+    background-color: whitesmoke;
     z-index: 10;
-    border: 2px solid black;
-    top: -100px;
-    left: 450px;
+    border-radius: 15px;
+    top: -130px;
+    left: 500px;
+    box-shadow: 0 0 5px 1px #14985c;
+}
+
+.checkout-container .checkout-form-container form input {
+    background-color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 60%;
+    height: 20%;
+    padding: 8px;
+    margin: 4px;
 }
 
 .checkout-container .checkout-paymentform-container {
