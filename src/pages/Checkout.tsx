@@ -198,7 +198,7 @@ const Checkout = () => {
         setPaymentInfo({
             number: formData.number,
             expiration: formData.expiration,
-            cvv: formData.cvv,
+            cvv: formData.cvc,
             name: formData.name
         });
         setShowPaymentForm(false);
@@ -549,17 +549,19 @@ const Checkout = () => {
                                 <button onClick={checkPromoCode}>Add</button>
                             </div>
                         </div>
-                        <button
-                            className="placeorder"
-                            onClick={handleOrderPlacement}
-                            disabled={
-                                selectedShipping === "" ||
-                                !hasPaymentInfo ||
-                                !hasShippingAddress
-                            }
-                        >
-                            Place Order
-                        </button>
+                        <div className="placeorder">
+                            <button
+                                onClick={handleOrderPlacement}
+                                disabled={
+                                    selectedShipping === "" ||
+                                    !hasPaymentInfo ||
+                                    !hasShippingAddress ||
+                                    products.length == 0
+                                }
+                            >
+                                Place Order
+                            </button>
+                        </div>
                     </div>
                     <div className="recently-deleted">
                         <h4>Recently Deleted</h4>
