@@ -14,7 +14,7 @@
 }
 
 .catalog-view h1.name {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -46,7 +46,7 @@
     flex-direction: column;
     color: #fff;
     text-align: center;
-    font-size: 15px;
+    font-size: 11px;
     background-color: rgba(0, 0, 0, 0.582);
     border-radius: 5px;
 }
@@ -59,18 +59,18 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .catalog-item {
-    background-color: rgb(199, 199, 199, 0.75);
     width: 200px;
     margin: 0.5rem;
     padding: 1rem;
     border-radius: 5px;
-    border: 1px solid #891d0e;
+    background-color: #dededea5;
     padding: 10px;
+    box-shadow: 0 0 3px 1px #083621;
 }
 
 .catalog-item .instock {
@@ -86,10 +86,9 @@
 }
 
 .catalog-addToCart {
-    background-color: #891d0e;
-    border: none;
+    background-color: #cdcdcda5;
     border-radius: 5px;
-    color: #fff;
+    color: #000000;
     cursor: pointer;
     font-size: 16px;
     padding: 10px 20px;
@@ -107,71 +106,8 @@
 }
 
 .catalog-addToCart:hover {
-    background-color: #5a1309;
-}
-
-.catalog-add-remove-product-container {
-    width: 50%;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #891c0edd;
-    border: 2px solid #5a1309;
-    border-radius: 5px;
-    padding: 50px;
-    box-sizing: border-box;
-    z-index: 1;
-}
-
-
-.catalog-add-product-button {
-    position: fixed;
-    bottom: 0;
-    left: 43%;
-    transform: translateX(-50%);
-    margin-bottom: 20px;
-    background-color: #891c0e;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 125px;
-}
-
-.catalog-remove-product-button {
-    position: fixed;
-    bottom: 0;
-    left: 56.5%;
-    transform: translateX(-50%);
-    margin-bottom: 20px;
-    background-color: #891c0e;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 125px;
-}
-
-.catalog-add-product-button:hover {
-    background-color: #5a1309;
+    background-color: #5f5e5ea5;
+    color: white;
 }
 
 .catalog-button {

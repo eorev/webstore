@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 50%;
+    height: 600px;
+    top: 200px;
+    right: 24%;
+    margin: auto;
+    border-radius: 16px;
+    padding: 20px;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px #14985c;
+    text-align: center;
+}
+
+.container form input {
+    background-color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 70%;
+    height: 20%;
+    padding: 8px;
+    margin: 4px;
+}
+
+.underline {
+  text-decoration: underline;
+}

@@ -1,0 +1,149 @@
+.products-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.products_view {
+    max-width: 1500px;
+}
+
+.products_view h1 {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    margin: 10px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 200px;
+    height: 225px;
+    background-color: #f0f0f0;
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    text-align: center;
+}
+
+.product-input {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100px;
+    height: 25px;
+}
+
+.product-button {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    background-color: #f0f0f0;
+}
+
+.product-button:hover {
+    background-color: #e0e0e0;
+}
+
+.close-add-product-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.close-remove-product-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.add-remove-button-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-remove-button-container Button {
+    background-color: #14985c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 125px;
+}
+
+.catalog-add-remove-product-container {
+    width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00000067;
+    border: 2px solid #147c4d;
+    border-radius: 5px;
+    padding: 50px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.add-remove-button-container Button:hover {
+    background-color: #147c4d;
+}
+
+
+
+.column-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 250px;
+}

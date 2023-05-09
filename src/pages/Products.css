@@ -1,0 +1,13 @@
+.products {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 1200px;
+    flex: 1 1 auto;
+}
+
+.products h1 {
+    text-align: center;
+}

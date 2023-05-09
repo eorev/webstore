@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import ProductData from "../interfaces/product";
 import { Button } from "react-bootstrap";
@@ -15,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { User } from "firebase/auth";
 import { UserAuth } from "../context/AuthContext";
+import { v4 as uuidv4 } from "uuid";
 
 interface CatalogProps {
     product: ProductData;
@@ -24,8 +24,9 @@ interface AuthContextType {
     user: User;
 }
 
+const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+
 const View: React.FC<CatalogProps> = ({ product }) => {
-    const [productUnits, setProductUnits] = useState(0);
     const productRef = doc(db, "products", product.name);
     const { user } = UserAuth() as AuthContextType;
 
@@ -34,16 +35,25 @@ const View: React.FC<CatalogProps> = ({ product }) => {
             units_instock: product.units_instock - 1,
             times_purchased: product.times_purchased + 1
         });
+        const userId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+        if (!userId) {
+            let nonAuthUserId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
+            if (!nonAuthUserId) {
+                nonAuthUserId = uuidv4();
+                localStorage.setItem(NON_AUTH_USER_ID_KEY, nonAuthUserId);
+            }
+            console.log(localStorage.getItem(NON_AUTH_USER_ID_KEY));
+        }
         if (!user) {
-            console.log("adding to temp cart for non user");
             const newProductRef = doc(
-                collection(db, "carts", "temp", "products"),
+                collection(db, "carts", "temp" + userId, "products"),
                 product.name
             );
             const productSnapshot = await getDoc(newProductRef);
             if (productSnapshot.exists()) {
                 await updateDoc(newProductRef, {
-                    quantity: increment(1)
+                    quantity: increment(1),
+                    units_instock: increment(-1)
                 });
                 console.log("increased quantity");
             } else {
@@ -56,6 +66,7 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     category: product.category,
                     admin_id: product.admin_id, //id belonging to the admin who created the product
                     price: product.price,
+                    units_instock: product.units_instock - 1,
                     quantity: 1
                 });
             }
@@ -68,7 +79,8 @@ const View: React.FC<CatalogProps> = ({ product }) => {
             const productSnapshot = await getDoc(newProductRef);
             if (productSnapshot.exists()) {
                 await updateDoc(newProductRef, {
-                    quantity: increment(1)
+                    quantity: increment(1),
+                    units_instock: increment(-1)
                 });
                 console.log("increased quantity");
             } else {
@@ -81,20 +93,28 @@ const View: React.FC<CatalogProps> = ({ product }) => {
                     category: product.category,
                     admin_id: product.admin_id, //id belonging to the admin who created the product
                     price: product.price,
+                    units_instock: product.units_instock - 1,
                     quantity: 1
                 });
             }
         }
     };
 
+    function isUrl(str: string): boolean {
+        const urlPattern =
+            /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?(\?[^\s]*)?$/;
+        return urlPattern.test(str);
+    }
+
+    const image = isUrl(product.image)
+        ? product.image
+        : process.env.PUBLIC_URL + product.image;
+
     return (
         <div className="catalog-view">
             <h1 className="name">{product.name}</h1>
             <div className="image-container">
-                <img
-                    src={process.env.PUBLIC_URL + product.image}
-                    alt={product.name}
-                />
+                <img src={image} alt={product.name} />
                 <div className="text-overlay">{product.description}</div>
             </div>
             {product.units_instock <= 0 ? (

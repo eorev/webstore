@@ -17,7 +17,11 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="header__right">
-                    <img src="https://picsum.photos/400/600" alt="" />
+                    <img
+                        src={process.env.PUBLIC_URL + "/images/header.svg"}
+                        alt="headerSVG"
+                        className="header__image"
+                    />
                 </div>
             </div>
         </header>
