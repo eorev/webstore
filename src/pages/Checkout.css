@@ -45,7 +45,7 @@
     left: 215px;
 }
 
-.placeorder {
+.placeorder button {
     position: absolute;
     color: white;
     background-color: rgba(0, 108, 209, 0.63);
@@ -54,11 +54,29 @@
     width: 175px;
     height: 35px;
     top: 420px;
+    right: 55px;
     font-weight: bold;
     align-self: center;
 }
 
-.placeorder:hover {
+.placeorder button:disabled {
+    position: absolute;
+    color: white;
+    background-color: grey;
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 175px;
+    height: 35px;
+    top: 420px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.placeorder button:disabled:hover {
+    background-color: grey;
+}
+
+.placeorder button:hover {
     background-color: rgba(0, 93, 192, 0.63);
 }
 

@@ -7,14 +7,14 @@ import Payment from "payment";
 export type PaymentFormData = {
     number: string;
     expiration: string;
-    cvv: string;
+    cvc: string;
     name: string;
 };
 
 interface CardState {
     number: string;
     expiration: string;
-    cvv: string;
+    cvc: string;
     name: string;
     focus?: Focused;
 }
@@ -86,7 +86,7 @@ const PaymentForm = ({ onSubmit }: PaymentFormProps) => {
     const [state, setState] = useState({
         number: "",
         expiration: "",
-        cvv: "",
+        cvc: "",
         name: "",
         focus: undefined as Focused | undefined
     });
@@ -124,7 +124,7 @@ const PaymentForm = ({ onSubmit }: PaymentFormProps) => {
         const formData = {
             number: state.number,
             expiration: state.expiration,
-            cvv: state.cvv,
+            cvc: state.cvc,
             name: state.name
         };
         onSubmit(formData);
@@ -147,7 +147,7 @@ const PaymentForm = ({ onSubmit }: PaymentFormProps) => {
                 <Cards
                     number={state.number}
                     expiry={state.expiration}
-                    cvc={state.cvv}
+                    cvc={state.cvc}
                     name={state.name}
                     focused={state.focus}
                 />
@@ -181,9 +181,9 @@ const PaymentForm = ({ onSubmit }: PaymentFormProps) => {
                 />
                 <input
                     type="number"
-                    name="cvv"
+                    name="cvc"
                     placeholder="CVV"
-                    value={state.cvv}
+                    value={state.cvc}
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                 />
