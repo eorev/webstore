@@ -6,8 +6,10 @@
     margin: 0 auto;
     max-width: 1200px;
     flex: 1 1 auto;
+    margin-bottom: 100px;
 }
 
 .products h1 {
+    margin-bottom: 40px;
     text-align: center;
 }
