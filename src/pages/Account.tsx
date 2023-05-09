@@ -254,17 +254,30 @@ const Account = () => {
             console.error("Error updating password:", error);
         }
     };
+
+    const isGoogleUser = user?.providerData[0]?.providerId === "google.com";
+
     return (
         <div>
             <h1>Account</h1>
             <div className="container">
-                <ChangeDisplayNameForm
-                    onSubmit={(newDisplayName) => {
-                        updateDisplayName(user, newDisplayName);
-                    }}
-                />
-                <ChangeEmailForm onSubmit={handleEmailUpdate} />
-                <ChangePasswordForm onSubmit={handlePasswordUpdate} />
+                {!isGoogleUser && (
+                    <>
+                        <ChangeDisplayNameForm
+                            onSubmit={(newDisplayName) => {
+                                updateDisplayName(user, newDisplayName);
+                            }}
+                        />
+                        <ChangeEmailForm onSubmit={handleEmailUpdate} />
+                        <ChangePasswordForm onSubmit={handlePasswordUpdate} />
+                    </>
+                )}
+                {isGoogleUser && (
+                    <p>
+                        You are signed in with Google and therefore unable to
+                        edit your email, password and display name directly.
+                    </p>
+                )}
             </div>
         </div>
     );
