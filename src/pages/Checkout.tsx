@@ -18,12 +18,16 @@ import {
 import { UserAuth } from "../context/AuthContext";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import PaymentForm from "../components/PaymentForm";
+import { PaymentFormData } from "../components/PaymentForm";
 
 interface AuthContextType {
     user: User;
 }
 
 const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
+const USED_PROMO = "false";
+
 let confirmationNumber =
     Math.floor(Math.random() * (99999999 - 13748917 + 1)) + 13748917;
 
@@ -40,16 +44,10 @@ const Checkout = () => {
     const [selectedShipping, setSelectedShipping] = useState<string>("");
     const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
     const [paymentInfo, setPaymentInfo] = useState({
-        cardNumber: "",
-        nameOnCard: "",
+        number: "",
+        expiration: "",
         cvv: "",
-        expiration: ""
-    });
-    const [tempPaymentInfo, setTempPaymentInfo] = useState({
-        cardNumber: "",
-        nameOnCard: "",
-        cvv: "",
-        expiration: ""
+        name: ""
     });
     const [tempShippingAddress, setTempShippingAddress] = useState({
         name: "",
@@ -96,7 +94,6 @@ const Checkout = () => {
                         0
                     );
                     setSubTotal(totalCost);
-                    console.log(totalCost);
                 }
             );
             return () => unsub();
@@ -115,7 +112,6 @@ const Checkout = () => {
                         0
                     );
                     setSubTotal(totalCost);
-                    console.log(totalCost);
                 }
             );
             return () => unsub();
@@ -123,7 +119,7 @@ const Checkout = () => {
     }, [user]);
 
     useEffect(() => {
-        if (verifiedPromo in promoCodes && addedPromo) {
+        if (verifiedPromo in promoCodes && addedPromo && subTotal >= 150) {
             setTotal(subTotal + shippingCost - promoCodes[verifiedPromo]);
         } else {
             setTotal(subTotal + shippingCost);
@@ -184,6 +180,11 @@ const Checkout = () => {
             };
             await setDoc(docRef, payload);
         }
+        if (addedPromo) {
+            localStorage.setItem(USED_PROMO, "true");
+        } else {
+            localStorage.setItem(USED_PROMO, "false");
+        }
     };
 
     const handleShippingInputChange = (
@@ -193,11 +194,15 @@ const Checkout = () => {
         setTempShippingAddress({ ...tempShippingAddress, [name]: value });
     };
 
-    const handlePaymentInputChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        const { name, value } = event.target;
-        setTempPaymentInfo({ ...tempPaymentInfo, [name]: value });
+    const handlePaymentSubmit = (formData: PaymentFormData) => {
+        setPaymentInfo({
+            number: formData.number,
+            expiration: formData.expiration,
+            cvv: formData.cvv,
+            name: formData.name
+        });
+        setShowPaymentForm(false);
+        setHasPaymentInfo(true);
     };
 
     const handlePromoInputChange = (
@@ -208,7 +213,11 @@ const Checkout = () => {
     };
 
     const checkPromoCode = () => {
-        if (promoCode in promoCodes) {
+        if (localStorage.getItem(USED_PROMO) === "true") {
+            alert("This promo code has already been used!");
+        } else if (subTotal < 150) {
+            alert("Subtotal must be at least $150");
+        } else if (promoCode in promoCodes) {
             setAddedPromo(true);
             setVerifiedPromo(promoCode);
         }
@@ -235,7 +244,6 @@ const Checkout = () => {
 
     const handleAddToCart = async (product: cartProductData) => {
         if (!user) {
-            console.log("adding to temp cart for non user");
             const newProductRef = doc(
                 collection(db, "carts", "temp" + uid, "products"),
                 product.name
@@ -246,7 +254,6 @@ const Checkout = () => {
                     quantity: increment(1),
                     units_instock: increment(-1)
                 });
-                console.log("increased quantity");
             } else {
                 await setDoc(newProductRef, {
                     name: product.name,
@@ -273,7 +280,6 @@ const Checkout = () => {
                     quantity: increment(1),
                     units_instock: increment(-1)
                 });
-                console.log("increased quantity");
             } else {
                 await setDoc(newProductRef, {
                     name: product.name,
@@ -469,6 +475,7 @@ const Checkout = () => {
                         <br></br>
                         <br></br>
                         <div className="shipping-info">
+                            <br></br>
                             <h4>Shipping Address</h4>
                             {hasShippingAddress ? (
                                 <>
@@ -502,24 +509,29 @@ const Checkout = () => {
                             {hasPaymentInfo ? (
                                 <>
                                     <span>
-                                        {paymentInfo?.nameOnCard}{" "}
-                                        {paymentInfo?.cardNumber},{" "}
-                                        {paymentInfo?.expiration}
+                                        {paymentInfo.name},{paymentInfo.number},
+                                        {paymentInfo.expiration}
                                     </span>
                                     <button
                                         onClick={() => {
-                                            setShowPaymentForm(
-                                                !showPaymentForm
-                                            );
+                                            if (!showShippingForm) {
+                                                setShowPaymentForm(
+                                                    !showPaymentForm
+                                                );
+                                            }
                                         }}
                                     >
-                                        Edit
+                                        Change
                                     </button>
                                 </>
                             ) : (
                                 <button
                                     onClick={() => {
-                                        setShowPaymentForm(!showPaymentForm);
+                                        if (!showShippingForm) {
+                                            setShowPaymentForm(
+                                                !showPaymentForm
+                                            );
+                                        }
                                     }}
                                 >
                                     Add
@@ -655,9 +667,10 @@ const Checkout = () => {
                                         type="submit"
                                         className="catalog-button"
                                         style={{
-                                            backgroundColor: "green",
+                                            backgroundColor:
+                                                "rgba(0, 108, 209, 0.63)",
                                             position: "absolute",
-                                            bottom: -12
+                                            bottom: -1
                                         }}
                                         onClick={() => {
                                             setShippingAddress(
@@ -674,58 +687,19 @@ const Checkout = () => {
                         </div>
                     )}
                     {showPaymentForm && (
-                        <div className="checkout-form-container">
-                            <button onClick={() => setShowPaymentForm(false)}>
-                                X
-                            </button>
-                            {
-                                <form>
-                                    <label>Card Number</label>
-                                    <input
-                                        type="text"
-                                        name="cardNumber"
-                                        placeholder={paymentInfo.cardNumber}
-                                        onChange={handlePaymentInputChange}
-                                    />
-                                    <label>Name on card</label>
-                                    <input
-                                        type="text"
-                                        name="nameOnCard"
-                                        placeholder={paymentInfo.nameOnCard}
-                                        onChange={handlePaymentInputChange}
-                                    />
-                                    <label>cvv</label>
-                                    <input
-                                        type="number"
-                                        name="cvv"
-                                        placeholder={paymentInfo.cvv}
-                                        onChange={handlePaymentInputChange}
-                                    />
-                                    <label>Expiration</label>
-                                    <input
-                                        type="text"
-                                        name="expiration"
-                                        placeholder={paymentInfo.expiration}
-                                        onChange={handlePaymentInputChange}
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="catalog-button"
-                                        style={{
-                                            backgroundColor: "green",
-                                            position: "absolute",
-                                            bottom: -12
-                                        }}
-                                        onClick={() => {
-                                            setPaymentInfo(tempPaymentInfo);
-                                            setHasPaymentInfo(true);
-                                            setShowPaymentForm(false);
-                                        }}
-                                    >
-                                        Save
-                                    </button>
-                                </form>
-                            }
+                        <div className="checkout-paymentform-container">
+                            <PaymentForm
+                                onSubmit={handlePaymentSubmit}
+                            ></PaymentForm>
+                            <div className="close">
+                                <button
+                                    onClick={() => {
+                                        setShowPaymentForm(false);
+                                    }}
+                                >
+                                    Close
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>

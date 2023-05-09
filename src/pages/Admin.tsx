@@ -402,7 +402,7 @@ const Admin = () => {
                                 {"**** **** **** " +
                                     JSON.parse(
                                         selectedOrder.payment_info
-                                    ).cardNumber.substr(-4)}
+                                    ).number.substr(-4)}
                             </span>
                             <br></br>
                             <button

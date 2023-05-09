@@ -97,7 +97,7 @@
     border-radius: 16px;
     padding: 20px;
     justify-content: center;
-    border: 2px solid #14985c;
+    border: 2px solid grey;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -254,7 +254,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1; /* make sure the underlay is behind the order-confirmation div */
+  z-index: 1;
 }
 
 .checkout-container .cart-title {
@@ -273,11 +273,54 @@
 
 .checkout-container .checkout-form-container {
     position: fixed;
+    width: 400px;
+    height: 510px;
+    background-color: whitesmoke;
+    z-index: 10;
+    border-radius: 15px;
+    top: -130px;
+    left: 500px;
+    box-shadow: 0 0 5px 1px #14985c;
+}
+
+.checkout-container .checkout-form-container form input {
+    background-color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #cacaca;
+    color: #000000;
+    width: 60%;
+    height: 20%;
+    padding: 8px;
+    margin: 4px;
+}
+
+.checkout-container .checkout-paymentform-container {
+    position: fixed;
     width: 600px;
     height: 400px;
-    background-color: white;
     z-index: 10;
-    border: 2px solid black;
     top: -100px;
     left: 450px;
+}
+
+.checkout-container .checkout-paymentform-container .close button {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 108, 209, 0.63);
+    border: 2px solid rgba(0, 108, 209, 0.63);
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    top:430px;
+    left: 175px;
+    font-weight: bold;
+    font-size: 13px;
+    align-self: center;
+    text-align: center;
+}
+
+.checkout-container .checkout-paymentform-container .close button:hover {
+    background-color: rgba(0, 93, 192, 0.63);
 }
