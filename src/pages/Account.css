@@ -1,12 +1,13 @@
-h1 {
+.account-title {
     text-align: center;
+    margin-top: 20px;
 }
 
 .container {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: var(--form-bg);
     width: 50%;
     height: 600px;
     top: 40px;
@@ -16,8 +17,9 @@ h1 {
     border-radius: 16px;
     padding: 20px;
     justify-content: center;
-    box-shadow: 0 0 5px 2px #14985c;
+    box-shadow: 0 0 5px 2px var(--form-bg-accent);
     text-align: center;
+    color: var(--text-primary);
 }
 
 .container form input {

@@ -5,13 +5,14 @@
     justify-content: space-between;
     padding: 24px 16px;
     align-items: center;
+    background-color: var(--navbar-color);
 }
 
 .navbar__logo {
     font-family: "Montserrat", sans-serif;
     font-size: 36px;
     font-weight: 700;
-    color: #000;
+    color: var(--text-primary);
 }
 
 .navbar__links {
@@ -43,5 +44,36 @@ button {
     border: none;
 }
 button:hover {
-    background-color: #585757;
+    background-color: whitesmoke;
 }
+
+.navbar__filter-btn {
+    background-color: #090909;
+    color: rgb(232, 226, 226);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.theme-toggle {
+    position: relative;
+    text-align: center;
+}
+
+.theme {
+    position: absolute;
+    right: 140%;
+    top: 15%;
+    font-size: 15px;
+}
+

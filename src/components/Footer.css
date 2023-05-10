@@ -4,6 +4,7 @@ footer {
     padding: 30px;
     justify-content: space-between;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: var(--navbar-color);
+    color: var(--text-primary);
     margin-top: auto;
 }

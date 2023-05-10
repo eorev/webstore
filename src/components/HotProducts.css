@@ -15,7 +15,7 @@
 .hotProducts__product {
     padding: 10px;
     box-sizing: border-box;
-    background-color: white;
+    background-color: var(--background-sub);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     position: relative;

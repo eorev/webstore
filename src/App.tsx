@@ -28,6 +28,7 @@ import db from "./firebase";
 import Contact from "./components/Contact";
 import { v4 as uuidv4 } from "uuid";
 import Promotion from "./components/Promotion";
+import useLocalStorage from "use-local-storage";
 
 async function clearTempCart() {
     const cartDocRef = doc(db, "carts", "temp");
@@ -103,6 +104,8 @@ const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
 
 function App() {
     const [showPromotion, setShowPromotion] = useState<boolean>(false);
+    const [theme, setTheme] = useLocalStorage("theme", "light");
+
     useEffect(() => {
         clearTempCart();
         let nonAuthUserId = localStorage.getItem(NON_AUTH_USER_ID_KEY);
@@ -122,11 +125,13 @@ function App() {
 
     return (
         <AuthContextProvider>
-            <div className="App">
+            <div className="App" data-theme={theme}>
                 <Navbar
-                    cartOnClick={() => {
-                        console.log("Open Cart");
+                    switchTheme={() => {
+                        const newTheme = theme === "light" ? "dark" : "light";
+                        setTheme(newTheme);
                     }}
+                    theme={theme}
                 />
                 <Routes>
                     <Route path="/" element={<Home />} />

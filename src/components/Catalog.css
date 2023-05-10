@@ -70,7 +70,7 @@
     border-radius: 5px;
     background-color: #dededea5;
     padding: 10px;
-    box-shadow: 0 0 3px 1px #083621;
+    box-shadow: 0 0 3px 1px var(--product-accent);
 }
 
 .catalog-item .instock {
