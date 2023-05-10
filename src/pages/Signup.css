@@ -1,7 +1,7 @@
 .signup-container {
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: var(--form-bg);
     width: 50%;
     height: 500px;
     margin: auto;
@@ -9,7 +9,7 @@
     border-radius: 16px;
     padding: 20px;
     justify-content: center;
-    box-shadow: 0 0 5px 2px #14985c;
+    box-shadow: 0 0 8px 2px var(--form-bg-accent);
 }
 
 .signup-form__container {
@@ -30,6 +30,7 @@ form {
     margin: 16px 0px;
     font-size: 40px;
     text-align: center;
+    color: var(--text-primary);
 }
 
 .signup-form__container h2 {

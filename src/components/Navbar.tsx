@@ -7,7 +7,8 @@ import db from "../firebase";
 import { Link } from "react-router-dom";
 
 type NavbarProps = {
-    cartOnClick: () => void;
+    switchTheme: () => void;
+    theme: string;
 };
 
 interface AuthContextType {
@@ -15,7 +16,7 @@ interface AuthContextType {
     user: User;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ switchTheme, theme }) => {
     const { user, logout } = UserAuth() as AuthContextType;
     const [adminIDs, setAdminIDs] = useState<string[]>([]);
     useEffect(() => {
@@ -44,6 +45,23 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                     <div></div>
                 )}
                 <ul className="navbar__links">
+                    <div className="theme-toggle">
+                        <span className="theme">
+                            {theme.charAt(0).toUpperCase() + theme.slice(1)}
+                        </span>
+                        {theme === "dark" && (
+                            <i
+                                onClick={switchTheme}
+                                className="fas fa-toggle-off"
+                            ></i>
+                        )}
+                        {theme === "light" && (
+                            <i
+                                onClick={switchTheme}
+                                className="fas fa-toggle-on"
+                            ></i>
+                        )}
+                    </div>
                     <Link to="/" className="navbar__links-item">
                         <button>Home</button>
                     </Link>
@@ -84,10 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartOnClick }) => {
                         <button>About Us</button>
                     </Link>
                     <Link to="/checkout">
-                        <button
-                            className="navbar__cart-btn navbar__links-item"
-                            onClick={cartOnClick}
-                        >
+                        <button className="navbar__cart-btn navbar__links-item">
                             Cart
                         </button>
                     </Link>

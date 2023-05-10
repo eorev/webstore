@@ -9,10 +9,12 @@
 
 .products_view {
     max-width: 1500px;
+    color: black;
 }
 
 .products_view h1 {
     text-align: center;
+    color: var(--text-primary);
 }
 
 li {

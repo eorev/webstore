@@ -2,7 +2,7 @@ header {
     display: flex;
     margin: auto;
     height: 700px;
-    background-color: #52b58812;
+    background-color: var(--background-accent);
 }
 
 .header__row {

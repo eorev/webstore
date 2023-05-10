@@ -8,4 +8,37 @@
     flex-flow: column;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text-primary);
+    transition: all .5s;
+}
+
+:root {
+    --background: white;
+    --navbar-color: white;
+    --background-accent: #52b58812;
+    --text-primary: black;
+    --text-secondary: green;
+    --accent: blue;
+    --border: green;
+    --form-bg: whitesmoke;
+    --form-bg-accent: #14985c;
+    --background-sub: white;
+    --summary-accent: black;
+    --product-accent: #083621;
+}
+
+[data-theme="dark"] {
+    --background: black;
+    --navbar-color: #191919;
+    --background-accent: #52b58812;
+    --text-primary: rgb(255, 255, 255);
+    --text-secondary: darkgreen;
+    --accent: royalblue;
+    --border: #808080;
+    --form-bg: #191919;
+    --form-bg-accent: rgb(255, 255, 255);
+    --background-sub: ;
+    --summary-accent: #00ff8c;
+    --product-accent: rgb(0, 150, 0);
 }
