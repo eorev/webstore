@@ -76,7 +76,7 @@ const Admin = () => {
     const handleOrderChange = async (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        //console.log(event.target.value);
+        console.log(event.target.value);
         if (
             event.target.value == "Select an Order" ||
             event.target.value == ""

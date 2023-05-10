@@ -298,6 +298,7 @@
     width: 400px;
     height: 510px;
     background-color: whitesmoke;
+    color: black;
     z-index: 10;
     border-radius: 15px;
     top: -130px;
