@@ -20,6 +20,7 @@ import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import PaymentForm from "../components/PaymentForm";
 import { PaymentFormData } from "../components/PaymentForm";
+import DialogModal from "../components/Dialog";
 
 interface AuthContextType {
     user: User;
@@ -78,6 +79,25 @@ const Checkout = () => {
     const promoCodes: { [key: string]: number } = {
         first50off: 50
     };
+
+    const [dialogModalOpen, setDialogModalOpen] = useState(false);
+    const [dialogMessage, setDialogMessage] = useState("");
+    const [dialogTitle, setDialogTitle] = useState("");
+    const [dialogCloseMessage, setDialogCloseMessage] = useState("");
+
+    function dialog(title: string, message: string, closeMessage: string) {
+        setDialogModalOpen(true);
+        setDialogMessage(message);
+        setDialogTitle(title);
+        setDialogCloseMessage(closeMessage);
+    }
+
+    function closeModal() {
+        setDialogModalOpen(false);
+        setDialogMessage("");
+        setDialogTitle("");
+        setDialogCloseMessage("");
+    }
 
     useEffect(() => {
         if (!user) {
@@ -214,9 +234,13 @@ const Checkout = () => {
 
     const checkPromoCode = () => {
         if (localStorage.getItem(USED_PROMO) === "true") {
-            alert("This promo code has already been used!");
+            dialog(
+                "Checkout Error",
+                "This promo code has already been used!",
+                "close"
+            );
         } else if (subTotal < 150) {
-            alert("Subtotal must be at least $150");
+            dialog("Checkout Error", "Subtotal must be at least $150", "close");
         } else if (promoCode in promoCodes) {
             setAddedPromo(true);
             setVerifiedPromo(promoCode);
@@ -369,6 +393,14 @@ const Checkout = () => {
 
     return (
         <div>
+            {dialogModalOpen && (
+                <DialogModal
+                    message={dialogMessage}
+                    title={dialogTitle}
+                    closeMessage={dialogCloseMessage}
+                    closeModal={closeModal}
+                />
+            )}
             {!orderPlaced && (
                 <div className="checkout-container">
                     <h1 className="cart-title">Cart</h1>

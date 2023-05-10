@@ -26,6 +26,8 @@
     --background-sub: white;
     --summary-accent: black;
     --product-accent: #083621;
+    --contact-bg: whitesmoke;
+    --contact-input-bg: whitesmoke;
 }
 
 [data-theme="dark"] {
@@ -41,4 +43,6 @@
     --background-sub: ;
     --summary-accent: #00ff8c;
     --product-accent: rgb(0, 150, 0);
+    --contact-bg: #191919;
+    --contact-input-bg: rgb(223, 223, 223);
 }

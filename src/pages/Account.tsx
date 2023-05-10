@@ -8,6 +8,7 @@ import {
 import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
 
 import "./Account.css";
+import DialogModal from "../components/Dialog";
 
 interface AuthContextType {
     user: User;
@@ -187,6 +188,24 @@ async function updateDisplayName(user: User, newDisplayName: string) {
 
 const Account = () => {
     const { user } = UserAuth() as AuthContextType;
+    const [dialogModalOpen, setDialogModalOpen] = useState(false);
+    const [dialogMessage, setDialogMessage] = useState("");
+    const [dialogTitle, setDialogTitle] = useState("");
+    const [dialogCloseMessage, setDialogCloseMessage] = useState("");
+
+    function dialog(title: string, message: string, closeMessage: string) {
+        setDialogModalOpen(true);
+        setDialogMessage(message);
+        setDialogTitle(title);
+        setDialogCloseMessage(closeMessage);
+    }
+
+    function closeModal() {
+        setDialogModalOpen(false);
+        setDialogMessage("");
+        setDialogTitle("");
+        setDialogCloseMessage("");
+    }
 
     const handleEmailUpdate = async (newEmail: string, password: string) => {
         try {
@@ -204,8 +223,11 @@ const Account = () => {
                     console.log(
                         "^Error for Incorrect Password: Cant reauthenticate user with this password"
                     );
-                    alert("Incorret input for Current Password");
-                    <span>Error</span>;
+                    dialog(
+                        "Error",
+                        "Incorrect input for Current Password",
+                        "close"
+                    );
                     return;
                 }
                 try {
@@ -213,7 +235,7 @@ const Account = () => {
                 } catch (error) {
                     console.log("Error updating email");
                 }
-                window.location.reload();
+                dialog("Error", "Email updated successfully!", "close");
             }
         } catch (error) {
             console.error("Error updating email:", error);
@@ -240,7 +262,11 @@ const Account = () => {
                 console.log(
                     "^Error for Incorrect Password: Cant reauthenticate user with this password"
                 );
-                alert("Incorret input for Current Password");
+                dialog(
+                    "Error",
+                    "Incorrect input for Current Password",
+                    "close"
+                );
                 return;
             }
             try {
@@ -259,7 +285,15 @@ const Account = () => {
 
     return (
         <div>
-            <h1 className="account-title">Account</h1>
+            {dialogModalOpen && (
+                <DialogModal
+                    message={dialogMessage}
+                    title={dialogTitle}
+                    closeMessage={dialogCloseMessage}
+                    closeModal={closeModal}
+                />
+            )}
+            ;<h1 className="account-title">Account</h1>
             <div className="container">
                 {!isGoogleUser && (
                     <>
