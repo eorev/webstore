@@ -5,11 +5,7 @@
     "private": true,
     "dependencies": {
         "@emailjs/browser": "^3.11.0",
-        "@emotion/react": "^11.11.0",
-        "@emotion/styled": "^11.11.0",
-        "@headlessui/react": "^1.7.14",
         "@heroicons/react": "^2.0.17",
-        "@mui/material": "^5.12.3",
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^12.1.2",
         "@testing-library/user-event": "^13.5.0",
