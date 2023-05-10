@@ -38,6 +38,7 @@ All files         |       0 |        0 |       0 |       0 |
  src/components   |       0 |        0 |       0 |       0 |                   
   Catalog.tsx     |       0 |        0 |       0 |       0 | 27-154            
   Contact.tsx     |       0 |        0 |       0 |       0 | 6-36              
+  Dialog.tsx      |       0 |      100 |       0 |       0 | 12-19             
   Features.tsx    |       0 |      100 |       0 |       0 | 5                 
   Footer.tsx      |       0 |      100 |       0 |       0 | 5                 
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
@@ -56,9 +57,9 @@ All files         |       0 |        0 |       0 |       0 |
   user.ts         |       0 |        0 |       0 |       0 |                   
  src/pages        |       0 |        0 |       0 |       0 |                   
   AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5               
-  Account.tsx     |       0 |        0 |       0 |       0 | 29-268            
+  Account.tsx     |       0 |        0 |       0 |       0 | 30-302            
   Admin.tsx       |       0 |        0 |       0 |       0 | 25-535            
-  Checkout.tsx    |       0 |        0 |       0 |       0 | 28-721            
+  Checkout.tsx    |       0 |        0 |       0 |       0 | 29-753            
   Home.tsx        |       0 |      100 |       0 |       0 | 6-7               
   Products.tsx    |       0 |      100 |       0 |       0 | 5-16              
   Signin.tsx      |       0 |        0 |       0 |       0 | 16-173            
@@ -67,5 +68,5 @@ All files         |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        4.469 s
+Time:        4.421 s
 Ran all test suites.
