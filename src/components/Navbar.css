@@ -46,6 +46,7 @@ button {
 button:hover {
     background-color: whitesmoke;
 }
+
 .navbar__filter-btn {
     background-color: #090909;
     color: rgb(232, 226, 226);
