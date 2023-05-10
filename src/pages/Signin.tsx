@@ -66,10 +66,10 @@ const Signin = () => {
 
                         await setDoc(cartDocRef, { cost: 0 });
                     }
-                    console.log("added doc");
+                    //console.log("added doc");
                 }
                 if (orderbinDocSnap.exists()) {
-                    console.log("orderbin for user already exists");
+                    //console.log("orderbin for user already exists");
                 } else {
                     if (suborderbincollectionSnap.empty) {
                         //await addDoc(subcartcollectionRef, {});
@@ -86,7 +86,7 @@ const Signin = () => {
 
                         await setDoc(orderbinDocRef, { totalspent: 0 });
                     }
-                    console.log("added doc");
+                    //console.log("added doc");
                 }
             } catch (error) {
                 console.log(error);
