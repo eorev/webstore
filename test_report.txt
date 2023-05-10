@@ -33,7 +33,7 @@ File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ------------------|---------|----------|---------|---------|-------------------
 All files         |       0 |        0 |       0 |       0 |                   
  src              |       0 |        0 |       0 |       0 |                   
-  App.tsx         |       0 |        0 |       0 |       0 | 33-160            
+  App.tsx         |       0 |        0 |       0 |       0 | 34-165            
   firebase.tsx    |       0 |      100 |       0 |       0 | 13-47             
  src/components   |       0 |        0 |       0 |       0 |                   
   Catalog.tsx     |       0 |        0 |       0 |       0 | 27-155            
@@ -42,7 +42,7 @@ All files         |       0 |        0 |       0 |       0 |
   Footer.tsx      |       0 |      100 |       0 |       0 | 5                 
   Header.tsx      |       0 |      100 |       0 |       0 | 6                 
   HotProducts.tsx |       0 |        0 |       0 |       0 | 12-72             
-  Navbar.tsx      |       0 |        0 |       0 |       0 | 18-33             
+  Navbar.tsx      |       0 |        0 |       0 |       0 | 19-34             
   PaymentForm.tsx |       0 |        0 |       0 |       0 | 27-164            
   Promotion.tsx   |       0 |        0 |       0 |       0 | 9-28              
   Protected.tsx   |       0 |        0 |       0 |       0 | 14-19             
@@ -67,5 +67,5 @@ All files         |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        5.542 s
+Time:        4.613 s
 Ran all test suites.
