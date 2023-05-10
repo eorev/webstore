@@ -55,7 +55,7 @@ const handleNewUser = async (uid: string) => {
         );
 
         if (cartDocSnap.exists()) {
-            console.log("cart for user already exists");
+            //console.log("cart for user already exists");
         } else {
             if (subcartollectionSnap.empty) {
                 const nullDocRef = doc(
@@ -71,10 +71,9 @@ const handleNewUser = async (uid: string) => {
 
                 await setDoc(cartDocRef, { cost: 0 });
             }
-            console.log("added doc");
         }
         if (orderbinDocSnap.exists()) {
-            console.log("orderbin for user already exists");
+            //console.log("orderbin for user already exists");
         } else {
             if (suborderbincollectionSnap.empty) {
                 const nullDocRef = doc(
@@ -93,7 +92,6 @@ const handleNewUser = async (uid: string) => {
                     lastAccessed: new Date().toLocaleDateString("en-US")
                 });
             }
-            console.log("added doc");
         }
     } catch (error) {
         console.log(error);

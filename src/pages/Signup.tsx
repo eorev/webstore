@@ -69,7 +69,7 @@ const Signup = () => {
                 );
 
                 if (cartDocSnap.exists()) {
-                    console.log("cart for user already exists");
+                    //console.log("cart for user already exists");
                 } else {
                     if (subcartollectionSnap.empty) {
                         //await addDoc(subcartcollectionRef, {});
@@ -86,10 +86,10 @@ const Signup = () => {
 
                         await setDoc(cartDocRef, { cost: 0 });
                     }
-                    console.log("added doc");
+                    //console.log("added doc");
                 }
                 if (orderbinDocSnap.exists()) {
-                    console.log("orderbin for user already exists");
+                    //console.log("orderbin for user already exists");
                 } else {
                     if (suborderbincollectionSnap.empty) {
                         //await addDoc(subcartcollectionRef, {});
@@ -106,7 +106,7 @@ const Signup = () => {
 
                         await setDoc(orderbinDocRef, { totalspent: 0 });
                     }
-                    console.log("added doc");
+                    //console.log("added doc");
                 }
             } catch (error) {
                 console.log(error);

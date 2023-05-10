@@ -28,8 +28,6 @@ const HotProducts = () => {
         []
     );
 
-    console.log(products);
-
     const settings = {
         infinite: true,
         speed: 500,

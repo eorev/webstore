@@ -138,7 +138,6 @@ const View: React.FC<CatalogProps> = ({ product }) => {
 
 export default function Catalog() {
     const [products, setProducts] = useState<ProductData[]>([]);
-    console.log(products);
     useEffect(
         () =>
             onSnapshot(collection(db, "products"), (snapshot) =>
