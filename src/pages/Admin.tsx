@@ -132,7 +132,7 @@ const Admin = () => {
             unsubAdminIDs();
             unsubOrderIds();
         };
-    }, [user.uid]);
+    }, [user?.uid]);
 
     const toggleForm = (name: string) => {
         if (name === "add") {
@@ -272,6 +272,7 @@ const Admin = () => {
                                                 stockInputValues[product.name]
                                         });
                                     }}
+                                    data-testid="update-units"
                                 >
                                     Update Units
                                 </button>
@@ -455,7 +456,10 @@ const Admin = () => {
                         X
                     </Button>
                     {
-                        <form onSubmit={handleNewProduct}>
+                        <form
+                            onSubmit={handleNewProduct}
+                            data-testid="addProductForm"
+                        >
                             <input
                                 type="text"
                                 name="name"
@@ -532,7 +536,10 @@ const Admin = () => {
                         X
                     </Button>
                     {
-                        <form onSubmit={() => toggleForm("remove")}>
+                        <form
+                            onSubmit={() => toggleForm("remove")}
+                            data-testid="removeProductForm"
+                        >
                             <input
                                 type="text"
                                 name="name"

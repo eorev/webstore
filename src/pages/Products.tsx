@@ -21,6 +21,7 @@ const Products: React.FC = () => {
                         className="navbar__filter-dropdown"
                         value={filterValue}
                         onChange={handleFilterChange}
+                        data-testid="filter-dropdown"
                     >
                         <option value="">Sort By</option>
                         <option value="priceLowToHigh">
@@ -36,7 +37,11 @@ const Products: React.FC = () => {
                 </div>
             </div>
             <h1>Products</h1>
-            <Catalog></Catalog>
+            <div data-testid="catalog-container">
+                <div data-testid="products">
+                    <Catalog></Catalog>
+                </div>
+            </div>
         </div>
     );
 };
