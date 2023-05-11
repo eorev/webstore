@@ -404,8 +404,14 @@ const Checkout = () => {
             {!orderPlaced && (
                 <div className="checkout-container">
                     <h1 className="cart-title">Cart</h1>
-                    <div className="cart-display-container">
-                        <div className="products-container">
+                    <div
+                        className="cart-display-container"
+                        data-testid="cart-display-container"
+                    >
+                        <div
+                            className="products-container"
+                            data-testid="products-container"
+                        >
                             {products.map((product: cartProductData) => (
                                 <div
                                     key={product.name}
@@ -469,7 +475,10 @@ const Checkout = () => {
                         </h2>
                         <h3 className="subtotal-title">Subtotal:</h3>
                         <h3 className="subtotal">${subTotal}</h3>
-                        <div className="shipping-options">
+                        <div
+                            className="shipping-options"
+                            data-testid="shipping-option"
+                        >
                             <span className="shipping-options-title">
                                 Shipping Options
                             </span>
@@ -482,6 +491,7 @@ const Checkout = () => {
                                         setShippingCost(5.99);
                                     }}
                                     checked={selectedShipping === "standard"}
+                                    data-testid="standard-shipping"
                                 />
                                 Standard Shipping
                                 <span style={{ marginLeft: "65px" }}>
@@ -495,6 +505,7 @@ const Checkout = () => {
                                         setShippingCost(10.99);
                                     }}
                                     checked={selectedShipping === "express"}
+                                    data-testid="express-shipping"
                                 />
                                 Express Shipping
                                 <span style={{ marginLeft: "67px" }}>
@@ -532,7 +543,7 @@ const Checkout = () => {
                                         setShowShippingForm(true);
                                     }}
                                 >
-                                    Add
+                                    Add Shipping
                                 </button>
                             )}
                         </div>
@@ -566,7 +577,7 @@ const Checkout = () => {
                                         }
                                     }}
                                 >
-                                    Add
+                                    Add Payment
                                 </button>
                             )}
                         </div>
@@ -650,7 +661,7 @@ const Checkout = () => {
                                 X
                             </button>
                             {
-                                <form>
+                                <form data-testid="shipping-form">
                                     <label>Name</label>
                                     <input
                                         type="text"
@@ -721,7 +732,10 @@ const Checkout = () => {
                         </div>
                     )}
                     {showPaymentForm && (
-                        <div className="checkout-paymentform-container">
+                        <div
+                            className="checkout-paymentform-container"
+                            data-testid="payment-form-container"
+                        >
                             <PaymentForm
                                 onSubmit={handlePaymentSubmit}
                             ></PaymentForm>
@@ -739,7 +753,7 @@ const Checkout = () => {
                 </div>
             )}
             {orderPlaced && (
-                <div className="underlay">
+                <div className="underlay" data-testid="underlay">
                     <div className="order-confirmation">
                         <img
                             src={`${process.env.PUBLIC_URL}/images/greenCheck.png`}

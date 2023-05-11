@@ -6,7 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import db from "../firebase";
 import { Link } from "react-router-dom";
 
-type NavbarProps = {
+export type NavbarProps = {
     switchTheme: () => void;
     theme: string;
 };

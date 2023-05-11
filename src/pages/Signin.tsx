@@ -130,7 +130,7 @@ const Signin = () => {
         <div className="signin-container">
             <div className="signin-form__container">
                 <h1>Ready to Sign In?</h1>
-                <form>
+                <form data-testid="login-form">
                     <input
                         className="signinEmail"
                         ref={emailRef}
@@ -168,10 +168,11 @@ const Signin = () => {
                 ) : null}
                 <h2>OR</h2>
                 <GoogleButton
-                    className="signinInGoogleButton"
+                    className="signinGoogleButton"
                     onClick={() => {
                         handleGoogleSignIn();
                     }}
+                    data-testid="signinGoogleButton"
                 />
             </div>
         </div>
