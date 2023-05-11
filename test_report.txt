@@ -2,71 +2,92 @@
 > webstore@0.1.0 test
 > react-scripts test --coverage
 
-FAIL src/App.test.tsx
-  ● Test suite failed to run
+PASS src/pages/Checkout.test.tsx
+PASS src/pages/Signin.test.tsx
+PASS src/pages/Products.test.tsx
+PASS src/pages/Admin.test.tsx
+------------------|---------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                                         
+------------------|---------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------
+All files         |   18.38 |    11.74 |   11.22 |   18.52 |                                                                                                                           
+ src              |    5.35 |        0 |       0 |    5.35 |                                                                                                                           
+  App.tsx         |       0 |        0 |       0 |       0 | 34-163                                                                                                                    
+  firebase.tsx    |      25 |      100 |       0 |      25 | 26-47                                                                                                                     
+ src/components   |   12.17 |     1.28 |   10.41 |    12.5 |                                                                                                                           
+  Catalog.tsx     |   15.78 |        0 |      25 |   15.78 | 30-113,144-145,154                                                                                                        
+  Contact.tsx     |       0 |        0 |       0 |       0 | 6-36                                                                                                                      
+  Dialog.tsx      |       0 |      100 |       0 |       0 | 12-19                                                                                                                     
+  Features.tsx    |       0 |      100 |       0 |       0 | 5                                                                                                                         
+  Footer.tsx      |       0 |      100 |       0 |       0 | 5                                                                                                                         
+  Header.tsx      |       0 |      100 |       0 |       0 | 6                                                                                                                         
+  HotProducts.tsx |       0 |        0 |       0 |       0 | 12-70                                                                                                                     
+  Navbar.tsx      |       0 |        0 |       0 |       0 | 19-34                                                                                                                     
+  PaymentForm.tsx |    22.8 |     2.94 |   21.42 |   23.63 | 27-59,70-82,95-104,110-116,123-130,136-139,164                                                                            
+  Promotion.tsx   |       0 |        0 |       0 |       0 | 9-28                                                                                                                      
+  Protected.tsx   |       0 |        0 |       0 |       0 | 14-19                                                                                                                     
+ src/context      |   30.76 |      100 |      20 |   30.76 |                                                                                                                           
+  AuthContext.tsx |   30.76 |      100 |      20 |   30.76 | 18-33                                                                                                                     
+ src/interfaces   |       0 |        0 |       0 |       0 |                                                                                                                           
+  cart.ts         |       0 |        0 |       0 |       0 |                                                                                                                           
+  cartProduct.ts  |       0 |        0 |       0 |       0 |                                                                                                                           
+  order.ts        |       0 |        0 |       0 |       0 |                                                                                                                           
+  product.ts      |       0 |        0 |       0 |       0 |                                                                                                                           
+  user.ts         |       0 |        0 |       0 |       0 |                                                                                                                           
+ src/pages        |   21.28 |    17.85 |    12.3 |   21.37 |                                                                                                                           
+  AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5                                                                                                                       
+  Account.tsx     |       0 |        0 |       0 |       0 | 30-302                                                                                                                    
+  Admin.tsx       |   31.65 |     30.3 |   13.33 |   32.59 | 58-72,79-87,96-97,103-107,113-117,121-125,151-152,158-160,167-169,178-192,196-201,208-234,243-270,297-540                 
+  Checkout.tsx    |   26.31 |    22.53 |   12.24 |    26.2 | 89-99,107-116,121-137,143,150-206,213-214,218-225,231-232,236-246,251-265,270-323,328-343,351-391,416-534,560-561,612-767 
+  Home.tsx        |       0 |      100 |       0 |       0 | 6-7                                                                                                                       
+  Products.tsx    |     100 |      100 |     100 |     100 |                                                                                                                           
+  Signin.tsx      |   25.92 |    18.18 |   28.57 |   25.92 | 25-28,32-106,110-118,124-125,173                                                                                          
+  Signup.tsx      |       0 |        0 |       0 |       0 | 16-153                                                                                                                    
+------------------|---------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------
 
-    matchMedia not present, legacy browsers require a polyfill
-
-      1 | import React, { useEffect, useState } from "react";
-      2 | import "./HotProducts.css";
-    > 3 | import Slider from "react-slick";
-        | ^
-      4 | import "slick-carousel/slick/slick.css";
-      5 | import "slick-carousel/slick/slick-theme.css";
-      6 | import db from "../firebase";
-
-      at new MediaQueryDispatch (node_modules/enquire.js/src/MediaQueryDispatch.js:15:15)
-      at Object.<anonymous> (node_modules/enquire.js/src/index.js:2:18)
-      at Object.<anonymous> (node_modules/react-slick/lib/slider.js:50:53)
-      at Object.<anonymous> (node_modules/react-slick/lib/index.js:8:38)
-      at Object.<anonymous> (src/components/HotProducts.tsx:3:1)
-      at Object.<anonymous> (src/pages/Home.tsx:3:1)
-      at Object.<anonymous> (src/App.tsx:6:1)
-      at Object.<anonymous> (src/App.test.tsx:3:1)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
-------------------|---------|----------|---------|---------|-------------------
-File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-------------------|---------|----------|---------|---------|-------------------
-All files         |       0 |        0 |       0 |       0 |                   
- src              |       0 |        0 |       0 |       0 |                   
-  App.tsx         |       0 |        0 |       0 |       0 | 34-163            
-  firebase.tsx    |       0 |      100 |       0 |       0 | 13-47             
- src/components   |       0 |        0 |       0 |       0 |                   
-  Catalog.tsx     |       0 |        0 |       0 |       0 | 27-154            
-  Contact.tsx     |       0 |        0 |       0 |       0 | 6-36              
-  Dialog.tsx      |       0 |      100 |       0 |       0 | 12-19             
-  Features.tsx    |       0 |      100 |       0 |       0 | 5                 
-  Footer.tsx      |       0 |      100 |       0 |       0 | 5                 
-  Header.tsx      |       0 |      100 |       0 |       0 | 6                 
-  HotProducts.tsx |       0 |        0 |       0 |       0 | 12-70             
-  Navbar.tsx      |       0 |        0 |       0 |       0 | 19-34             
-  PaymentForm.tsx |       0 |        0 |       0 |       0 | 27-164            
-  Promotion.tsx   |       0 |        0 |       0 |       0 | 9-28              
-  Protected.tsx   |       0 |        0 |       0 |       0 | 14-19             
- src/context      |       0 |      100 |       0 |       0 |                   
-  AuthContext.tsx |       0 |      100 |       0 |       0 | 15-41             
- src/interfaces   |       0 |        0 |       0 |       0 |                   
-  cart.ts         |       0 |        0 |       0 |       0 |                   
-  cartProduct.ts  |       0 |        0 |       0 |       0 |                   
-  order.ts        |       0 |        0 |       0 |       0 |                   
-  product.ts      |       0 |        0 |       0 |       0 |                   
-  user.ts         |       0 |        0 |       0 |       0 |                   
- src/pages        |       0 |        0 |       0 |       0 |                   
-  AboutUs.tsx     |       0 |      100 |       0 |       0 | 4-5               
-  Account.tsx     |       0 |        0 |       0 |       0 | 30-302            
-  Admin.tsx       |       0 |        0 |       0 |       0 | 25-535            
-  Checkout.tsx    |       0 |        0 |       0 |       0 | 29-753            
-  Home.tsx        |       0 |      100 |       0 |       0 | 6-7               
-  Products.tsx    |       0 |      100 |       0 |       0 | 5-16              
-  Signin.tsx      |       0 |        0 |       0 |       0 | 16-173            
-  Signup.tsx      |       0 |        0 |       0 |       0 | 16-153            
-------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 failed, 1 total
-Tests:       0 total
+Test Suites: 4 passed, 4 total
+Tests:       15 passed, 15 total
 Snapshots:   0 total
-Time:        4.421 s
+Time:        9.057 s
 Ran all test suites.
+Jest did not exit one second after the test run has completed.
+
+This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "[2023-05-11T01:06:09.114Z]  @firebase/firestore: Firestore (9.19.1): GrpcConnection RPC 'Listen' stream 0x62fa9852 error. Code: 14 Message: 14 UNAVAILABLE: read ECONNRESET".
+
+      at console.warn (node_modules/@jest/console/build/BufferedConsole.js:244:10)
+      at Logger.defaultLogHandler [as _logHandler] (node_modules/@firebase/logger/src/logger.ts:115:57)
+      at Logger.Object.<anonymous>.Logger.warn (node_modules/@firebase/logger/src/logger.ts:206:5)
+      at logWarn (node_modules/@firebase/firestore/src/util/log.ts:69:15)
+      at ClientDuplexStreamImpl.<anonymous> (node_modules/@firebase/firestore/src/platform/node/grpc_connection.ts:302:9)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client.ts:703:18)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client-interceptors.ts:424:48)
+      at node_modules/@grpc/grpc-js/src/call-stream.ts:334:24
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "[2023-05-11T01:06:10.533Z]  @firebase/firestore: Firestore (9.19.1): GrpcConnection RPC 'Listen' stream 0x4ac983e8 error. Code: 14 Message: 14 UNAVAILABLE: read ECONNRESET".
+
+      at console.warn (node_modules/@jest/console/build/BufferedConsole.js:244:10)
+      at Logger.defaultLogHandler [as _logHandler] (node_modules/@firebase/logger/src/logger.ts:115:57)
+      at Logger.Object.<anonymous>.Logger.warn (node_modules/@firebase/logger/src/logger.ts:206:5)
+      at logWarn (node_modules/@firebase/firestore/src/util/log.ts:69:15)
+      at ClientDuplexStreamImpl.<anonymous> (node_modules/@firebase/firestore/src/platform/node/grpc_connection.ts:302:9)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client.ts:703:18)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client-interceptors.ts:424:48)
+      at node_modules/@grpc/grpc-js/src/call-stream.ts:334:24
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "[2023-05-11T01:06:10.581Z]  @firebase/firestore: Firestore (9.19.1): GrpcConnection RPC 'Listen' stream 0x1b4acace error. Code: 14 Message: 14 UNAVAILABLE: read ECONNRESET".
+
+      at console.warn (node_modules/@jest/console/build/BufferedConsole.js:244:10)
+      at Logger.defaultLogHandler [as _logHandler] (node_modules/@firebase/logger/src/logger.ts:115:57)
+      at Logger.Object.<anonymous>.Logger.warn (node_modules/@firebase/logger/src/logger.ts:206:5)
+      at logWarn (node_modules/@firebase/firestore/src/util/log.ts:69:15)
+      at ClientDuplexStreamImpl.<anonymous> (node_modules/@firebase/firestore/src/platform/node/grpc_connection.ts:302:9)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client.ts:703:18)
+      at Object.onReceiveStatus (node_modules/@grpc/grpc-js/src/client-interceptors.ts:424:48)
+      at node_modules/@grpc/grpc-js/src/call-stream.ts:334:24
+
