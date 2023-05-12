@@ -35,7 +35,7 @@ jobs:
                   value: ${{ steps.get-repo-values.outputs.url }}
             - run: npm ci
             - run: npm run lint
-            - run: npm run test -- --coverage |& tee ./public/test_report.txt
+            - run: npm run test
             - run: echo "<html><head><meta http-equiv='refresh' content='0; URL=${{github.server_url}}/${{github.repository}}' /></head><body>Redirecting to repository</body></html>" > ./public/github.html
             - run: npm run build --if-present
 
