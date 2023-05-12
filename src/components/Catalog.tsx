@@ -24,6 +24,22 @@ interface AuthContextType {
     user: User;
 }
 
+interface FilterCategories {
+    [category: string]: boolean;
+}
+
+const initialFilters: FilterCategories = {
+    outdoor: false,
+    bedroom: false,
+    table: false,
+    mirror: false,
+    sofa: false,
+    decor: false,
+    storage: false,
+    chair: false,
+    lighting: false
+};
+
 const NON_AUTH_USER_ID_KEY = "nonAuthUserId";
 
 const View: React.FC<CatalogProps> = ({ product }) => {
@@ -137,25 +153,10 @@ const View: React.FC<CatalogProps> = ({ product }) => {
 };
 
 export default function Catalog() {
+    const [originalProducts, setOriginalProducts] = useState<ProductData[]>([]);
     const [products, setProducts] = useState<ProductData[]>([]);
-
-    interface FilterCategories {
-        [category: string]: boolean;
-    }
-
-    const initialFilters: FilterCategories = {
-        outdoor: true,
-        bedroom: true,
-        table: true,
-        mirror: true,
-        sofa: true,
-        decor: true,
-        storage: true,
-        chair: true,
-        lighting: true
-    };
-
     const [filters, setFilters] = useState<FilterCategories>(initialFilters);
+    const [filterValue, setFilterValue] = useState<string>(""); // State to store the selected filter value
 
     function handleCategoryClick(category: string) {
         setFilters((prevFilters) => ({
@@ -164,37 +165,93 @@ export default function Catalog() {
         }));
     }
 
+    const handleSortFilterChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setFilterValue(event.target.value);
+
+        if (event.target.value === "") {
+            setProducts(originalProducts);
+        } else {
+            const sortedProducts = [...products];
+            if (event.target.value === "priceLowToHigh") {
+                sortedProducts.sort((a, b) => a.price - b.price);
+            } else if (event.target.value === "priceHighToLow") {
+                sortedProducts.sort((a, b) => b.price - a.price);
+            }
+            setProducts(sortedProducts);
+        }
+    };
+
     useEffect(() => {
-        onSnapshot(collection(db, "products"), (snapshot) => {
-            const productsData: ProductData[] = snapshot.docs.map((doc) => {
-                const data = doc.data() as ProductData;
-                console.log(data.category.toLowerCase());
-                return data;
-            });
-            setProducts(
-                productsData.filter(
-                    (product) => filters[product.category.toLowerCase()]
-                )
-            );
-        });
-    }, [filters]);
+        const unsubscribe = onSnapshot(
+            collection(db, "products"),
+            (snapshot) => {
+                const productsData = snapshot.docs.map(
+                    (doc) => doc.data() as ProductData
+                );
+                setOriginalProducts(productsData);
+                let filteredProducts = productsData;
+                if (Object.values(filters).every((value) => !value)) {
+                    filteredProducts = productsData;
+                } else {
+                    filteredProducts = productsData.filter(
+                        (product) => filters[product.category.toLowerCase()]
+                    );
+                }
+
+                if (filterValue === "priceLowToHigh") {
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                } else if (filterValue === "priceHighToLow") {
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                }
+
+                setProducts(filteredProducts);
+            }
+        );
+
+        return () => {
+            unsubscribe();
+        };
+    }, [filters, filterValue]);
 
     return (
-        <div className="catalog-container" id="container">
+        <div>
             <div className="filter-container">
-                {Object.keys(filters).map((category) => (
-                    <div key={category}>
-                        <label htmlFor={category}>{category}</label>
-                        <input
-                            type="checkbox"
-                            id={category}
-                            checked={filters[category]}
-                            onChange={() => handleCategoryClick(category)}
-                        />
+                <select
+                    className="navbar__filter-dropdown"
+                    value={filterValue}
+                    onChange={handleSortFilterChange}
+                    data-testid="filter-dropdown"
+                >
+                    <option value="">Sort By</option>
+                    <option value="priceLowToHigh">Price Low to High</option>
+                    <option value="priceHighToLow">Price High to Low</option>
+                </select>
+                <div>
+                    <div style={{ marginBottom: "4px" }}>
+                        <span
+                            className="category-title"
+                            style={{ textDecoration: "underline" }}
+                        >
+                            <br />
+                            Category
+                        </span>
                     </div>
-                ))}
+                    {Object.keys(filters).map((category) => (
+                        <div key={category}>
+                            <label htmlFor={category}>{category}</label>
+                            <input
+                                type="checkbox"
+                                id={category}
+                                checked={filters[category]}
+                                onChange={() => handleCategoryClick(category)}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
-            <div className="products-container">
+            <div className="catalog-container" id="container">
                 {products.map((item: ProductData) => (
                     <div key={item.name} className="catalog-item">
                         <View product={item} />
