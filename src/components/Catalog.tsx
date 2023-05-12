@@ -138,24 +138,69 @@ const View: React.FC<CatalogProps> = ({ product }) => {
 
 export default function Catalog() {
     const [products, setProducts] = useState<ProductData[]>([]);
-    console.log(products);
-    useEffect(
-        () =>
-            onSnapshot(collection(db, "products"), (snapshot) =>
-                setProducts(
-                    snapshot.docs.map((doc) => doc.data() as ProductData)
+
+    interface FilterCategories {
+        [category: string]: boolean;
+    }
+
+    const initialFilters: FilterCategories = {
+        outdoor: true,
+        bedroom: true,
+        table: true,
+        mirror: true,
+        sofa: true,
+        decor: true,
+        storage: true,
+        chair: true,
+        lighting: true
+    };
+
+    const [filters, setFilters] = useState<FilterCategories>(initialFilters);
+
+    function handleCategoryClick(category: string) {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            [category]: !prevFilters[category]
+        }));
+    }
+
+    useEffect(() => {
+        onSnapshot(collection(db, "products"), (snapshot) => {
+            const productsData: ProductData[] = snapshot.docs.map((doc) => {
+                const data = doc.data() as ProductData;
+                console.log(data.category.toLowerCase());
+                return data;
+            });
+            setProducts(
+                productsData.filter(
+                    (product) => filters[product.category.toLowerCase()]
                 )
-            ),
-        []
-    );
+            );
+        });
+    }, [filters]);
 
     return (
         <div className="catalog-container" id="container">
-            {products.map((item: ProductData) => (
-                <div key={item.name} className="catalog-item">
-                    <View product={item} />
-                </div>
-            ))}
+            <div className="filter-container">
+                {Object.keys(filters).map((category) => (
+                    <div key={category}>
+                        <label htmlFor={category}>{category}</label>
+                        <input
+                            type="checkbox"
+                            id={category}
+                            checked={filters[category]}
+                            onChange={() => handleCategoryClick(category)}
+                        />
+                    </div>
+                ))}
+            </div>
+            <div className="products-container">
+                {products.map((item: ProductData) => (
+                    <div key={item.name} className="catalog-item">
+                        <View product={item} />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
