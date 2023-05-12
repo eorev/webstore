@@ -661,13 +661,14 @@ const Checkout = () => {
                                 X
                             </button>
                             {
-                                <form data-testid="shipping-form">
+                                <form data-testid="addShippingForm">
                                     <label>Name</label>
                                     <input
                                         type="text"
                                         name="name"
                                         placeholder={shippingAddress.name}
                                         onChange={handleShippingInputChange}
+                                        data-testid="shippingName"
                                     />
                                     <label>Number</label>
                                     <input
@@ -675,6 +676,7 @@ const Checkout = () => {
                                         name="number"
                                         placeholder={shippingAddress.number}
                                         onChange={handleShippingInputChange}
+                                        data-testid="shippingNumber"
                                     />
                                     <label>Address</label>
                                     <input
@@ -682,6 +684,7 @@ const Checkout = () => {
                                         name="address"
                                         placeholder={shippingAddress.address}
                                         onChange={handleShippingInputChange}
+                                        data-testid="shippingAddress"
                                     />
                                     <label>City</label>
                                     <input
@@ -766,6 +769,7 @@ const Checkout = () => {
                                 onClick={() => {
                                     navigate("/");
                                 }}
+                                data-testid="homeButton"
                             >
                                 Home
                             </button>
