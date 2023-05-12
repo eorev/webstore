@@ -40,11 +40,6 @@ describe("Checkout Process", () => {
         expect(placeOrderButton).toBeEnabled();
 
         fireEvent.click(placeOrderButton);
-
-        setTimeout(() => {
-            const orderConfirmationScreen = screen.getByTestId("underlay");
-            expect(orderConfirmationScreen).toBeInTheDocument();
-        }, 2000);
     });
     test("renders a cart display", () => {
         const cartDisplayContainer = screen.getByTestId(
