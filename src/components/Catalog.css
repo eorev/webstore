@@ -58,9 +58,6 @@
 .catalog-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .catalog-item {
@@ -125,8 +122,19 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     width: 125px;
+}
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* ... additional styling for the product item ... */
 }
