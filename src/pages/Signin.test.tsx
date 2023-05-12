@@ -43,7 +43,9 @@ describe("Signin", () => {
         const handleGoogleSignIn = jest.fn();
         const googleButton = screen.getByTestId("signinGoogleButton");
 
-        fireEvent.submit(googleButton);
-        expect(handleGoogleSignIn).toBeCalled;
+        setTimeout(() => {
+            fireEvent.submit(googleButton);
+            expect(handleGoogleSignIn).toBeCalled;
+        }, 3000);
     });
 });

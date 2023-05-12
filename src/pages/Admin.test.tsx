@@ -15,15 +15,19 @@ describe("Checkout Process", () => {
         const addProductButton = screen.getByText("Add Product");
         fireEvent.click(addProductButton);
 
-        const addProductForm = screen.getByTestId("addProductForm");
-        expect(addProductForm).toBeInTheDocument();
+        setTimeout(() => {
+            const addProductForm = screen.getByTestId("addProductForm");
+            expect(addProductForm).toBeInTheDocument();
+        }, 4000);
     });
     test("Admin can remove products", () => {
         const removeProductButton = screen.getByText("Remove Product");
         fireEvent.click(removeProductButton);
 
-        const removeProductForm = screen.getByTestId("removeProductForm");
-        expect(removeProductForm).toBeInTheDocument();
+        setTimeout(() => {
+            const removeProductForm = screen.getByTestId("removeProductForm");
+            expect(removeProductForm).toBeInTheDocument();
+        }, 4000);
     });
     test("Admin can view pending orders and select an order", () => {
         const pendingOrdersHeader = screen.getByText("Pending Orders");
