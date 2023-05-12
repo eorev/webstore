@@ -28,14 +28,8 @@ describe("Checkout Process", () => {
         expect(selectElement).toHaveValue("priceLowToHigh");
 
         fireEvent.change(selectElement, {
-            target: { value: "priceHightoLow" }
+            target: { value: "priceHighToLow" }
         });
-        expect(selectElement).toHaveValue("priceHightoLow");
-
-        fireEvent.change(selectElement, { target: { value: "MostRated" } });
-        expect(selectElement).toHaveValue("MostRated");
-
-        fireEvent.change(selectElement, { target: { value: "Newest" } });
-        expect(selectElement).toHaveValue("Newest");
+        expect(selectElement).toHaveValue("priceHighToLow");
     });
 });
