@@ -330,42 +330,40 @@ const Admin = () => {
                 )}
             </div>
             <div className="column-container">
-                <div>
-                    Add Admin
-                    <form
-                        onSubmit={(event) => {
-                            handleAdminChange(event, "add");
-                        }}
-                    >
-                        <input
-                            type="text"
-                            value={addAdminID}
-                            onChange={(event) =>
-                                setAddAdminID(event.target.value)
-                            }
-                        />
-                        <button type="submit" disabled={true}>
-                            Add
-                        </button>
-                    </form>
-                    Remove Admin
-                    <form
-                        onSubmit={(event) => {
-                            handleAdminChange(event, "remove");
-                        }}
-                    >
-                        <input
-                            type="text"
-                            value={removeAdminID}
-                            onChange={(event) =>
-                                setRemoveAdminID(event.target.value)
-                            }
-                        />
-                        <button type="submit" disabled={true}>
-                            Remove
-                        </button>
-                    </form>
-                </div>
+                {user?.uid === "6gzUl2K6U5bgRUIAB4qbBNq54E43" && (
+                    <div>
+                        Add Admin
+                        <form
+                            onSubmit={(event) => {
+                                handleAdminChange(event, "add");
+                            }}
+                        >
+                            <input
+                                type="text"
+                                value={addAdminID}
+                                onChange={(event) =>
+                                    setAddAdminID(event.target.value)
+                                }
+                            />
+                            <button type="submit">Add</button>
+                        </form>
+                        Remove Admin
+                        <form
+                            onSubmit={(event) => {
+                                handleAdminChange(event, "remove");
+                            }}
+                        >
+                            <input
+                                type="text"
+                                value={removeAdminID}
+                                onChange={(event) =>
+                                    setRemoveAdminID(event.target.value)
+                                }
+                            />
+                            <button type="submit">Remove</button>
+                        </form>
+                    </div>
+                )}
                 <div>_________________________</div>
                 <div>
                     <p>Pending Orders</p>
