@@ -61,4 +61,12 @@ describe("Signin", () => {
         });
         fireEvent.click(placeOrderButton);
     });
+    test("renders a cart display", () => {
+        const cartDisplayContainer = screen.getByTestId(
+            "cart-display-container"
+        );
+        const productsContainer = screen.getByTestId("products-container");
+        expect(cartDisplayContainer).toBeInTheDocument();
+        expect(productsContainer).toBeInTheDocument();
+    });
 });
