@@ -344,7 +344,9 @@ const Admin = () => {
                                 setAddAdminID(event.target.value)
                             }
                         />
-                        <button type="submit">Add</button>
+                        <button type="submit" disabled={true}>
+                            Add
+                        </button>
                     </form>
                     Remove Admin
                     <form
@@ -359,7 +361,9 @@ const Admin = () => {
                                 setRemoveAdminID(event.target.value)
                             }
                         />
-                        <button type="submit">Remove</button>
+                        <button type="submit" disabled={true}>
+                            Remove
+                        </button>
                     </form>
                 </div>
                 <div>_________________________</div>
