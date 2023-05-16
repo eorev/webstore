@@ -132,9 +132,9 @@
 }
 
 .filter-container {
-    position: absolute;
-    left: 250px;
-    top: 250px;
+    position: relative;
+    float: left;
+    top: 30px;
 }
 
 .category-title {
