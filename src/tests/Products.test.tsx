@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Products from "./Products";
+import Products from "../pages/Products";
 
 describe("Checkout Process", () => {
     beforeEach(() => {

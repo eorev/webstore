@@ -156,6 +156,7 @@ const Signin = () => {
                         <button
                             className="resetPassword"
                             onClick={handlePasswordReset}
+                            data-testid="reset-password"
                         >
                             Reset Password
                         </button>

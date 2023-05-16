@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Checkout from "./Checkout";
+import Checkout from "../pages/Checkout";
 
 describe("Signin", () => {
     beforeEach(() => {
@@ -68,5 +68,19 @@ describe("Signin", () => {
         const productsContainer = screen.getByTestId("products-container");
         expect(cartDisplayContainer).toBeInTheDocument();
         expect(productsContainer).toBeInTheDocument();
+    });
+    test("renders recently deleted display", () => {
+        const recentlyDeletedContainer = screen.getByTestId("recently-deleted");
+        expect(recentlyDeletedContainer).toBeInTheDocument();
+    });
+    test("renders order summary", () => {
+        const orderSummaryContainer = screen.getByTestId("order-summary");
+        expect(orderSummaryContainer).toBeInTheDocument();
+        const subtotal = screen.getByTestId("subtotal");
+        const total = screen.getByTestId("total");
+        expect(subtotal).toBeInTheDocument();
+        expect(total).toBeInTheDocument();
+        expect(subtotal.textContent).toBe("$0");
+        expect(total.textContent).toBe("$0.00");
     });
 });

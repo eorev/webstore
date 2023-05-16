@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Admin from "./Admin";
+import Admin from "../pages/Admin";
 
 describe("Checkout Process", () => {
     beforeEach(() => {
@@ -30,5 +30,23 @@ describe("Checkout Process", () => {
         expect(pendingOrdersHeader).toBeInTheDocument();
         const selectElement = screen.getByText(/Select an Order/i);
         expect(selectElement).toBeInTheDocument();
+    });
+    test("Admin can view user orders", () => {
+        const selectElement = screen.getByTestId("user-orders");
+
+        fireEvent.change(selectElement, {
+            target: { value: "Select a User" }
+        });
+        expect(selectElement.textContent).toBe("Select a User");
+    });
+    test("Unrestricted admins can add and remove admins", () => {
+        const addAdminButton = screen.getByRole("button", {
+            name: /Add/i
+        });
+        const removeAdminButton = screen.getByRole("button", {
+            name: /Remove/i
+        });
+        fireEvent.click(addAdminButton);
+        fireEvent.click(removeAdminButton);
     });
 });

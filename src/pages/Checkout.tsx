@@ -469,12 +469,17 @@ const Checkout = () => {
                     </div>
 
                     <div className="checkout-summary-container">
-                        <h2 className="order-summary">
+                        <h2
+                            className="order-summary"
+                            data-testid="order-summary"
+                        >
                             Order Summary
                             <span className="order-summary-underline"></span>
                         </h2>
                         <h3 className="subtotal-title">Subtotal:</h3>
-                        <h3 className="subtotal">${subTotal}</h3>
+                        <h3 className="subtotal" data-testid="subtotal">
+                            ${subTotal}
+                        </h3>
                         <div
                             className="shipping-options"
                             data-testid="shipping-option"
@@ -514,7 +519,9 @@ const Checkout = () => {
                             </label>
                         </div>
                         <h3 className="total-title">Total: </h3>
-                        <h3 className="total">${total.toFixed(2)}</h3>
+                        <h3 className="total" data-testid="total">
+                            ${total.toFixed(2)}
+                        </h3>
                         <br></br>
                         <br></br>
                         <div className="shipping-info">
@@ -606,7 +613,10 @@ const Checkout = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="recently-deleted">
+                    <div
+                        className="recently-deleted"
+                        data-testid="recently-deleted"
+                    >
                         <h4>Recently Deleted</h4>
                         {removedProducts.map((product: cartProductData) => (
                             <div key={product.name}>

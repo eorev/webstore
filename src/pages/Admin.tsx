@@ -304,7 +304,10 @@ const Admin = () => {
             </div>
             <div>
                 <p>Orders</p>
-                <select onChange={handleOrderbinChange}>
+                <select
+                    onChange={handleOrderbinChange}
+                    data-testid="user-orders"
+                >
                     <option value="">Select a User</option>
                     {binIds.map((orderbin) => (
                         <option key={orderbin} value={orderbin}>
