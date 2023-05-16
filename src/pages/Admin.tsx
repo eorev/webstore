@@ -50,6 +50,7 @@ const Admin = () => {
     const [orderIds, setOrderIds] = useState<string[]>([]);
     const [addAdminID, setAddAdminID] = useState<string>("");
     const [removeAdminID, setRemoveAdminID] = useState<string>("");
+    const [unrestrictedAdmins, setUnrestrictedAdmins] = useState<string[]>([]);
     const navigate = useNavigate();
 
     const handleOrderbinChange = async (
@@ -126,7 +127,19 @@ const Admin = () => {
                 }
             }
         });
+        const unrestrictedAdmins = onSnapshot(
+            doc(db, "ids", "unrestrictedAdmins"),
+            (doc) => {
+                if (doc.exists()) {
+                    const adminData = doc.data();
+                    const fullArray = adminData.full as string[];
+                    setUnrestrictedAdmins(fullArray);
+                }
+            }
+        );
+
         return () => {
+            unrestrictedAdmins();
             unsubProducts();
             unsubOrderbins();
             unsubAdminIDs();
@@ -330,7 +343,7 @@ const Admin = () => {
                 )}
             </div>
             <div className="column-container">
-                {user?.uid === "6gzUl2K6U5bgRUIAB4qbBNq54E43" && (
+                {unrestrictedAdmins.includes(user?.uid) && (
                     <div>
                         Add Admin
                         <form
